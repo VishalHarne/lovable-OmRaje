@@ -1,0 +1,20 @@
+{
+  "source": "github",
+  "source_url": "https://github.com/VishalHarne/Om-Raje",
+  "capabilities": [
+    { "capability": "code", "source": "Public GitHub React/Vite website", "outcome": "Recreate the bilingual civic website in the current preview, preserving core sections and demo safeguards", "status": "complete", "next_action": "None" },
+    { "capability": "schema", "source": "No database or schema detected", "outcome": "No database required for the current static website", "status": "not_applicable", "next_action": "None" },
+    { "capability": "records", "source": "No database records detected", "outcome": "No record import required", "status": "not_applicable", "next_action": "None" },
+    { "capability": "auth_identities", "source": "No authentication detected", "outcome": "No login or user migration required", "status": "not_applicable", "next_action": "None" },
+    { "capability": "authorization", "source": "No authorization logic detected", "outcome": "No access-control migration required", "status": "not_applicable", "next_action": "None" },
+    { "capability": "uploaded_file_bytes", "source": "Static photographs, logo, and bilingual cover artwork in the public repository", "outcome": "Transfer selected visual assets into the current project", "status": "complete", "next_action": "None" },
+    { "capability": "external_providers", "source": "Public Facebook/Instagram search links and WhatsApp share link", "outcome": "Preserve their public search/share behavior; no official contact endpoints were supplied", "status": "complete", "next_action": "None" },
+    { "capability": "public_endpoints", "source": "None detected", "outcome": "No public endpoints to migrate", "status": "not_applicable", "next_action": "None" },
+    { "capability": "callbacks", "source": "None detected", "outcome": "No callbacks to migrate", "status": "not_applicable", "next_action": "None" },
+    { "capability": "webhooks", "source": "None detected", "outcome": "No webhooks to migrate", "status": "not_applicable", "next_action": "None" },
+    { "capability": "schedules", "source": "None detected", "outcome": "No scheduled jobs to migrate", "status": "not_applicable", "next_action": "None" },
+    { "capability": "secrets", "source": "No user-owned service credentials detected", "outcome": "No secrets required", "status": "not_applicable", "next_action": "None" },
+    { "capability": "cutover", "source": "Source repository deployment configuration", "outcome": "The current task creates a preview in this project; changing the source GitHub Pages deployment is out of scope", "status": "pending", "next_action": "Confirm desired production hosting separately" },
+    { "capability": "verification", "source": "Current project preview", "outcome": "Verified English and Marathi rendering, language-specific carousel, preview-only interest form, and mobile navigation; no browser errors observed", "status": "complete", "next_action": "None" }
+  ]
+}
