@@ -678,6 +678,7 @@
 .site-marathi h1, .site-marathi h2, .site-marathi h3, .site-marathi .footer-motto, .site-marathi .impact-item strong { font-family: "Tiro Devanagari Marathi", "Noto Sans Devanagari", serif; }
 .site-marathi h1, .site-marathi h2, .site-marathi h3, .site-marathi .impact-item strong { font-weight: 400; }
 .site-marathi .hero-description { font-size: 15.5px; line-height: 1.75; }
+.site-marathi .hero-footnote { font-size: 12px; letter-spacing: 0; }
 .site-marathi .site-nav a { font-size: 14px; }
 .site-marathi .language-switch { font-size: 13px; }
 
@@ -686,6 +687,7 @@
 }
 
 @media (max-width: 760px) {
+  .site-marathi .hero-footnote { font-size: 11px; }
   .site-marathi .site-nav a { font-size: 15px; }
   .site-marathi .language-switch { font-size: 12px; }
 }

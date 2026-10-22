@@ -109,8 +109,15 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
 
 function RootShell({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="mr">
       <head>
+        {import.meta.env.PROD && (
+          <meta
+            httpEquiv="Content-Security-Policy"
+            content="default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data: blob:; connect-src 'self'; upgrade-insecure-requests"
+          />
+        )}
+        <meta name="referrer" content="strict-origin-when-cross-origin" />
         <HeadContent />
       </head>
       <body>

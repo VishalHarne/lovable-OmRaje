@@ -27,3 +27,9 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+
+## Deployment security
+
+This is a public static website. Its contact forms only show a local confirmation and do not transmit or store submissions. Do not add secrets or sensitive personal data to the site or repository.
+
+For encrypted delivery, open the repository's **Settings → Pages** and enable **Enforce HTTPS**. GitHub Pages provides HTTPS, but this repository cannot configure its HTTP response headers. The production HTML includes a Content Security Policy and a strict referrer policy; the deployment workflow audits dependencies and uses least-privilege permissions.
