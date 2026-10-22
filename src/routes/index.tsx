@@ -29,7 +29,7 @@ import coverFive from "@/assets/om-raje/cover-5.png";
 import nightRally from "@/assets/om-raje/night-rally-enhanced.jpg";
 import nightSpeech from "@/assets/om-raje/night-speech-enhanced.jpg";
 import fSmile from "@/assets/om-raje/field-smile.webp";
-import fSitIn from "@/assets/om-raje/field-sit-in.webp";
+import fFarmers from "@/assets/om-raje/standing with faremr.png";
 import fVillage from "@/assets/om-raje/field-village-visit.webp";
 import fStage from "@/assets/om-raje/field-stage-address.webp";
 import fCitizen from "@/assets/om-raje/field-citizen-meet.webp";
@@ -225,7 +225,7 @@ const fieldWall = [
   { src: fSmile, en: "Among supporters", mr: "कार्यकर्त्यांसोबत" },
   { src: nightRally, en: "Evening public gathering", mr: "सायंकाळची जाहीर सभा" },
   { src: fCitizen, en: "Listening to residents", mr: "नागरिकांशी संवाद" },
-  { src: fSitIn, en: "Standing with farmers", mr: "शेतकऱ्यांच्या पाठीशी" },
+  { src: fFarmers, en: "Standing with farmers", mr: "शेतकऱ्यांच्या पाठीशी" },
   { src: fTribute, en: "Tribute to Chhatrapati Shivaji Maharaj", mr: "छत्रपती शिवाजी महाराजांना अभिवादन" },
   { src: fVillage, en: "Village visit", mr: "गाव भेट" },
   { src: fStage, en: "Addressing the people", mr: "जनतेला संबोधन" },
