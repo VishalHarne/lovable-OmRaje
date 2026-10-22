@@ -1,7 +1,6 @@
 import { useState, type FormEvent } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
-  ArrowDown,
   ArrowDownRight,
   ArrowRight,
   ArrowUpRight,
@@ -23,9 +22,10 @@ import communityVisit from "@/assets/om-raje/community-visit.webp";
 import citizenMeeting from "@/assets/om-raje/citizen-meeting.webp";
 import publicMeeting from "@/assets/om-raje/public-meeting-enhanced.jpg";
 import partySymbol from "@/assets/om-raje/party-symbol.webp";
-import coverTwo from "@/assets/om-raje/cover-two.webp";
-import coverThree from "@/assets/om-raje/cover-three.webp";
-import coverFour from "@/assets/om-raje/cover-four.webp";
+import coverOne from "@/assets/om-raje/cover-1.png";
+import coverThreeNew from "@/assets/om-raje/cover-3.png";
+import coverFourNew from "@/assets/om-raje/cover-4.png";
+import coverFive from "@/assets/om-raje/cover-5.png";
 import nightRally from "@/assets/om-raje/night-rally-enhanced.jpg";
 import nightSpeech from "@/assets/om-raje/night-speech-enhanced.jpg";
 import fSmile from "@/assets/om-raje/field-smile.webp";
@@ -34,9 +34,6 @@ import fVillage from "@/assets/om-raje/field-village-visit.webp";
 import fStage from "@/assets/om-raje/field-stage-address.webp";
 import fCitizen from "@/assets/om-raje/field-citizen-meet.webp";
 import fTribute from "@/assets/om-raje/field-shivaji-tribute.webp";
-import coverMarathiOne from "@/assets/om-raje/cover-marathi-one.webp";
-import coverMarathiTwo from "@/assets/om-raje/cover-marathi-two.webp";
-import coverMarathiThree from "@/assets/om-raje/cover-marathi-three.webp";
 
 type Language = "en" | "mr";
 
@@ -49,7 +46,6 @@ const content = {
       "A people-first space for Dharashiv — to follow public work, find opportunity and make your voice heard.",
     explore: "Explore the work",
     contact: "Get in touch",
-    scroll: "A closer look at public service",
     principles: ["Listening first", "Working together", "Moving forward"],
     aboutOverline: "01 / A PEOPLE’S REPRESENTATIVE",
     aboutTitle: "Grounded in the people. Focused on what’s next.",
@@ -140,7 +136,6 @@ const content = {
     heroBody: "धाराशिवसाठी जनतेचे व्यासपीठ — लोककार्य, संधी आणि आपला आवाज पोहोचवण्याचा मार्ग.",
     explore: "कार्य जाणून घ्या",
     contact: "संपर्क साधा",
-    scroll: "लोकसेवेची जवळून ओळख",
     principles: ["आधी ऐकून घेऊ", "एकत्र काम करू", "पुढे वाटचाल करू"],
     aboutOverline: "०१ / जनतेचा प्रतिनिधी",
     aboutTitle: "जनतेशी नाळ. उद्याच्या विकासावर लक्ष.",
@@ -225,7 +220,7 @@ const content = {
 } as const;
 
 const navigationIds = ["about", "work", "initiatives", "events", "contact"];
-const englishCoverSlides = [coverThree, fieldVisit, nightSpeech, coverTwo, nightRally, coverFour];
+const coverSlides = [coverOne, fieldVisit, nightSpeech, coverThreeNew, coverFourNew, coverFive];
 const fieldWall = [
   { src: fSmile, en: "Among supporters", mr: "कार्यकर्त्यांसोबत" },
   { src: nightRally, en: "Evening public gathering", mr: "सायंकाळची जाहीर सभा" },
@@ -236,7 +231,6 @@ const fieldWall = [
   { src: fStage, en: "Addressing the people", mr: "जनतेला संबोधन" },
   { src: nightSpeech, en: "Voice for Dharashiv", mr: "धाराशिवचा आवाज" },
 ];
-const marathiCoverSlides = [coverMarathiOne, coverMarathiTwo, coverMarathiThree];
 const pictures = [communityVisit, citizenMeeting, publicMeeting];
 
 export const Route = createFileRoute("/")({
@@ -269,7 +263,7 @@ function HomePage() {
   const [messageSent, setMessageSent] = useState(false);
   const t = content[language];
   const alternate = language === "en" ? "mr" : "en";
-  const slides = language === "en" ? englishCoverSlides : marathiCoverSlides;
+  const slides = coverSlides;
 
   function closeMenu() {
     setMenuOpen(false);
@@ -325,12 +319,6 @@ function HomePage() {
           <p className="eyebrow hero-eyebrow"><span />{t.heroEyebrow}</p>
           <h1>{t.heroTitle}</h1>
           <p className="hero-description">{t.heroBody}</p>
-          <div className="hero-actions">
-            <Button asChild variant="saffron" size="large" className="hero-primary">
-              <a href="#work">{t.explore}<ArrowRight aria-hidden="true" /></a>
-            </Button>
-            <a className="hero-text-link" href="#contact">{t.contact}<ArrowUpRight aria-hidden="true" /></a>
-          </div>
         </div>
         <div className="hero-footnote"><span className="hero-live-dot" />{language === "en" ? "ALWAYS IN THE FIELD" : "सदैव जनतेत"}</div>
         <div className="hero-controls" aria-label="Featured photos">
@@ -348,7 +336,6 @@ function HomePage() {
             onClick={() => setSlide((index) => (index + 1) % slides.length)}
           ><ChevronRight /></button>
         </div>
-        <a className="hero-scroll" href="#about"><span>{t.scroll}</span><ArrowDown aria-hidden="true" /></a>
       </section>
 
       <div className="principle-strip" aria-label={language === "en" ? "Our values" : "आपली मूल्ये"}>
