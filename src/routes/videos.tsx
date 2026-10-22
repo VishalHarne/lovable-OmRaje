@@ -19,7 +19,7 @@ export const Route = createFileRoute('/videos')({
 });
 
 function VideosPage() {
-  const [language, setLanguage] = useState<'en' | 'mr'>('en');
+  const [language, setLanguage] = useState<'en' | 'mr'>('mr');
   const [category, setCategory] = useState<ReelCategory>('all');
   const [selected, setSelected] = useState<Reel | null>(null);
   const mr = language === 'mr';

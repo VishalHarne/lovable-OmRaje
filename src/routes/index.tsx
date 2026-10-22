@@ -256,7 +256,7 @@ export const Route = createFileRoute("/")({
 });
 
 function HomePage() {
-  const [language, setLanguage] = useState<Language>("en");
+  const [language, setLanguage] = useState<Language>("mr");
   const [slide, setSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [interestSent, setInterestSent] = useState(false);
