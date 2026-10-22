@@ -128,10 +128,10 @@
 .brand-label strong { font: 800 13px/1 "Manrope", sans-serif; letter-spacing: 0.11em; }
 .brand-label small { color: var(--text-on-dark-muted); font-size: 8px; letter-spacing: 0.08em; }
 .site-nav { display: flex; align-items: center; gap: clamp(16px, 2.5vw, 36px); }
-.site-nav a { color: var(--text-on-dark-muted); font-size: 12px; font-weight: 600; transition: color 160ms ease; }
+.site-nav a { color: var(--text-on-dark); font-size: 12px; font-weight: 600; transition: color 160ms ease; }
 .site-nav a:hover, .site-nav a:focus-visible { color: var(--lime); }
 .header-tools { display: flex; align-items: center; justify-content: flex-end; gap: 16px; }
-.language-switch { display: inline-flex; align-items: center; gap: 8px; padding: 8px 0; border: 0; color: var(--text-on-dark-muted); background: transparent; font-size: 11px; cursor: pointer; }
+.language-switch { display: inline-flex; align-items: center; gap: 8px; padding: 8px 0; border: 0; color: var(--text-on-dark); background: transparent; font-size: 11px; cursor: pointer; }
 .language-current { color: var(--lime); font-weight: 700; }
 .menu-switch { display: none; width: 40px; height: 40px; align-items: center; justify-content: center; border: 1px solid var(--dark-line); color: var(--text-on-dark); background: transparent; cursor: pointer; }
 
@@ -357,7 +357,6 @@
   .site-nav { position: absolute; top: 66px; right: 0; left: 0; display: none; align-items: stretch; gap: 0; padding: 8px var(--page-pad) 18px; border-bottom: 1px solid var(--dark-line); background: var(--dark); }
   .site-nav.is-open { display: flex; flex-direction: column; }
   .site-nav a { min-height: 44px; padding: 13px 0; border-bottom: 1px solid var(--dark-line); font-size: 13px; }
-  .site-nav .home-video-link { min-height: 44px; }
   .site-nav a:last-child { border-bottom: 0; }
   .hero { min-height: 620px; height: min(142vw, 760px); max-height: none; align-items: flex-end; }
   .hero::after { background: linear-gradient(0deg, oklch(0.15 0.012 150 / 94%) 0%, oklch(0.15 0.012 150 / 82%) 35%, oklch(0.15 0.012 150 / 12%) 88%), linear-gradient(90deg, oklch(0.15 0.012 150 / 20%), transparent 80%); }
@@ -491,7 +490,6 @@
 
 /* Instagram motion collection */
 :root { --video-scrim: linear-gradient(90deg, color-mix(in oklab, var(--dark) 94%, transparent), color-mix(in oklab, var(--dark) 64%, transparent) 48%, color-mix(in oklab, var(--dark) 12%, transparent)), linear-gradient(0deg, color-mix(in oklab, var(--dark) 80%, transparent), transparent 45%); --reel-scrim: linear-gradient(0deg, color-mix(in oklab, var(--dark) 88%, transparent), transparent 42%); }
-.site-nav .home-video-link { padding: 0; min-height: 30px; color: var(--lime); font-size: 12px; }
 .video-page { background: var(--paper); }
 .video-header .video-home { color: var(--text-on-dark-muted); font-size: 12px; }
 .video-header .language-switch:hover, .video-header .video-home:hover { background: var(--dark-raised); color: var(--text-on-dark); }
@@ -680,3 +678,14 @@
 .site-marathi h1, .site-marathi h2, .site-marathi h3, .site-marathi .footer-motto, .site-marathi .impact-item strong { font-family: "Tiro Devanagari Marathi", "Noto Sans Devanagari", serif; }
 .site-marathi h1, .site-marathi h2, .site-marathi h3, .site-marathi .impact-item strong { font-weight: 400; }
 .site-marathi .hero-description { font-size: 15.5px; line-height: 1.75; }
+.site-marathi .site-nav a { font-size: 14px; }
+.site-marathi .language-switch { font-size: 13px; }
+
+@media (max-width: 1000px) {
+  .site-marathi .site-nav a { font-size: 13px; }
+}
+
+@media (max-width: 760px) {
+  .site-marathi .site-nav a { font-size: 15px; }
+  .site-marathi .language-switch { font-size: 12px; }
+}

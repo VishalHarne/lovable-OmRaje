@@ -288,7 +288,7 @@ function HomePage() {
               {item}
             </a>
           ))}
-          <Button asChild variant="ghost" className="home-video-link"><Link to="/videos" onClick={closeMenu}>{language === 'en' ? 'Videos' : 'व्हिडिओ'}<ArrowUpRight size={13} /></Link></Button>
+          <Link className="home-video-link" to="/videos" onClick={closeMenu}>{language === "en" ? "Videos" : "व्हिडिओ"}</Link>
         </nav>
         <div className="header-tools">
           <button
