@@ -79,10 +79,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "Om Raje Nimbalkar | Dharashiv Public Service" },
-      { name: "description", content: "Public service, local opportunity and citizen connections across Dharashiv." },
+      {
+        name: "description",
+        content: "Public service, local opportunity and citizen connections across Dharashiv.",
+      },
       { name: "author", content: "Om Raje Nimbalkar" },
       { property: "og:title", content: "Om Raje Nimbalkar | Dharashiv Public Service" },
-      { property: "og:description", content: "Public service, local opportunity and citizen connections across Dharashiv." },
+      {
+        property: "og:description",
+        content: "Public service, local opportunity and citizen connections across Dharashiv.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@Lovable" },
