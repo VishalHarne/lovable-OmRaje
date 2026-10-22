@@ -666,3 +666,19 @@
 
 @media (max-width: 350px) {
 }
+
+/* Fit header, hero and value strip within one desktop viewport */
+@media (min-width: 761px) {
+  .hero {
+    min-height: 420px;
+    height: calc(100vh - 155px);
+    height: calc(100dvh - 155px);
+    max-height: 780px;
+  }
+}
+
+/* Marathi typography: Tiro Devanagari Marathi for headings, Mukta for body */
+.site-marathi { font-family: "Mukta", "Noto Sans Devanagari", sans-serif; }
+.site-marathi h1, .site-marathi h2, .site-marathi h3, .site-marathi .footer-motto, .site-marathi .impact-item strong { font-family: "Tiro Devanagari Marathi", "Noto Sans Devanagari", serif; }
+.site-marathi h1, .site-marathi h2, .site-marathi h3, .site-marathi .impact-item strong { font-weight: 400; }
+.site-marathi .hero-description { font-size: 15.5px; line-height: 1.75; }
