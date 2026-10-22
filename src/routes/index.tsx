@@ -340,7 +340,7 @@ function HomePage() {
 
       <div className="principle-strip" aria-label={language === "en" ? "Our values" : "आपली मूल्ये"}>
         {t.principles.map((principle, index) => (
-          <div className="principle" key={principle}><span>0{index + 1}</span><strong>{principle}</strong><ArrowUpRight aria-hidden="true" /></div>
+          <div className="principle" key={principle}><span>0{index + 1}</span><strong>{principle}</strong></div>
         ))}
       </div>
 

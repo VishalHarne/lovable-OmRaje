@@ -159,8 +159,7 @@
 .principle:first-child { padding-left: 0; }
 .principle:last-child { border-right: 0; }
 .principle > span { align-self: flex-start; margin-top: 29px; color: var(--lime); font-size: 9px; }
-.principle strong { font-size: clamp(11px, 1.15vw, 14px); font-weight: 600; }
-.principle svg { width: 14px; height: 14px; margin-left: auto; color: var(--text-on-dark-muted); }
+.principle strong { font-size: clamp(16px, 1.4vw, 18px); font-weight: 600; line-height: 1.35; }
 
 .content-section { padding-inline: var(--page-pad); }
 .about-section { padding-block: 91px 82px; }
@@ -374,8 +373,7 @@
   .principle-strip { min-height: 72px; padding-inline: var(--page-pad); }
   .principle { gap: 8px; padding-inline: 10px; }
   .principle > span { margin-top: 24px; font-size: 8px; }
-  .principle strong { font-size: 10px; line-height: 1.5; }
-  .principle svg { display: none; }
+  .principle strong { font-size: 12px; line-height: 1.4; }
   .about-section { padding-block: 62px 60px; }
   .section-marker > span { font-size: 8px; }
   .about-grid { grid-template-columns: 1fr; gap: 28px; margin-top: 30px; }
@@ -445,7 +443,7 @@
   .hero-description { font-size: 12px; }
   .principle { padding-inline: 7px; }
   .principle > span { display: none; }
-  .principle strong { font-size: 9px; }
+  .principle strong { font-size: 11px; }
   .form-row { grid-template-columns: 1fr; }
   .photo-gallery { grid-template-rows: 215px 235px; }
   .site-footer { grid-template-columns: minmax(0, 1fr) auto; }
