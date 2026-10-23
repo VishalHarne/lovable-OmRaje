@@ -479,13 +479,13 @@ function HomePage() {
         <div className="contact-intro"><h2>{t.contactTitle}</h2><p>{t.contactBody}</p></div>
         <div className="contact-grid">
           <div className="social-list">
-            <a href="https://www.facebook.com/search/top?q=om%20raje%20nimbalkar" target="_blank" rel="noreferrer" className="social-link">
+            <a href="https://www.facebook.com/omprakashrajenimbalkar" target="_blank" rel="noopener noreferrer" className="social-link">
               <span className="social-badge">f</span><span><strong>{t.facebook}</strong><small>{t.facebookHint}</small></span><ArrowUpRight aria-hidden="true" />
             </a>
             <a href={`https://wa.me/?text=${encodeURIComponent(language === "en" ? "Hello, I would like to get in touch with the Dharashiv public office." : "नमस्कार, मला धाराशिवच्या जनसंपर्क कार्यालयाशी संपर्क साधायचा आहे.")}`} target="_blank" rel="noreferrer" className="social-link">
               <span className="social-badge social-whatsapp"><MessageCircle aria-hidden="true" /></span><span><strong>{t.whatsapp}</strong><small>{t.whatsappHint}</small></span><ArrowUpRight aria-hidden="true" />
             </a>
-            <a href="https://www.instagram.com/explore/search/keyword/?q=om%20raje%20nimbalkar" target="_blank" rel="noreferrer" className="social-link">
+            <a href="https://www.instagram.com/mpomrajenimbalkar/" target="_blank" rel="noopener noreferrer" className="social-link">
               <span className="social-badge social-instagram">◎</span><span><strong>{t.instagram}</strong><small>Om Raje Nimbalkar</small></span><ArrowUpRight aria-hidden="true" />
             </a>
             <p className="social-disclaimer">{t.socialNote}</p>
