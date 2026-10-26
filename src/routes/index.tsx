@@ -31,6 +31,10 @@ import fVillage from "@/assets/om-raje/field-village-visit.webp";
 import fStage from "@/assets/om-raje/field-stage-address.webp";
 import fCitizen from "@/assets/om-raje/field-citizen-meet.webp";
 import fTribute from "@/assets/om-raje/field-shivaji-tribute.webp";
+import heroBanner1 from "@/assets/om-raje/hero-banner-1.jpg";
+import heroBanner2 from "@/assets/om-raje/hero-banner-2.jpg";
+import heroBanner3 from "@/assets/om-raje/hero-banner-3.jpg";
+import heroBanner4 from "@/assets/om-raje/hero-banner-4.jpg";
 
 type Language = "en" | "mr";
 
@@ -217,7 +221,7 @@ const content = {
 } as const;
 
 const navigationIds = ["about", "work", "initiatives", "events", "contact"];
-const coverSlides = [fVillage, fieldVisit, fFarmers];
+const coverSlides = [heroBanner1, heroBanner2, heroBanner3, heroBanner4];
 const fieldWall = [
   { src: fSmile, en: "Among supporters", mr: "कार्यकर्त्यांसोबत" },
   { src: nightRally, en: "Evening public gathering", mr: "सायंकाळची जाहीर सभा" },
