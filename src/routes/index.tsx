@@ -366,7 +366,7 @@ function HomePage() {
           ][index] ?? { image: focusFarmers, icon: <Wheat aria-hidden="true" /> };
           return (
             <div className="impact-item" key={title}>
-              <img className="impact-bg" src={focus.image} alt="" loading="lazy" aria-hidden="true" />
+              <img className="impact-bg" src={focus.image} alt="" aria-hidden="true" />
               <span className="impact-icon">{focus.icon}</span>
               <strong>{title}</strong>
               <span>{body}</span>
