@@ -14,6 +14,10 @@ import {
   Sparkles,
   UsersRound,
   X,
+  Wheat,
+  GraduationCap,
+  House,
+  MapPinned,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
@@ -31,6 +35,10 @@ import fVillage from "@/assets/om-raje/field-village-visit.webp";
 import fStage from "@/assets/om-raje/field-stage-address.webp";
 import fCitizen from "@/assets/om-raje/field-citizen-meet.webp";
 import fTribute from "@/assets/om-raje/field-shivaji-tribute.webp";
+import focusFarmers from "@/assets/om-raje/focus-farmers.svg";
+import focusYouth from "@/assets/om-raje/focus-youth.svg";
+import focusFamilies from "@/assets/om-raje/focus-families.svg";
+import focusVillages from "@/assets/om-raje/focus-villages.svg";
 import heroBanner1 from "@/assets/om-raje/hero-banner-1.jpg";
 import heroBanner2 from "@/assets/om-raje/hero-banner-2.jpg";
 import heroBanner3 from "@/assets/om-raje/hero-banner-3.jpg";
@@ -349,9 +357,22 @@ function HomePage() {
         {(language === "en"
           ? [["Farmers", "Water, crops & rural support"], ["Youth", "Jobs & skill melavas"], ["Families", "Health & welfare access"], ["Villages", "Roads & local works"]]
           : [["शेतकरी", "पाणी, पीक व ग्रामीण मदत"], ["युवा", "रोजगार व कौशल्य मेळावे"], ["कुटुंबे", "आरोग्य व कल्याण योजना"], ["गावे", "रस्ते व स्थानिक कामे"]]
-        ).map(([title, body]) => (
-          <div className="impact-item" key={title}><HeartHandshake aria-hidden="true" /><strong>{title}</strong><span>{body}</span></div>
-        ))}
+        ).map(([title, body], index) => {
+          const focus = [
+            { image: focusFarmers, icon: <Wheat aria-hidden="true" /> },
+            { image: focusYouth, icon: <GraduationCap aria-hidden="true" /> },
+            { image: focusFamilies, icon: <House aria-hidden="true" /> },
+            { image: focusVillages, icon: <MapPinned aria-hidden="true" /> },
+          ][index] ?? { image: focusFarmers, icon: <Wheat aria-hidden="true" /> };
+          return (
+            <div className="impact-item" key={title}>
+              <img className="impact-bg" src={focus.image} alt="" loading="lazy" aria-hidden="true" />
+              <span className="impact-icon">{focus.icon}</span>
+              <strong>{title}</strong>
+              <span>{body}</span>
+            </div>
+          );
+        })}
       </div>
 
       <section className="content-section about-section" id="about">

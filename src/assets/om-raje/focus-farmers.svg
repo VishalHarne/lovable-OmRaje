@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2b3a67"/><stop offset=".45" stop-color="#d9733a"/><stop offset="1" stop-color="#ffd27a"/>
+    </linearGradient>
+    <radialGradient id="sun" cx=".5" cy=".5" r=".5">
+      <stop offset="0" stop-color="#fff6c9"/><stop offset=".45" stop-color="#ffd05a" stop-opacity=".9"/><stop offset="1" stop-color="#ffb347" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="field" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#c79a2c"/><stop offset="1" stop-color="#5a4311"/>
+    </linearGradient>
+    <g id="wheat">
+      <path d="M0 0 C2 -40 -2 -80 0 -120" stroke="#3a2a0a" stroke-width="3" fill="none"/>
+      <g fill="#e8b84a">
+        <ellipse cx="0" cy="-124" rx="5" ry="12"/><ellipse cx="-7" cy="-108" rx="5" ry="11" transform="rotate(-25 -7 -108)"/><ellipse cx="7" cy="-108" rx="5" ry="11" transform="rotate(25 7 -108)"/>
+        <ellipse cx="-7" cy="-90" rx="5" ry="11" transform="rotate(-25 -7 -90)"/><ellipse cx="7" cy="-90" rx="5" ry="11" transform="rotate(25 7 -90)"/>
+        <ellipse cx="-6" cy="-72" rx="4.5" ry="10" transform="rotate(-25 -6 -72)"/><ellipse cx="6" cy="-72" rx="4.5" ry="10" transform="rotate(25 6 -72)"/>
+      </g>
+    </g>
+  </defs>
+  <rect width="960" height="420" fill="url(#sky)"/>
+  <circle cx="700" cy="190" r="230" fill="url(#sun)"/>
+  <circle cx="700" cy="190" r="48" fill="#fff2b8"/>
+  <path d="M0 215 Q160 150 330 205 T640 190 T960 200 V260 H0Z" fill="#8a4b3b" opacity=".75"/>
+  <path d="M0 240 Q220 190 420 235 T960 225 V280 H0Z" fill="#5d3a33" opacity=".85"/>
+  <path d="M0 250 H960 V420 H0Z" fill="url(#field)"/>
+  <g stroke="#3d2c0c" stroke-opacity=".55" stroke-width="3" fill="none">
+    <path d="M700 250 L130 420"/><path d="M700 250 L330 420"/><path d="M700 250 L520 420"/><path d="M700 250 L700 420"/>
+    <path d="M700 250 L880 420"/><path d="M700 250 L1060 420"/><path d="M700 250 L-60 420"/>
+  </g>
+  <g fill="#f3c85a" opacity=".5">
+    <path d="M0 262 H960 V268 H0Z"/><path d="M0 290 H960 V299 H0Z"/><path d="M0 330 H960 V342 H0Z"/>
+  </g>
+  <g opacity=".9">
+    <use href="#wheat" x="640" y="420"/><use href="#wheat" x="690" y="430" transform="scale(1.1)" />
+    <use href="#wheat" x="800" y="425"/><use href="#wheat" x="860" y="420"/><use href="#wheat" x="920" y="428"/>
+    <use href="#wheat" x="740" y="420"/><use href="#wheat" x="590" y="425"/>
+  </g>
+  <g fill="#2a1d12" opacity=".95">
+    <ellipse cx="560" cy="248" rx="9" ry="3"/>
+    <path d="M552 248 L556 226 L564 226 L568 248Z"/><circle cx="560" cy="221" r="5"/>
+    <path d="M548 224 Q560 214 572 224 Z"/>
+  </g>
+  <g fill="#1d1510" opacity=".8"><path d="M820 120 q6 -8 12 0 q6 -8 12 0 q-12 4 -24 0Z"/><path d="M860 150 q5 -6 10 0 q5 -6 10 0 q-10 3 -20 0Z"/></g>
+</svg>
