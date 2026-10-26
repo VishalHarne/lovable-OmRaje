@@ -16,16 +16,13 @@ import {
   X,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ThemeSwitcher } from "@/components/theme-switcher";
 import fieldVisit from "@/assets/om-raje/field-visit-enhanced.jpg";
 import portrait from "@/assets/om-raje/portrait.webp";
 import communityVisit from "@/assets/om-raje/community-visit.webp";
 import citizenMeeting from "@/assets/om-raje/citizen-meeting.webp";
 import publicMeeting from "@/assets/om-raje/public-meeting-enhanced.jpg";
 import partySymbol from "@/assets/om-raje/party-symbol.webp";
-import coverOne from "@/assets/om-raje/cover-1.png";
-import coverThreeNew from "@/assets/om-raje/cover-3.png";
-import coverFourNew from "@/assets/om-raje/cover-4.png";
-import coverFive from "@/assets/om-raje/cover-5.png";
 import nightRally from "@/assets/om-raje/night-rally-enhanced.jpg";
 import nightSpeech from "@/assets/om-raje/night-speech-enhanced.jpg";
 import fSmile from "@/assets/om-raje/field-smile.webp";
@@ -220,7 +217,7 @@ const content = {
 } as const;
 
 const navigationIds = ["about", "work", "initiatives", "events", "contact"];
-const coverSlides = [coverOne, fieldVisit, nightSpeech, coverThreeNew, coverFourNew, coverFive];
+const coverSlides = [fVillage, fieldVisit, fFarmers];
 const fieldWall = [
   { src: fSmile, en: "Among supporters", mr: "कार्यकर्त्यांसोबत" },
   { src: nightRally, en: "Evening public gathering", mr: "सायंकाळची जाहीर सभा" },
@@ -518,6 +515,7 @@ function HomePage() {
         <p className="footer-label">{t.footerLabel}</p>
         <a className="back-top" href="#home">{t.top}<ArrowUpRight aria-hidden="true" /></a>
       </footer>
+      <ThemeSwitcher language={language} />
     </main>
   );
 }
