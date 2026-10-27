@@ -131,7 +131,7 @@ const content = {
     facebook: "Find on Facebook",
     facebookHint: "Search for Om Raje Nimbalkar",
     whatsapp: "WhatsApp",
-    whatsappHint: "Open WhatsApp to share a message",
+    whatsappHint: "Join our WhatsApp channel",
     instagram: "Find on Instagram",
     socialNote:
       "Social links open public search or sharing pages. No official WhatsApp number or verified page has been provided.",
@@ -219,7 +219,7 @@ const content = {
     facebook: "फेसबुकवर शोधा",
     facebookHint: "ओम राजे निंबाळकर यांचा शोध घ्या",
     whatsapp: "व्हॉट्सॲप",
-    whatsappHint: "व्हॉट्सॲपवर संदेश शेअर करा",
+    whatsappHint: "आमच्या व्हॉट्सॲप चॅनेलला जॉइन करा",
     instagram: "इन्स्टाग्रामवर शोधा",
     socialNote:
       "समाजमाध्यमांच्या लिंक्स सार्वजनिक शोध व शेअर पृष्ठे उघडतात. अधिकृत व्हॉट्सॲप क्रमांक किंवा सत्यापित पेजची लिंक उपलब्ध नाही.",
@@ -505,7 +505,7 @@ function HomePage() {
             <a href="https://www.facebook.com/omprakashrajenimbalkar" target="_blank" rel="noopener noreferrer" className="social-link">
               <span className="social-badge">f</span><span><strong>{t.facebook}</strong><small>{t.facebookHint}</small></span><ArrowUpRight aria-hidden="true" />
             </a>
-            <a href={`https://wa.me/?text=${encodeURIComponent(language === "en" ? "Hello, I would like to get in touch with the Dharashiv public office." : "नमस्कार, मला धाराशिवच्या जनसंपर्क कार्यालयाशी संपर्क साधायचा आहे.")}`} target="_blank" rel="noreferrer" className="social-link">
+            <a href="https://whatsapp.com/channel/0029Vb97yd1DeOMyTuR1mN1V" target="_blank" rel="noreferrer" className="social-link">
               <span className="social-badge social-whatsapp"><MessageCircle aria-hidden="true" /></span><span><strong>{t.whatsapp}</strong><small>{t.whatsappHint}</small></span><ArrowUpRight aria-hidden="true" />
             </a>
             <a href="https://www.instagram.com/mpomrajenimbalkar/" target="_blank" rel="noopener noreferrer" className="social-link">
