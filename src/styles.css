@@ -485,7 +485,6 @@
 .hero-dot { position: relative; width: 22px; height: 3px; padding: 0; border: 0; background: oklch(1 0 0 / 30%); cursor: pointer; overflow: hidden; }
 .hero-dot::after { position: absolute; inset: 0; background: var(--lime); content: ""; transform: scaleX(0); transform-origin: left; }
 .hero-dot.is-active::after { animation: hero-progress 5.5s linear forwards; }
-.hero:hover .hero-dot.is-active::after { animation-play-state: paused; }
 @keyframes hero-progress { to { transform: scaleX(1); } }
 .hero-copy > * { animation: rise-in 0.9s cubic-bezier(.2,.7,.2,1) both; }
 .hero-copy > *:nth-child(2) { animation-delay: .12s; }

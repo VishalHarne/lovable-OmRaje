@@ -271,13 +271,11 @@ function HomePage() {
   const t = content[language];
   const alternate = language === "en" ? "mr" : "en";
   const slides = coverSlides;
-  const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    if (paused) return;
     const timer = window.setInterval(() => setSlide((index) => (index + 1) % slides.length), 5500);
     return () => window.clearInterval(timer);
-  }, [paused, slide, slides.length]);
+  }, [slides.length]);
 
 
 
@@ -329,7 +327,7 @@ function HomePage() {
         </div>
       </header>
 
-      <section className="hero" id="home" aria-label={t.heroEyebrow} onPointerEnter={(e) => { if (e.pointerType === "mouse") setPaused(true); }} onPointerLeave={() => setPaused(false)}>
+      <section className="hero" id="home" aria-label={t.heroEyebrow}>
         {slides.map((src, index) => (
           <img
             key={src}
