@@ -40,6 +40,7 @@ import focusYouth from "@/assets/om-raje/focus-youth.svg";
 import focusFamilies from "@/assets/om-raje/focus-families.svg";
 import focusVillages from "@/assets/om-raje/focus-villages.svg";
 import heroBanner0 from "@/assets/om-raje/baner-1.png";
+import heroBannerTitle from "@/assets/om-raje/hero-banner-title.jpg";
 import heroBanner1 from "@/assets/om-raje/hero-banner-1.jpg";
 import heroBanner2 from "@/assets/om-raje/hero-banner-2.jpg";
 import heroBanner3 from "@/assets/om-raje/hero-banner-3.jpg";
@@ -230,7 +231,7 @@ const content = {
 } as const;
 
 const navigationIds = ["about", "work", "initiatives", "events", "contact"];
-const coverSlides = [heroBanner0, heroBanner1, heroBanner2, heroBanner3, heroBanner4];
+const coverSlides = [heroBannerTitle, heroBanner0, heroBanner1, heroBanner2, heroBanner3, heroBanner4];
 const fieldWall = [
   { src: fSmile, en: "Among supporters", mr: "कार्यकर्त्यांसोबत" },
   { src: nightRally, en: "Evening public gathering", mr: "सायंकाळची जाहीर सभा" },
