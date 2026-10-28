@@ -25,11 +25,10 @@ import portrait from "@/assets/om-raje/portrait.webp";
 import communityVisit from "@/assets/om-raje/community-visit.webp";
 import citizenMeeting from "@/assets/om-raje/citizen-meeting.webp";
 import publicMeeting from "@/assets/om-raje/public-meeting-enhanced.jpg";
-import partySymbol from "@/assets/om-raje/party-symbol.webp";
+import { OmLogo } from "@/components/om-logo";
 import nightRally from "@/assets/om-raje/night-rally-enhanced.jpg";
 import nightSpeech from "@/assets/om-raje/night-speech-enhanced.jpg";
 import fSmile from "@/assets/om-raje/field-smile.webp";
-import fFarmers from "@/assets/om-raje/standing with faremr.png";
 import fVillage from "@/assets/om-raje/field-village-visit.webp";
 import fStage from "@/assets/om-raje/field-stage-address.webp";
 import fCitizen from "@/assets/om-raje/field-citizen-meet.webp";
@@ -234,7 +233,6 @@ const fieldWall = [
   { src: fSmile, en: "Among supporters", mr: "कार्यकर्त्यांसोबत" },
   { src: nightRally, en: "Evening public gathering", mr: "सायंकाळची जाहीर सभा" },
   { src: fCitizen, en: "Listening to residents", mr: "नागरिकांशी संवाद" },
-  { src: fFarmers, en: "Standing with farmers", mr: "शेतकऱ्यांच्या पाठीशी" },
   { src: fTribute, en: "Tribute to Chhatrapati Shivaji Maharaj", mr: "छत्रपती शिवाजी महाराजांना अभिवादन" },
   { src: fVillage, en: "Village visit", mr: "गाव भेट" },
   { src: fStage, en: "Addressing the people", mr: "जनतेला संबोधन" },
@@ -297,7 +295,7 @@ function HomePage() {
     <main className={`site ${language === "mr" ? "site-marathi" : ""}`} lang={language}>
       <header className="site-header">
         <a className="brand" href="#home" aria-label="Om Raje Nimbalkar, home" onClick={closeMenu}>
-          <img src={partySymbol} alt="Shiv Sena symbol" />
+          <OmLogo className="brand-logo" />
           <span className="brand-label"><strong>OM RAJE</strong><small>NIMBALKAR · धाराशिव</small></span>
         </a>
         <nav className={menuOpen ? "site-nav is-open" : "site-nav"} aria-label="Main navigation">
@@ -540,7 +538,7 @@ function HomePage() {
       </section>
 
       <footer className="site-footer">
-        <a className="brand footer-brand" href="#home"><img src={partySymbol} alt="" /><span className="brand-label"><strong>OM RAJE</strong><small>NIMBALKAR · धाराशिव</small></span></a>
+        <a className="brand footer-brand" href="#home"><OmLogo className="brand-logo" /><span className="brand-label"><strong>OM RAJE</strong><small>NIMBALKAR · धाराशिव</small></span></a>
         <p className="footer-motto">{t.footerLine}</p>
         <p className="footer-label">{t.footerLabel}</p>
         <a className="back-top" href="#home">{t.top}<ArrowUpRight aria-hidden="true" /></a>

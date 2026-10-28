@@ -3,11 +3,7 @@ import { themes, useTheme, type Theme } from "@/lib/theme";
 const labels: Record<Theme, { en: string; mr: string }> = {
   classic: { en: "Classic", mr: "क्लासिक" },
   ivory: { en: "Ivory", mr: "आयव्हरी" },
-  saffron: { en: "Saffron", mr: "केशरी" },
-  orange: { en: "Orange", mr: "नारिंगी" },
-  monsoon: { en: "Monsoon", mr: "पावसाळी" },
-  indigo: { en: "Indigo", mr: "इंडिगो" },
-  "bottle-green": { en: "Bottle Green", mr: "बॉटल ग्रीन" },
+  navy: { en: "Navy", mr: "नेव्ही" },
 };
 
 export function ThemeSwitcher({ language }: { language: "en" | "mr" }) {

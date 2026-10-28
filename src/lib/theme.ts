@@ -1,6 +1,6 @@
 import { useSyncExternalStore } from "react";
 
-export const themes = ["classic", "ivory", "saffron", "orange", "monsoon", "indigo", "bottle-green"] as const;
+export const themes = ["classic", "ivory", "navy"] as const;
 export type Theme = (typeof themes)[number];
 
 export const defaultTheme: Theme = "classic";
