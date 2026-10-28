@@ -274,7 +274,7 @@ function HomePage() {
   const [paused, setPaused] = useState(false);
 
   useEffect(() => {
-    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    if (paused) return;
     const timer = window.setInterval(() => setSlide((index) => (index + 1) % slides.length), 5500);
     return () => window.clearInterval(timer);
   }, [paused, slide, slides.length]);
@@ -329,7 +329,7 @@ function HomePage() {
         </div>
       </header>
 
-      <section className="hero" id="home" aria-label={t.heroEyebrow} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+      <section className="hero" id="home" aria-label={t.heroEyebrow} onPointerEnter={(e) => { if (e.pointerType === "mouse") setPaused(true); }} onPointerLeave={() => setPaused(false)}>
         {slides.map((src, index) => (
           <img
             key={src}
