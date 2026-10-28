@@ -1,4 +1,5 @@
 import { useEffect, useState, type FormEvent } from "react";
+import { PostShowcase } from "@/components/post-showcase";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowDownRight,
@@ -280,6 +281,8 @@ function HomePage() {
     return () => window.clearInterval(timer);
   }, [paused, slide, slides.length]);
 
+
+
   function closeMenu() {
     setMenuOpen(false);
   }
@@ -419,19 +422,7 @@ function HomePage() {
       <section className="work-section content-section" id="work">
         <SectionMarker number={t.workOverline} inverse />
         <div className="work-heading"><h2>{t.workTitle}</h2><p>{t.workBody}</p></div>
-        <div className="work-grid">
-          {t.workCards.map(([title, body, label], index) => {
-            const icons = [<UsersRound aria-hidden="true" />, <HeartHandshake aria-hidden="true" />, <Sparkles aria-hidden="true" />];
-            return (
-              <article className="work-item" key={title}>
-                <span className="work-number">0{index + 1}</span>
-                <span className="work-symbol">{icons[index]}</span>
-                <h3>{title}</h3><p>{body}</p>
-                <span className="work-category">{label}<ArrowUpRight aria-hidden="true" /></span>
-              </article>
-            );
-          })}
-        </div>
+        <PostShowcase language={language} />
       </section>
 
       <section className="gallery-section" aria-label={t.galleryOverline}>
