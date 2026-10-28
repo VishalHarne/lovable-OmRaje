@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ArrowLeft, ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
 import { fbPosts, type Lang } from "@/lib/fb-posts";
 
@@ -7,6 +7,7 @@ const POST_MS = 7500;
 export function PostShowcase({ language }: { language: Lang }) {
   const [active, setActive] = useState(0);
   const total = fbPosts.length;
+  const touchX = useRef<number | null>(null);
 
   useEffect(() => {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
@@ -18,7 +19,16 @@ export function PostShowcase({ language }: { language: Lang }) {
   const current = fbPosts[active];
 
   return (
-    <div className="pw" style={{ ["--accent" as string]: current?.accent }}>
+    <div
+      className="pw"
+      onTouchStart={(e) => { touchX.current = e.touches[0]!.clientX; }}
+      onTouchEnd={(e) => {
+        if (touchX.current === null) return;
+        const dx = e.changedTouches[0]!.clientX - touchX.current;
+        touchX.current = null;
+        if (Math.abs(dx) > 50) go(dx < 0 ? 1 : -1);
+      }}
+      style={{ ["--accent" as string]: current?.accent }}>
       <div className="pw-ambient" aria-hidden="true">
         {fbPosts.map((post, index) => (
           <img key={post.id} src={post.photos[0]} alt="" className={index === active ? "is-on" : ""} />
