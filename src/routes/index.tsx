@@ -1,12 +1,10 @@
-import { useState, type FormEvent } from "react";
+import { useEffect, useState, type FormEvent } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowDownRight,
   ArrowRight,
   ArrowUpRight,
   Check,
-  ChevronLeft,
-  ChevronRight,
   HeartHandshake,
   Menu,
   MessageCircle,
@@ -39,7 +37,6 @@ import focusFarmers from "@/assets/om-raje/focus-farmers.svg";
 import focusYouth from "@/assets/om-raje/focus-youth.svg";
 import focusFamilies from "@/assets/om-raje/focus-families.svg";
 import focusVillages from "@/assets/om-raje/focus-villages.svg";
-import heroBanner0 from "@/assets/om-raje/baner-1.png";
 import heroBannerTitle from "@/assets/om-raje/hero-banner-title.jpg";
 import heroBanner1 from "@/assets/om-raje/hero-banner-1.jpg";
 import heroBanner2 from "@/assets/om-raje/hero-banner-2.jpg";
@@ -231,7 +228,7 @@ const content = {
 } as const;
 
 const navigationIds = ["about", "work", "initiatives", "events", "contact"];
-const coverSlides = [heroBannerTitle, heroBanner0, heroBanner1, heroBanner2, heroBanner3, heroBanner4];
+const coverSlides = [heroBannerTitle, heroBanner1, heroBanner2, heroBanner3, heroBanner4];
 const fieldWall = [
   { src: fSmile, en: "Among supporters", mr: "कार्यकर्त्यांसोबत" },
   { src: nightRally, en: "Evening public gathering", mr: "सायंकाळची जाहीर सभा" },
@@ -275,6 +272,13 @@ function HomePage() {
   const t = content[language];
   const alternate = language === "en" ? "mr" : "en";
   const slides = coverSlides;
+  const [paused, setPaused] = useState(false);
+
+  useEffect(() => {
+    if (paused || window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const timer = window.setInterval(() => setSlide((index) => (index + 1) % slides.length), 5500);
+    return () => window.clearInterval(timer);
+  }, [paused, slide, slides.length]);
 
   function closeMenu() {
     setMenuOpen(false);
@@ -324,8 +328,16 @@ function HomePage() {
         </div>
       </header>
 
-      <section className="hero" id="home" aria-label={t.heroEyebrow}>
-        <img key={slides[slide % slides.length]} className="hero-image" src={slides[slide % slides.length]} alt="Om Raje meeting residents in Dharashiv" />
+      <section className="hero" id="home" aria-label={t.heroEyebrow} onMouseEnter={() => setPaused(true)} onMouseLeave={() => setPaused(false)}>
+        {slides.map((src, index) => (
+          <img
+            key={src}
+            className={`hero-image ${index === slide ? "is-active" : index === (slide - 1 + slides.length) % slides.length ? "is-prev" : ""}`}
+            src={src}
+            alt={index === slide ? "Om Raje meeting residents in Dharashiv" : ""}
+            aria-hidden={index === slide ? undefined : true}
+          />
+        ))}
         <div className="hero-copy">
           <p className="eyebrow hero-eyebrow"><span />{t.heroEyebrow}</p>
           <h1>{t.heroTitle}</h1>
@@ -333,19 +345,19 @@ function HomePage() {
         </div>
         <div className="hero-footnote"><span className="hero-live-dot" />{language === "en" ? "ALWAYS IN THE FIELD" : "सदैव जनतेत"}</div>
         <div className="hero-controls" aria-label="Featured photos">
-          <button
-            className="icon-control"
-            type="button"
-            aria-label={language === "en" ? "Previous photo" : "मागील छायाचित्र"}
-            onClick={() => setSlide((index) => (index - 1 + slides.length) % slides.length)}
-          ><ChevronLeft /></button>
-          <span>{String((slide % slides.length) + 1).padStart(2, "0")} <i>/</i> {String(slides.length).padStart(2, "0")}</span>
-          <button
-            className="icon-control"
-            type="button"
-            aria-label={language === "en" ? "Next photo" : "पुढील छायाचित्र"}
-            onClick={() => setSlide((index) => (index + 1) % slides.length)}
-          ><ChevronRight /></button>
+          <div className="hero-dots">
+            {slides.map((_, index) => (
+              <button
+                key={index}
+                type="button"
+                className={index === slide ? "hero-dot is-active" : "hero-dot"}
+                aria-label={(language === "en" ? "Show photo " : "छायाचित्र ") + (index + 1)}
+                aria-current={index === slide}
+                onClick={() => setSlide(index)}
+              />
+            ))}
+          </div>
+          <span>{String(slide + 1).padStart(2, "0")} <i>/</i> {String(slides.length).padStart(2, "0")}</span>
         </div>
       </section>
 

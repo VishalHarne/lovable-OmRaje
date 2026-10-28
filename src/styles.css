@@ -478,7 +478,15 @@
 @keyframes hero-zoom { from { transform: scale(1.12); opacity: 0.4; } to { transform: scale(1); opacity: 1; } }
 @keyframes rise-in { from { transform: translateY(24px); opacity: 0; } to { transform: none; opacity: 1; } }
 @keyframes pulse-dot { 0%, 100% { box-shadow: 0 0 0 0 color-mix(in oklab, var(--lime) 60%, transparent); } 50% { box-shadow: 0 0 0 8px transparent; } }
-.hero-image { animation: hero-zoom 1.6s cubic-bezier(.2,.7,.2,1) both; }
+.hero-image { opacity: 0; clip-path: inset(0 0 0 100%); transform: scale(1.14); transition: clip-path 1.5s cubic-bezier(.77,0,.18,1), transform 6.5s linear, opacity 0s linear 1.5s; }
+.hero-image.is-prev { z-index: -3; opacity: 1; clip-path: inset(0); transform: scale(1.04); transition: none; }
+.hero-image.is-active { z-index: -2; opacity: 1; clip-path: inset(0); transform: scale(1); transition: clip-path 1.5s cubic-bezier(.77,0,.18,1), transform 7s linear, opacity 0s; }
+.hero-dots { display: flex; align-items: center; gap: 8px; }
+.hero-dot { position: relative; width: 22px; height: 3px; padding: 0; border: 0; background: oklch(1 0 0 / 30%); cursor: pointer; overflow: hidden; }
+.hero-dot::after { position: absolute; inset: 0; background: var(--lime); content: ""; transform: scaleX(0); transform-origin: left; }
+.hero-dot.is-active::after { animation: hero-progress 5.5s linear forwards; }
+.hero:hover .hero-dot.is-active::after { animation-play-state: paused; }
+@keyframes hero-progress { to { transform: scaleX(1); } }
 .hero-copy > * { animation: rise-in 0.9s cubic-bezier(.2,.7,.2,1) both; }
 .hero-copy > *:nth-child(2) { animation-delay: .12s; }
 .hero-copy > *:nth-child(3) { animation-delay: .24s; }
@@ -501,7 +509,7 @@
 .work-item { transition: transform 250ms ease, box-shadow 250ms ease; }
 .work-item:hover { transform: translateY(-6px); box-shadow: 0 24px 50px -24px color-mix(in oklab, var(--saffron) 55%, transparent); }
 @media (max-width: 760px) { .impact-band { grid-template-columns: repeat(2, minmax(0, 1fr)); } .impact-item { padding: 20px; } }
-@media (prefers-reduced-motion: reduce) { .hero-image, .hero-copy > *, .hero-live-dot { animation: none; } }
+@media (prefers-reduced-motion: reduce) { .hero-image, .hero-copy > *, .hero-live-dot, .hero-dot::after { animation: none; transition: none; } .hero-dot.is-active::after { transform: scaleX(1); } }
 .field-wall { padding: 96px var(--page-pad) ; background: var(--dark); color: var(--text-on-dark); }
 .field-wall-head h2 { margin: 14px 0 40px; padding-bottom: 6px; font: 700 clamp(34px, 5vw, 64px)/1.15 "Manrope", "Noto Sans Devanagari", sans-serif; background: linear-gradient(100deg, var(--text-on-dark) 30%, var(--saffron)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .field-wall-head .eyebrow { color: var(--lime); }
