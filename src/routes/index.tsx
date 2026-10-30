@@ -25,7 +25,6 @@ import portrait from "@/assets/om-raje/portrait.webp";
 import communityVisit from "@/assets/om-raje/community-visit.webp";
 import citizenMeeting from "@/assets/om-raje/citizen-meeting.webp";
 import publicMeeting from "@/assets/om-raje/public-meeting-enhanced.jpg";
-import { OmLogo } from "@/components/om-logo";
 import nightRally from "@/assets/om-raje/night-rally-enhanced.jpg";
 import nightSpeech from "@/assets/om-raje/night-speech-enhanced.jpg";
 import fSmile from "@/assets/om-raje/field-smile.webp";
@@ -292,9 +291,13 @@ function HomePage() {
   return (
     <main className={`site ${language === "mr" ? "site-marathi" : ""}`} lang={language}>
       <header className="site-header">
-        <a className="brand" href="#home" aria-label="Om Raje Nimbalkar, home" onClick={closeMenu}>
-          <OmLogo className="brand-logo" />
-          <span className="brand-label"><strong>OM RAJE</strong><small>NIMBALKAR · धाराशिव</small></span>
+        <a
+          className={`brand brand-wordmark ${language === "mr" ? "brand-wordmark-mr" : ""}`}
+          href="#home"
+          aria-label={language === "mr" ? "ओम राजे निंबाळकर, मुख्यपृष्ठ" : "Om Raje Nimbalkar, home"}
+          onClick={closeMenu}
+        >
+          <BrandWordmark language={language} />
         </a>
         <nav className={menuOpen ? "site-nav is-open" : "site-nav"} aria-label="Main navigation">
           {t.nav.map((item, index) => (
@@ -536,13 +539,39 @@ function HomePage() {
       </section>
 
       <footer className="site-footer">
-        <a className="brand footer-brand" href="#home"><OmLogo className="brand-logo" /><span className="brand-label"><strong>OM RAJE</strong><small>NIMBALKAR · धाराशिव</small></span></a>
+        <a
+          className={`brand brand-wordmark footer-brand ${language === "mr" ? "brand-wordmark-mr" : ""}`}
+          href="#home"
+          aria-label={language === "mr" ? "ओम राजे निंबाळकर, मुख्यपृष्ठ" : "Om Raje Nimbalkar, home"}
+        >
+          <BrandWordmark language={language} />
+        </a>
         <p className="footer-motto">{t.footerLine}</p>
         <p className="footer-label">{t.footerLabel}</p>
         <a className="back-top" href="#home">{t.top}<ArrowUpRight aria-hidden="true" /></a>
       </footer>
       <ThemeSwitcher language={language} />
     </main>
+  );
+}
+
+function BrandWordmark({ language }: { language: Language }) {
+  const marathi = language === "mr";
+
+  return (
+    <span className="brand-wordmark-content" aria-hidden="true">
+      <span className="brand-signature" lang={language}>
+        {marathi ? "ओम राजे" : "Om Raje"}
+      </span>
+      <span className="brand-nameplate" lang={language}>
+        <i />
+        {marathi ? "निंबाळकर" : "NIMBALKAR"}
+        <i />
+      </span>
+      <span className="brand-district" lang={language}>
+        {marathi ? "धाराशिव · महाराष्ट्र" : "DHARASHIV · MAHARASHTRA"}
+      </span>
+    </span>
   );
 }
 
