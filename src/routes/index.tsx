@@ -49,16 +49,16 @@ const content = {
   en: {
     nav: ["About", "Public work", "Initiatives", "Events", "Contact"],
     heroEyebrow: "YOUR VOICE. YOUR CONSTITUENCY.",
-    heroTitle: "Listening first. Moving forward, together.",
+    heroTitle: "Many challenges, one solution - Om Raje.",
     heroBody:
-      "A people-first space for Dharashiv — to follow public work, find opportunity and make your voice heard.",
+      "Not just words, but action and trust.\nSteps towards development, firmly grounded in the people's trust.",
     explore: "Explore the work",
     contact: "Get in touch",
     principles: ["Listening first", "Working together", "Moving forward"],
     aboutOverline: "01 / A PEOPLE’S REPRESENTATIVE",
-    aboutTitle: "Grounded in the people. Focused on what’s next.",
+    aboutTitle: "Dharashiv is my home.Its people are my purpose.",
     aboutBody:
-      "Omprakash Raje Nimbalkar is a Maharashtra politician who has represented the Osmanabad—now Dharashiv—constituency in the Lok Sabha and served in the Maharashtra Legislative Assembly.",
+      "Our life, Dharashiv. This is not just a slogan for me; it captures the very meaning of my politics. I am always mindful that where I am today and all that I am is solely because of the love and trust of the people of Dharashiv. That is why I strive to do all I can for Dharashiv and its people. My bond with Dharashiv is not merely political; it is a bond of affection with its soil and its people.",
     aboutNote:
       "A citizen-facing space to share public updates, opportunities and ways to get involved. Details and dates will be updated when officially announced.",
     timeline: "A journey in public service",
@@ -140,15 +140,15 @@ const content = {
   mr: {
     nav: ["परिचय", "लोककार्य", "उपक्रम", "कार्यक्रम", "संपर्क"],
     heroEyebrow: "तुमचा आवाज. तुमचा मतदारसंघ.",
-    heroTitle: "आधी ऐकून घेऊ. एकत्र पुढे जाऊ.",
-    heroBody: "धाराशिवसाठी जनतेचे व्यासपीठ — लोककार्य, संधी आणि आपला आवाज पोहोचवण्याचा मार्ग.",
+    heroTitle: "अडचणी अनेक, उपाय एक - ओम राजे.",
+    heroBody: "शब्द नाही, कृती आणि विश्वास.\nजनतेच्या विश्वासावर खंबीरपणे उभी राहिलेली विकासाची पावले.",
     explore: "कार्य जाणून घ्या",
     contact: "संपर्क साधा",
     principles: ["आधी ऐकून घेऊ", "एकत्र काम करू", "पुढे वाटचाल करू"],
     aboutOverline: "०१ / जनतेचा प्रतिनिधी",
-    aboutTitle: "जनतेशी नाळ. उद्याच्या विकासावर लक्ष.",
+    aboutTitle: "धाराशिव... माझा श्वास, माझा ध्यास!",
     aboutBody:
-      "ओमप्रकाश राजे निंबाळकर हे महाराष्ट्रातील राजकारणी आहेत. त्यांनी उस्मानाबाद—आताचा धाराशिव—लोकसभा मतदारसंघाचे प्रतिनिधित्व केले असून महाराष्ट्र विधानसभेवरही काम केले आहे.",
+      "आपला जीव, धाराशिव. हे माझ्यासाठी केवळ घोषवाक्य नव्हे तर एकूणच माझ्या राजकारणाचा अर्थ या घोषणेत येतो. जीवनात आज जिथे आहे, जे आहे ते केवळ धाराशिवकरांच्या प्रेमामुळे, विश्र्वासामुळे ही जाणीव कायमच मनात आहे त्यामुळे धाराशिव आणि धाराशिवच्या जनतेसाठी यथाशक्ती शक्य ते करण्याचा माझा प्रयत्न असतो. धाराशिवशी नातं केवळ राजकारणाचं नाही, तर मातीशी आणि माणसांशी जोडलेल्या जिव्हाळ्याचं आहे.",
     aboutNote:
       "लोककार्य, संधी आणि सहभागाची माहिती नागरिकांपर्यंत पोहोचवण्यासाठी हे व्यासपीठ आहे. कार्यक्रम व तारखा अधिकृत घोषणा झाल्यानंतर अद्ययावत केल्या जातील.",
     timeline: "लोकसेवेचा प्रवास",
