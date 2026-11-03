@@ -227,6 +227,7 @@ const content = {
 } as const;
 
 const navigationIds = ["about", "work", "initiatives", "events", "contact"];
+const showCalendarSection = false;
 const coverSlides = [heroBannerTitle, heroBanner1, heroBanner2, heroBanner3, heroBanner4];
 const fieldWall = [
   { src: fSmile, en: "Among supporters", mr: "कार्यकर्त्यांसोबत" },
@@ -300,11 +301,13 @@ function HomePage() {
           <BrandWordmark language={language} />
         </a>
         <nav className={menuOpen ? "site-nav is-open" : "site-nav"} aria-label="Main navigation">
-          {t.nav.map((item, index) => (
-            <a key={navigationIds[index]} href={`#${navigationIds[index]}`} onClick={closeMenu}>
-              {item}
-            </a>
-          ))}
+          {t.nav.map((item, index) =>
+            navigationIds[index] === "events" && !showCalendarSection ? null : (
+              <a key={navigationIds[index]} href={`#${navigationIds[index]}`} onClick={closeMenu}>
+                {item}
+              </a>
+            ),
+          )}
           <Link className="home-video-link" to="/videos" onClick={closeMenu}>{language === "en" ? "Videos" : "व्हिडिओ"}</Link>
         </nav>
         <div className="header-tools">
@@ -487,18 +490,20 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="events-section content-section" id="events">
-        <SectionMarker number={t.eventOverline} inverse />
-        <div className="events-grid">
-          <div className="events-copy"><h2>{t.eventTitle}</h2><p>{t.eventBody}</p><a className="section-link light-link" href="#contact">{t.eventsContact}<ArrowUpRight aria-hidden="true" /></a></div>
-          <article className="event-panel">
-            <div className="event-panel-top"><span className="event-symbol"><Sparkles aria-hidden="true" /></span><span className="event-status">{t.eventStatus}</span></div>
-            <p className="event-placeholder">TBA<span>2026</span></p>
-            <h3>{t.eventName}</h3><p className="event-description">{t.eventSub}</p>
-            <div className="event-date"><span><i />{t.eventDate}</span><ArrowUpRight aria-hidden="true" /></div>
-          </article>
-        </div>
-      </section>
+      {showCalendarSection && (
+        <section className="events-section content-section" id="events">
+          <SectionMarker number={t.eventOverline} inverse />
+          <div className="events-grid">
+            <div className="events-copy"><h2>{t.eventTitle}</h2><p>{t.eventBody}</p><a className="section-link light-link" href="#contact">{t.eventsContact}<ArrowUpRight aria-hidden="true" /></a></div>
+            <article className="event-panel">
+              <div className="event-panel-top"><span className="event-symbol"><Sparkles aria-hidden="true" /></span><span className="event-status">{t.eventStatus}</span></div>
+              <p className="event-placeholder">TBA<span>2026</span></p>
+              <h3>{t.eventName}</h3><p className="event-description">{t.eventSub}</p>
+              <div className="event-date"><span><i />{t.eventDate}</span><ArrowUpRight aria-hidden="true" /></div>
+            </article>
+          </div>
+        </section>
+      )}
 
       <section className="contact-section content-section" id="contact">
         <SectionMarker number={t.contactOverline} />
