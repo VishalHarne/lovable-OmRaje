@@ -1,5 +1,6 @@
 import { useEffect, useState, type FormEvent } from "react";
 import { PostShowcase } from "@/components/post-showcase";
+import { grievanceTopics } from "@/lib/backend-api";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowDownRight,
@@ -97,10 +98,10 @@ const content = {
     town: "Taluka / town",
     choose: "Select one",
     submitInterest: "Submit interest",
-    formDisclaimer:
-      "Preview form only. Your details are not stored or sent to an office.",
-    formSuccess: "Interest noted in this preview",
-    formSuccessNote: "No information was sent. Check back for officially announced event details.",
+    formDisclaimer: "This preview does not send or save your details.",
+    formSuccess: "Interest noted on this page",
+    formSuccessNote: "Your details have not been sent or saved.",
+    consent: "I understand this preview does not send my details.",
     eventOverline: "04 / MARK YOUR CALENDAR",
     eventTitle: "Good things are better when we do them together.",
     eventBody: "Upcoming public meetings and employment-fair dates will appear here once confirmed.",
@@ -122,9 +123,10 @@ const content = {
     topics: ["Roads & infrastructure", "Water & agriculture", "Public services", "Employment", "Other"],
     message: "Your message",
     sendMessage: "Prepare my message",
-    grievanceDisclaimer: "Preview only. Your message is not sent or stored.",
-    grievanceSuccess: "Message drafted",
-    grievanceSuccessNote: "This preview cannot deliver messages. An official contact channel needs to be added.",
+    grievanceDisclaimer:
+      "This preview does not send or save messages. Please use an official office contact channel when available.",
+    grievanceSuccess: "Message prepared",
+    grievanceSuccessNote: "Your message remains in the form and has not been sent or saved.",
     facebook: "Find on Facebook",
     facebookHint: "Search for Om Raje Nimbalkar",
     whatsapp: "WhatsApp",
@@ -186,9 +188,10 @@ const content = {
     town: "तालुका / गाव",
     choose: "एक पर्याय निवडा",
     submitInterest: "आवड नोंदवा",
-    formDisclaimer: "डेमो फॉर्म. तुमची माहिती साठवली किंवा कार्यालयात पाठवली जात नाही.",
-    formSuccess: "डेमोमध्ये आवड नोंदवली",
-    formSuccessNote: "कोणतीही माहिती पाठवलेली नाही. अधिकृत घोषणांसाठी पुन्हा येथे पाहा.",
+    formDisclaimer: "या झलकमधून तुमची माहिती पाठवली किंवा जतन केली जात नाही.",
+    formSuccess: "या पृष्ठावर आवड नोंदवली",
+    formSuccessNote: "तुमची माहिती पाठवली किंवा जतन केली गेलेली नाही.",
+    consent: "या झलकमधून माझी माहिती पाठवली जात नाही, याची मला जाणीव आहे.",
     eventOverline: "०४ / दिनदर्शिकेत नोंद करा",
     eventTitle: "एकत्र आलो, तर प्रत्येक गोष्ट शक्य.",
     eventBody: "आगामी जनसंवाद व रोजगार मेळाव्याच्या अधिकृत तारखा निश्चित झाल्यावर येथे दिल्या जातील.",
@@ -210,9 +213,10 @@ const content = {
     topics: ["रस्ते व पायाभूत सुविधा", "पाणी व शेती", "सार्वजनिक सेवा", "रोजगार", "इतर"],
     message: "तुमचा संदेश",
     sendMessage: "संदेश तयार करा",
-    grievanceDisclaimer: "डेमो फॉर्म. तुमचा संदेश पाठवला किंवा साठवला जात नाही.",
-    grievanceSuccess: "संदेशाचा मसुदा तयार",
-    grievanceSuccessNote: "या झलकमधून संदेश पाठवता येत नाही. अधिकृत संपर्क माध्यम जोडणे आवश्यक आहे.",
+    grievanceDisclaimer:
+      "या झलकमधून संदेश पाठवले किंवा जतन केले जात नाहीत. अधिकृत संपर्क माध्यम उपलब्ध झाल्यावर त्याचा वापर करा.",
+    grievanceSuccess: "संदेश तयार झाला",
+    grievanceSuccessNote: "तुमचा संदेश फॉर्ममध्येच आहे; तो पाठवला किंवा जतन केला गेलेला नाही.",
     facebook: "फेसबुकवर शोधा",
     facebookHint: "ओम राजे निंबाळकर यांचा शोध घ्या",
     whatsapp: "व्हॉट्सॲप",
@@ -268,6 +272,8 @@ function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [interestSent, setInterestSent] = useState(false);
   const [messageSent, setMessageSent] = useState(false);
+  const [messageError, setMessageError] = useState(false);
+  const [interestError, setInterestError] = useState(false);
   const t = content[language];
   const alternate = language === "en" ? "mr" : "en";
   const slides = coverSlides;
@@ -283,10 +289,50 @@ function HomePage() {
     setMenuOpen(false);
   }
 
-  function submitPreview(event: FormEvent<HTMLFormElement>, kind: "interest" | "message") {
+  function submitForm(event: FormEvent<HTMLFormElement>, kind: "interest" | "message") {
     event.preventDefault();
-    if (kind === "interest") setInterestSent(true);
-    else setMessageSent(true);
+    const form = event.currentTarget;
+    const data = new FormData(form);
+    if (kind === "interest") {
+      const resume = {
+        name: String(data.get("name") ?? ""),
+        phone: String(data.get("phone") ?? ""),
+        email: String(data.get("email") ?? ""),
+        role: String(data.get("role") ?? ""),
+        town: String(data.get("town") ?? ""),
+        consent: data.get("consent") === "on",
+      };
+      const body = new FormData();
+      body.append("data", new Blob([JSON.stringify(resume)], { type: "application/json" }));
+      setInterestError(false);
+      fetch("http://localhost:8082/submitResume", { method: "POST", body })
+        .then((response) => {
+          if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+          setInterestSent(true);
+          form.reset();
+        })
+        .catch(() => setInterestError(true));
+      return;
+    }
+    const payload = {
+      name: String(data.get("concern-name") ?? ""),
+      contact: String(data.get("concern-contact") ?? ""),
+      topic: String(data.get("topic") ?? ""),
+      message: String(data.get("message") ?? ""),
+      consent: data.get("consent") === "on",
+    };
+    setMessageError(false);
+    fetch("http://localhost:8082/submitgrievances", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    })
+      .then((response) => {
+        if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+        setMessageSent(true);
+        form.reset();
+      })
+      .catch(() => setMessageError(true));
   }
 
   return (
@@ -468,24 +514,21 @@ function HomePage() {
             <span className="initiative-script" aria-hidden="true">रोजगार</span>
           </div>
           <div className="form-panel" id="register">
-            {interestSent ? (
-              <SuccessPanel title={t.formSuccess} body={t.formSuccessNote} onReset={() => setInterestSent(false)} resetLabel={language === "en" ? "Submit another response" : "दुसरी नोंद करा"} />
-            ) : (
-              <>
-                <FormHeading eyebrow="ROJGAR MELAVA / रोजगार मेळावा" title={t.formTitle} subtitle={t.formSubtitle} />
-                <form className="preview-form" onSubmit={(event) => submitPreview(event, "interest")}>
-                  <label>{t.name}<input autoComplete="name" name="name" required placeholder={t.name} /></label>
-                  <div className="form-row">
-                    <label>{t.phone}<input autoComplete="tel" name="phone" required type="tel" pattern="[0-9+() -]{10,16}" placeholder="+91" /></label>
-                    <label>{t.email}<input autoComplete="email" name="email" type="email" placeholder="name@email.com" /></label>
-                  </div>
-                  <label>{t.role}<select name="role" required defaultValue=""><option value="" disabled>{t.choose}</option><option>{t.candidate}</option><option>{t.employer}</option></select></label>
-                  <label>{t.town}<input autoComplete="address-level2" name="town" required placeholder={t.town} /></label>
-                  <Button variant="saffron" size="large" className="form-submit" type="submit">{t.submitInterest}<ArrowUpRight aria-hidden="true" /></Button>
-                  <p className="form-note"><ShieldCheck aria-hidden="true" />{t.formDisclaimer}</p>
-                </form>
-              </>
-            )}
+            <FormHeading eyebrow="ROJGAR MELAVA / रोजगार मेळावा" title={t.formTitle} subtitle={t.formSubtitle} />
+            <form className="preview-form" onSubmit={(event) => submitForm(event, "interest")} onChange={() => setInterestSent(false)}>
+              <label>{t.name}<input autoComplete="name" name="name" required placeholder={t.name} /></label>
+              <div className="form-row">
+                <label>{t.phone}<input autoComplete="tel" name="phone" required type="tel" pattern="[0-9+() -]{10,16}" placeholder="+91" /></label>
+                <label>{t.email}<input autoComplete="email" name="email" type="email" placeholder="name@email.com" /></label>
+              </div>
+              <label>{t.role}<select name="role" required defaultValue=""><option value="" disabled>{t.choose}</option><option value="job_seeker">{t.candidate}</option><option value="employer">{t.employer}</option></select></label>
+              <label>{t.town}<input autoComplete="address-level2" name="town" required placeholder={t.town} /></label>
+              <label className="form-consent"><input type="checkbox" name="consent" required /> {t.consent}</label>
+              <Button variant="saffron" size="large" className="form-submit" type="submit">{t.submitInterest}<ArrowUpRight aria-hidden="true" /></Button>
+              {interestSent && <p className="form-note" role="status"><strong>{t.formSuccess}.</strong> {t.formSuccessNote}</p>}
+              {interestError && <p className="form-note" role="alert">{language === "mr" ? "माहिती पाठवता आली नाही. कृपया पुन्हा प्रयत्न करा." : "Could not send your details. Please try again."}</p>}
+              <p className="form-note"><ShieldCheck aria-hidden="true" />{t.formDisclaimer}</p>
+            </form>
           </div>
         </div>
       </section>
@@ -522,23 +565,20 @@ function HomePage() {
             <p className="social-disclaimer">{t.socialNote}</p>
           </div>
           <div className="form-panel grievance-panel">
-            {messageSent ? (
-              <SuccessPanel title={t.grievanceSuccess} body={t.grievanceSuccessNote} onReset={() => setMessageSent(false)} resetLabel={language === "en" ? "Write another message" : "दुसरा संदेश लिहा"} />
-            ) : (
-              <>
-                <FormHeading eyebrow="CITIZEN HELP DESK / नागरिक मदत" title={t.grievanceTitle} subtitle={t.grievanceSubtitle} />
-                <form className="preview-form" onSubmit={(event) => submitPreview(event, "message")}>
-                  <label>{t.concernName}<input name="concern-name" autoComplete="name" required placeholder={t.concernName} /></label>
-                  <div className="form-row">
-                    <label>{t.concernContact}<input name="concern-contact" required placeholder={t.concernContact} /></label>
-                    <label>{t.topic}<select name="topic" required defaultValue=""><option value="" disabled>{t.topicPlaceholder}</option>{t.topics.map((topic) => <option key={topic}>{topic}</option>)}</select></label>
-                  </div>
-                  <label>{t.message}<textarea name="message" required placeholder={t.message} /></label>
-                  <Button variant="ink" size="large" className="form-submit" type="submit">{t.sendMessage}<ArrowUpRight aria-hidden="true" /></Button>
-                  <p className="form-note"><ShieldCheck aria-hidden="true" />{t.grievanceDisclaimer}</p>
-                </form>
-              </>
-            )}
+            <FormHeading eyebrow="CITIZEN HELP DESK / नागरिक मदत" title={t.grievanceTitle} subtitle={t.grievanceSubtitle} />
+            <form className="preview-form" onSubmit={(event) => submitForm(event, "message")} onChange={() => setMessageSent(false)}>
+              <label>{t.concernName}<input name="concern-name" autoComplete="name" required placeholder={t.concernName} /></label>
+              <div className="form-row">
+                <label>{t.concernContact}<input name="concern-contact" required placeholder={t.concernContact} /></label>
+                <label>{t.topic}<select name="topic" required defaultValue=""><option value="" disabled>{t.topicPlaceholder}</option>{t.topics.map((topic, index) => <option key={grievanceTopics[index]} value={grievanceTopics[index]}>{topic}</option>)}</select></label>
+              </div>
+              <label>{t.message}<textarea name="message" required minLength={5} maxLength={2000} placeholder={t.message} /></label>
+              <label className="form-consent"><input type="checkbox" name="consent" required /> {t.consent}</label>
+              <Button variant="ink" size="large" className="form-submit" type="submit">{t.sendMessage}<ArrowUpRight aria-hidden="true" /></Button>
+              {messageSent && <p className="form-note" role="status"><strong>{t.grievanceSuccess}.</strong> {t.grievanceSuccessNote}</p>}
+              {messageError && <p className="form-note" role="alert">{language === "mr" ? "संदेश पाठवता आला नाही. कृपया पुन्हा प्रयत्न करा." : "Could not send your message. Please try again."}</p>}
+              <p className="form-note"><ShieldCheck aria-hidden="true" />{t.grievanceDisclaimer}</p>
+            </form>
           </div>
         </div>
       </section>
@@ -586,8 +626,4 @@ function SectionMarker({ number, inverse = false }: { number: string; inverse?: 
 
 function FormHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle: string }) {
   return <div className="form-heading"><div><span className="form-eyebrow">{eyebrow}</span><h3>{title}</h3><p>{subtitle}</p></div><span className="form-icon"><HeartHandshake aria-hidden="true" /></span></div>;
-}
-
-function SuccessPanel({ title, body, onReset, resetLabel }: { title: string; body: string; onReset: () => void; resetLabel: string }) {
-  return <div className="success-panel"><span className="success-check"><Check aria-hidden="true" /></span><h3>{title}</h3><p>{body}</p><Button variant="text" type="button" onClick={onReset}>{resetLabel}<ArrowRight aria-hidden="true" /></Button></div>;
 }
