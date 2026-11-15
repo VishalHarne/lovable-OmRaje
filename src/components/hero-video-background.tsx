@@ -3,7 +3,7 @@ import type { HeroClip } from "@/lib/hero-videos";
 
 interface HeroVideoBackgroundProps {
   clips: readonly HeroClip[];
-  language: "en" | "mr";
+  language: "hi" | "mr";
 }
 
 // Silent, autoplaying montage that cross-fades between clips, mirroring whitehouse.gov's

@@ -43,100 +43,98 @@ import heroBanner2 from "@/assets/om-raje/hero-banner-2.jpg";
 import heroBanner3 from "@/assets/om-raje/hero-banner-3.jpg";
 import heroBanner4 from "@/assets/om-raje/hero-banner-4.jpg";
 
-type Language = "en" | "mr";
+type Language = "hi" | "mr";
 
 const content = {
-  en: {
-    nav: ["About", "Public work", "Initiatives", "Events", "Contact"],
-    heroEyebrow: "YOUR VOICE. YOUR CONSTITUENCY.",
-    heroTitle: "Many challenges, one solution - Om Raje.",
-    heroBody:
-      "Not just words, but action and trust.\nSteps towards development, firmly grounded in the people's trust.",
-    explore: "Explore the work",
-    contact: "Get in touch",
-    principles: ["Listening first", "Working together", "Moving forward"],
-    aboutOverline: "01 / A PEOPLE’S REPRESENTATIVE",
-    aboutTitle: "Dharashiv is my home.Its people are my purpose.",
+  hi: {
+    nav: ["परिचय", "जनकार्य", "पहल", "कार्यक्रम", "संपर्क"],
+    heroEyebrow: "आपकी आवाज़। आपका निर्वाचन क्षेत्र।",
+    heroTitle: "चुनौतियाँ अनेक, समाधान एक — ओम राजे।",
+    heroBody: "सिर्फ़ बातें नहीं, काम और विश्वास।\nजनता के विश्वास पर मज़बूती से आगे बढ़ते विकास के कदम।",
+    explore: "कार्य देखें",
+    contact: "संपर्क करें",
+    principles: ["पहले सुनना", "मिलकर काम करना", "आगे बढ़ना"],
+    aboutOverline: "०१ / जनता के प्रतिनिधि",
+    aboutTitle: "धाराशिव मेरा घर है। यहाँ के लोग मेरा उद्देश्य हैं।",
     aboutBody:
-      "Our life, Dharashiv. This is not just a slogan for me; it captures the very meaning of my politics. I am always mindful that where I am today and all that I am is solely because of the love and trust of the people of Dharashiv. That is why I strive to do all I can for Dharashiv and its people. My bond with Dharashiv is not merely political; it is a bond of affection with its soil and its people.",
+      "अपना जीवन, धाराशिव। यह मेरे लिए केवल एक नारा नहीं, बल्कि मेरी राजनीति का सार है। आज मैं जहाँ हूँ और जो कुछ भी हूँ, वह धाराशिव के लोगों के प्रेम और विश्वास के कारण है—इस बात का मुझे हमेशा एहसास रहता है। इसलिए मैं धाराशिव और यहाँ के लोगों के लिए हर संभव प्रयास करता हूँ। धाराशिव से मेरा रिश्ता केवल राजनीति का नहीं, बल्कि यहाँ की मिट्टी और लोगों से आत्मीयता का है।",
     aboutNote:
-      "A citizen-facing space to share public updates, opportunities and ways to get involved. Details and dates will be updated when officially announced.",
-    timeline: "A journey in public service",
-    timelineNote: "Elected service in Maharashtra",
+      "जनकार्य की जानकारी, अवसरों और सहभागिता के तरीकों को नागरिकों तक पहुँचाने का यह मंच है। आधिकारिक घोषणा के बाद कार्यक्रमों और तारीखों की जानकारी अपडेट की जाएगी।",
+    timeline: "जनसेवा का सफ़र",
+    timelineNote: "महाराष्ट्र में निर्वाचित जनसेवा",
     years: [
-      ["2009", "Elected to the Maharashtra Legislative Assembly."],
-      ["2019", "Elected to the 17th Lok Sabha from Osmanabad."],
-      ["2024", "Re-elected to the 18th Lok Sabha from Dharashiv."],
+      ["२००९", "महाराष्ट्र विधानसभा के लिए निर्वाचित।"],
+      ["२०१९", "उस्मानाबाद से १७वीं लोकसभा के लिए निर्वाचित।"],
+      ["२०२४", "धाराशिव से १८वीं लोकसभा के लिए पुनः निर्वाचित।"],
     ],
-    workOverline: "02 / WORK THAT MATTERS",
-    workTitle: "Progress starts with showing up.",
-    workBody:
-      "Public life is built on listening, following through and keeping people connected to the work that affects them.",
+    workOverline: "०२ / जनहित का काम",
+    workTitle: "बदलाव की शुरुआत लोगों के बीच से।",
+    workBody: "जनसेवा का आधार है लोगों की बात सुनना, समस्याओं का लगातार अनुसरण करना और उन्हें काम की जानकारी से जोड़े रखना।",
     workCards: [
-      ["On the ground", "Listening to local voices and staying connected with people across the constituency.", "Community"],
-      ["People’s issues", "A space to bring concerns forward and help residents find the right next step.", "Citizen help"],
-      ["Opportunity for all", "Connecting young people with employment information and career opportunities.", "Employment"],
+      ["लोगों के बीच", "निर्वाचन क्षेत्र के लोगों से संवाद और स्थानीय मुद्दों को समझना।", "जनभागीदारी"],
+      ["जनता के मुद्दे", "समस्याएँ सामने रखने और अगला सही कदम जानने का मंच।", "नागरिक सहायता"],
+      ["सबके लिए अवसर", "युवाओं तक रोज़गार और करियर के अवसरों की जानकारी पहुँचाना।", "रोज़गार"],
     ],
-    galleryOverline: "IN THE CONSTITUENCY",
-    galleryTitle: "Closer to the people.",
-    galleryNote: "Moments from the field",
-    imageCaptions: ["Listening where it matters.", "Every voice deserves a hearing.", "Closer to the community."],
-    initiativeOverline: "03 / THE NEXT STEP",
-    initiativeLabel: "ROJGAR MELAVA · EMPLOYMENT FAIR",
-    initiativeTitle: "Opportunity should be within reach.",
+    galleryOverline: "निर्वाचन क्षेत्र में",
+    galleryTitle: "जनता के और करीब।",
+    galleryNote: "जनता के बीच के कुछ पल",
+    imageCaptions: ["जहाँ ज़रूरत, वहीं संवाद।", "हर आवाज़ सुनी जानी चाहिए।", "समुदाय के साथ, समुदाय के लिए।"],
+    initiativeOverline: "०३ / अगला कदम",
+    initiativeLabel: "रोज़गार मेला · नौकरी के अवसर",
+    initiativeTitle: "अवसर हर व्यक्ति तक पहुँचने चाहिए।",
     initiativeBody:
-      "A proposed employment fair registration desk for job seekers and employers in Dharashiv. Dates and participation details will be shared once officially confirmed.",
-    register: "Register your interest",
-    formTitle: "Take your next step",
-    formSubtitle: "For candidates and employers",
-    name: "Full name",
-    phone: "Mobile number",
-    email: "Email address (optional)",
-    role: "I am a…",
-    candidate: "Job seeker",
-    employer: "Employer",
-    town: "Taluka / town",
-    choose: "Select one",
-    submitInterest: "Submit interest",
-    formDisclaimer: "This preview does not send or save your details.",
-    formSuccess: "Interest noted on this page",
-    formSuccessNote: "Your details have not been sent or saved.",
-    consent: "I understand this preview does not send my details.",
-    eventOverline: "04 / MARK YOUR CALENDAR",
-    eventTitle: "Good things are better when we do them together.",
-    eventBody: "Upcoming public meetings and employment-fair dates will appear here once confirmed.",
-    eventStatus: "UPDATES COMING SOON",
-    eventName: "Dharashiv public programme",
-    eventSub: "Verified dates, venues and registration details will be shared here.",
-    eventDate: "Date to be announced",
-    eventsContact: "Get in touch",
-    contactOverline: "05 / YOUR VOICE MATTERS",
-    contactTitle: "Let’s make things better.",
+      "धाराशिव में नौकरी चाहने वालों और नियोक्ताओं के लिए प्रस्तावित रोज़गार मेले का पंजीकरण। तारीख़ और भागीदारी की जानकारी आधिकारिक पुष्टि के बाद साझा की जाएगी।",
+    register: "अपनी रुचि दर्ज करें",
+    formTitle: "अपना अगला कदम बढ़ाएँ",
+    formSubtitle: "उम्मीदवारों और नियोक्ताओं के लिए",
+    name: "पूरा नाम",
+    phone: "मोबाइल नंबर",
+    email: "ईमेल पता (वैकल्पिक)",
+    role: "मैं हूँ…",
+    candidate: "नौकरी तलाशने वाला / वाली",
+    employer: "नियोक्ता",
+    town: "तहसील / शहर",
+    choose: "एक विकल्प चुनें",
+    submitInterest: "रुचि दर्ज करें",
+    formDisclaimer: "इस पूर्वावलोकन से आपकी जानकारी भेजी या सहेजी नहीं जाती।",
+    formSuccess: "इस पृष्ठ पर रुचि दर्ज हुई",
+    formSuccessNote: "आपकी जानकारी न भेजी गई है, न सहेजी गई है।",
+    consent: "मैं समझता/समझती हूँ कि इस पूर्वावलोकन से मेरी जानकारी नहीं भेजी जाती।",
+    eventOverline: "०४ / तारीख़ याद रखें",
+    eventTitle: "मिलकर करें तो हर काम बेहतर होता है।",
+    eventBody: "आगामी जनसभाओं और रोज़गार मेले की तारीख़ें पुष्टि के बाद यहाँ दी जाएँगी।",
+    eventStatus: "जानकारी जल्द आएगी",
+    eventName: "धाराशिव जनसंवाद कार्यक्रम",
+    eventSub: "पुष्ट तारीख़, स्थान और पंजीकरण की जानकारी यहाँ साझा की जाएगी।",
+    eventDate: "तारीख़ घोषित होना बाकी",
+    eventsContact: "संपर्क करें",
+    contactOverline: "०५ / आपकी आवाज़ अहम है",
+    contactTitle: "आइए, मिलकर बदलाव लाएँ।",
     contactBody:
-      "Raise a local concern or ask a question. This preview does not deliver submissions; an official office contact channel is needed before launch.",
-    grievanceTitle: "Share a concern",
-    grievanceSubtitle: "Tell us what you need help with.",
-    concernName: "Your name",
-    concernContact: "Phone or email",
-    topic: "What is this about?",
-    topicPlaceholder: "Choose a topic",
-    topics: ["Roads & infrastructure", "Water & agriculture", "Public services", "Employment", "Other"],
-    message: "Your message",
-    sendMessage: "Prepare my message",
+      "स्थानीय समस्या बताएँ या सवाल पूछें। यह पूर्वावलोकन संदेश नहीं भेजता; लॉन्च से पहले कार्यालय का आधिकारिक संपर्क माध्यम आवश्यक है।",
+    grievanceTitle: "अपनी समस्या बताएँ",
+    grievanceSubtitle: "बताएँ कि आपको किस मदद की ज़रूरत है।",
+    concernName: "आपका नाम",
+    concernContact: "फ़ोन या ईमेल",
+    topic: "समस्या किस बारे में है?",
+    topicPlaceholder: "विषय चुनें",
+    topics: ["सड़कें और बुनियादी सुविधाएँ", "पानी और कृषि", "जनसेवाएँ", "रोज़गार", "अन्य"],
+    message: "आपका संदेश",
+    sendMessage: "संदेश तैयार करें",
     grievanceDisclaimer:
-      "This preview does not send or save messages. Please use an official office contact channel when available.",
-    grievanceSuccess: "Message prepared",
-    grievanceSuccessNote: "Your message remains in the form and has not been sent or saved.",
-    facebook: "Find on Facebook",
-    facebookHint: "Search for Om Raje Nimbalkar",
-    whatsapp: "WhatsApp",
-    whatsappHint: "Join our WhatsApp channel",
-    instagram: "Find on Instagram",
+      "यह पूर्वावलोकन संदेश नहीं भेजता या सहेजता। आधिकारिक संपर्क माध्यम उपलब्ध होने पर उसका उपयोग करें।",
+    grievanceSuccess: "संदेश तैयार हुआ",
+    grievanceSuccessNote: "आपका संदेश फ़ॉर्म में ही है; उसे भेजा या सहेजा नहीं गया है।",
+    facebook: "फ़ेसबुक पर खोजें",
+    facebookHint: "ओम राजे निंबालकर खोजें",
+    whatsapp: "व्हाट्सऐप",
+    whatsappHint: "हमारे व्हाट्सऐप चैनल से जुड़ें",
+    instagram: "इंस्टाग्राम पर खोजें",
     socialNote:
-      "Social links open public search or sharing pages. No official WhatsApp number or verified page has been provided.",
-    footerLine: "In service. In solidarity. In progress.",
-    footerLabel: "A public-service website concept · Dharashiv, Maharashtra",
-    top: "Back to top",
+      "सोशल मीडिया लिंक सार्वजनिक खोज या साझा करने वाले पृष्ठ खोलते हैं। आधिकारिक व्हाट्सऐप नंबर या सत्यापित पेज का लिंक उपलब्ध नहीं कराया गया है।",
+    footerLine: "सेवा में। साथ में। प्रगति की ओर।",
+    footerLabel: "जनसेवा वेबसाइट की संकल्पना · धाराशिव, महाराष्ट्र",
+    top: "ऊपर जाएँ",
   },
   mr: {
     nav: ["परिचय", "लोककार्य", "उपक्रम", "कार्यक्रम", "संपर्क"],
@@ -234,30 +232,30 @@ const navigationIds = ["about", "work", "initiatives", "events", "contact"];
 const showCalendarSection = false;
 const coverSlides = [heroBannerTitle, heroBanner1, heroBanner2, heroBanner3, heroBanner4];
 const fieldWall = [
-  { src: fSmile, en: "Among supporters", mr: "कार्यकर्त्यांसोबत" },
-  { src: nightRally, en: "Evening public gathering", mr: "सायंकाळची जाहीर सभा" },
-  { src: fCitizen, en: "Listening to residents", mr: "नागरिकांशी संवाद" },
-  { src: fTribute, en: "Tribute to Chhatrapati Shivaji Maharaj", mr: "छत्रपती शिवाजी महाराजांना अभिवादन" },
-  { src: fVillage, en: "Village visit", mr: "गाव भेट" },
-  { src: fStage, en: "Addressing the people", mr: "जनतेला संबोधन" },
-  { src: nightSpeech, en: "Voice for Dharashiv", mr: "धाराशिवचा आवाज" },
+  { src: fSmile, hi: "समर्थकों के बीच", mr: "कार्यकर्त्यांसोबत" },
+  { src: nightRally, hi: "शाम की जनसभा", mr: "सायंकाळची जाहीर सभा" },
+  { src: fCitizen, hi: "नागरिकों की बात सुनते हुए", mr: "नागरिकांशी संवाद" },
+  { src: fTribute, hi: "छत्रपति शिवाजी महाराज को अभिवादन", mr: "छत्रपती शिवाजी महाराजांना अभिवादन" },
+  { src: fVillage, hi: "गाँव का दौरा", mr: "गाव भेट" },
+  { src: fStage, hi: "जनता को संबोधित करते हुए", mr: "जनतेला संबोधन" },
+  { src: nightSpeech, hi: "धाराशिव की आवाज़", mr: "धाराशिवचा आवाज" },
 ];
 const pictures = [communityVisit, citizenMeeting, publicMeeting];
 
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Om Raje Nimbalkar | Dharashiv Public Service" },
+      { title: "ओम राजे निंबाळकर | धाराशिव जनसेवा" },
       {
         name: "description",
         content:
-          "Discover public work, local opportunities and ways to share your voice across Dharashiv. Available in English and Marathi.",
+          "धाराशिव में जनकार्य, स्थानीय अवसरों और अपनी बात साझा करने के तरीकों की जानकारी। मराठी और हिंदी में उपलब्ध।",
       },
-      { property: "og:title", content: "Om Raje Nimbalkar | Dharashiv Public Service" },
+      { property: "og:title", content: "ओम राजे निंबाळकर | धाराशिव जनसेवा" },
       {
         property: "og:description",
         content:
-          "Discover public work, local opportunities and ways to share your voice across Dharashiv. Available in English and Marathi.",
+          "धाराशिव में जनकार्य, स्थानीय अवसरों और अपनी बात साझा करने के तरीकों की जानकारी। मराठी और हिंदी में उपलब्ध।",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
@@ -275,7 +273,7 @@ function HomePage() {
   const [messageError, setMessageError] = useState(false);
   const [interestError, setInterestError] = useState(false);
   const t = content[language];
-  const alternate = language === "en" ? "mr" : "en";
+  const alternate = language === "mr" ? "hi" : "mr";
   const slides = coverSlides;
 
   useEffect(() => {
@@ -336,17 +334,17 @@ function HomePage() {
   }
 
   return (
-    <main className={`site ${language === "mr" ? "site-marathi" : ""}`} lang={language}>
+    <main className="site site-marathi" lang={language}>
       <header className="site-header">
         <a
-          className={`brand brand-wordmark ${language === "mr" ? "brand-wordmark-mr" : ""}`}
+          className="brand brand-wordmark brand-wordmark-mr"
           href="#home"
-          aria-label={language === "mr" ? "ओम राजे निंबाळकर, मुख्यपृष्ठ" : "Om Raje Nimbalkar, home"}
+          aria-label={language === "mr" ? "ओम राजे निंबाळकर, मुख्यपृष्ठ" : "ओम राजे निंबालकर, मुख्यपृष्ठ"}
           onClick={closeMenu}
         >
           <BrandWordmark language={language} />
         </a>
-        <nav className={menuOpen ? "site-nav is-open" : "site-nav"} aria-label="Main navigation">
+        <nav className={menuOpen ? "site-nav is-open" : "site-nav"} aria-label={language === "mr" ? "मुख्य नेव्हिगेशन" : "मुख्य नेविगेशन"}>
           {t.nav.map((item, index) =>
             navigationIds[index] === "events" && !showCalendarSection ? null : (
               <a key={navigationIds[index]} href={`#${navigationIds[index]}`} onClick={closeMenu}>
@@ -354,23 +352,23 @@ function HomePage() {
               </a>
             ),
           )}
-          <Link className="home-video-link" to="/videos" onClick={closeMenu}>{language === "en" ? "Videos" : "व्हिडिओ"}</Link>
+          <Link className="home-video-link" to="/videos" onClick={closeMenu}>{language === "mr" ? "व्हिडिओ" : "वीडियो"}</Link>
         </nav>
         <div className="header-tools">
           <button
             className="language-switch"
             type="button"
             onClick={() => setLanguage(alternate)}
-            aria-label={language === "en" ? "Switch to Marathi" : "Switch to English"}
+            aria-label={language === "mr" ? "हिंदी में बदलें" : "मराठी में बदलें"}
           >
-            <span className={language === "en" ? "language-current" : ""}>EN</span>
+            <span className={language === "hi" ? "language-current" : ""}>हिंदी</span>
             <span aria-hidden="true">/</span>
             <span className={language === "mr" ? "language-current" : ""}>मराठी</span>
           </button>
           <button
             className="menu-switch"
             type="button"
-            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+            aria-label={menuOpen ? (language === "mr" ? "नेव्हिगेशन बंद करा" : "नेविगेशन बंद करें") : (language === "mr" ? "नेव्हिगेशन उघडा" : "नेविगेशन खोलें")}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((open) => !open)}
           >
@@ -385,7 +383,7 @@ function HomePage() {
             key={src}
             className={`hero-image ${index === slide ? "is-active" : index === (slide - 1 + slides.length) % slides.length ? "is-prev" : ""}`}
             src={src}
-            alt={index === slide ? "Om Raje meeting residents in Dharashiv" : ""}
+            alt={index === slide ? (language === "mr" ? "ओम राजे धाराशिवमधील नागरिकांशी संवाद साधताना" : "ओम राजे धाराशिव के नागरिकों से संवाद करते हुए") : ""}
             aria-hidden={index === slide ? undefined : true}
           />
         ))}
@@ -394,15 +392,15 @@ function HomePage() {
           <h1>{t.heroTitle}</h1>
           <p className="hero-description">{t.heroBody}</p>
         </div>
-        <div className="hero-footnote"><span className="hero-live-dot" />{language === "en" ? "ALWAYS IN THE FIELD" : "सदैव जनतेत"}</div>
-        <div className="hero-controls" aria-label="Featured photos">
+        <div className="hero-footnote"><span className="hero-live-dot" />{language === "mr" ? "सदैव जनतेत" : "हमेशा जनता के बीच"}</div>
+        <div className="hero-controls" aria-label={language === "mr" ? "निवडक छायाचित्रे" : "चुनिंदा तस्वीरें"}>
           <div className="hero-dots">
             {slides.map((_, index) => (
               <button
                 key={index}
                 type="button"
                 className={index === slide ? "hero-dot is-active" : "hero-dot"}
-                aria-label={(language === "en" ? "Show photo " : "छायाचित्र ") + (index + 1)}
+                aria-label={(language === "mr" ? "छायाचित्र " : "तस्वीर ") + (index + 1)}
                 aria-current={index === slide}
                 onClick={() => setSlide(index)}
               />
@@ -412,15 +410,15 @@ function HomePage() {
         </div>
       </section>
 
-      <div className="principle-strip" aria-label={language === "en" ? "Our values" : "आपली मूल्ये"}>
+      <div className="principle-strip" aria-label={language === "mr" ? "आपली मूल्ये" : "हमारे मूल्य"}>
         {t.principles.map((principle, index) => (
           <div className="principle" key={principle}><span>0{index + 1}</span><strong>{principle}</strong></div>
         ))}
       </div>
 
-      <div className="impact-band" aria-label={language === "en" ? "Focus areas" : "प्राधान्य क्षेत्रे"}>
-        {(language === "en"
-          ? [["Farmers", "Water, crops & rural support"], ["Youth", "Jobs & skill melavas"], ["Families", "Health & welfare access"], ["Villages", "Roads & local works"]]
+      <div className="impact-band" aria-label={language === "mr" ? "प्राधान्य क्षेत्रे" : "प्रमुख क्षेत्र"}>
+        {(language === "hi"
+          ? [["किसान", "पानी, फसल और ग्रामीण सहायता"], ["युवा", "रोज़गार और कौशल मेले"], ["परिवार", "स्वास्थ्य और कल्याण योजनाएँ"], ["गाँव", "सड़कें और स्थानीय कार्य"]]
           : [["शेतकरी", "पाणी, पीक व ग्रामीण मदत"], ["युवा", "रोजगार व कौशल्य मेळावे"], ["कुटुंबे", "आरोग्य व कल्याण योजना"], ["गावे", "रस्ते व स्थानिक कामे"]]
         ).map(([title, body], index) => {
           const focus = [
@@ -444,8 +442,8 @@ function HomePage() {
         <SectionMarker number={t.aboutOverline} />
         <div className="about-grid">
           <figure className="portrait-frame">
-            <img src={portrait} alt="Portrait of Om Raje Nimbalkar" />
-            <figcaption><span>धाराशिव, महाराष्ट्र</span><span>·</span><span>FOR THE PEOPLE</span></figcaption>
+            <img src={portrait} alt={language === "mr" ? "ओम राजे निंबाळकर यांचे छायाचित्र" : "ओम राजे निंबालकर का चित्र"} />
+            <figcaption><span>धाराशिव, महाराष्ट्र</span><span>·</span><span>{language === "mr" ? "जनतेसाठी" : "जनता के लिए"}</span></figcaption>
           </figure>
           <div className="about-copy">
             <h2>{t.aboutTitle}</h2>
@@ -482,20 +480,20 @@ function HomePage() {
           {pictures.map((picture, index) => (
             <figure className={`gallery-photo gallery-photo-${index + 1}`} key={picture}>
               <img src={picture} alt={t.imageCaptions[index]} loading="lazy" />
-              <figcaption><span>0{index + 1} / DHARASHIV</span><strong>{t.imageCaptions[index]}</strong></figcaption>
+              <figcaption><span>0{index + 1} / धाराशिव</span><strong>{t.imageCaptions[index]}</strong></figcaption>
             </figure>
           ))}
         </div>
       </section>
 
-      <section className="field-wall" aria-label={language === "en" ? "In the field" : "जनतेत"}>
+      <section className="field-wall" aria-label={language === "mr" ? "जनतेत" : "जनता के बीच"}>
         <div className="field-wall-head">
-          <p className="eyebrow">{language === "en" ? "ON THE GROUND" : "प्रत्यक्ष जनतेत"}</p>
-          <h2>{language === "en" ? "Every village. Every voice." : "प्रत्येक गाव. प्रत्येक आवाज."}</h2>
+          <p className="eyebrow">{language === "mr" ? "प्रत्यक्ष जनतेत" : "जनता के बीच"}</p>
+          <h2>{language === "mr" ? "प्रत्येक गाव. प्रत्येक आवाज." : "हर गाँव। हर आवाज़।"}</h2>
         </div>
         <div className="field-wall-grid">
           {fieldWall.map((item, index) => (
-            <figure className={`field-tile field-tile-${index + 1}`} key={item.en}>
+            <figure className={`field-tile field-tile-${index + 1}`} key={item.hi}>
               <img src={item.src} alt={item[language]} loading="lazy" />
               <figcaption>{item[language]}</figcaption>
             </figure>
@@ -514,7 +512,7 @@ function HomePage() {
             <span className="initiative-script" aria-hidden="true">रोजगार</span>
           </div>
           <div className="form-panel" id="register">
-            <FormHeading eyebrow="ROJGAR MELAVA / रोजगार मेळावा" title={t.formTitle} subtitle={t.formSubtitle} />
+            <FormHeading eyebrow={language === "mr" ? "रोजगार मेळावा" : "रोज़गार मेला"} title={t.formTitle} subtitle={t.formSubtitle} />
             <form className="preview-form" onSubmit={(event) => submitForm(event, "interest")} onChange={() => setInterestSent(false)}>
               <label>{t.name}<input autoComplete="name" name="name" required placeholder={t.name} /></label>
               <div className="form-row">
@@ -526,7 +524,7 @@ function HomePage() {
               <label className="form-consent"><input type="checkbox" name="consent" required /> {t.consent}</label>
               <Button variant="saffron" size="large" className="form-submit" type="submit">{t.submitInterest}<ArrowUpRight aria-hidden="true" /></Button>
               {interestSent && <p className="form-note" role="status"><strong>{t.formSuccess}.</strong> {t.formSuccessNote}</p>}
-              {interestError && <p className="form-note" role="alert">{language === "mr" ? "माहिती पाठवता आली नाही. कृपया पुन्हा प्रयत्न करा." : "Could not send your details. Please try again."}</p>}
+              {interestError && <p className="form-note" role="alert">{language === "mr" ? "माहिती पाठवता आली नाही. कृपया पुन्हा प्रयत्न करा." : "जानकारी भेजी नहीं जा सकी। कृपया फिर से प्रयास करें।"}</p>}
               <p className="form-note"><ShieldCheck aria-hidden="true" />{t.formDisclaimer}</p>
             </form>
           </div>
@@ -540,7 +538,7 @@ function HomePage() {
             <div className="events-copy"><h2>{t.eventTitle}</h2><p>{t.eventBody}</p><a className="section-link light-link" href="#contact">{t.eventsContact}<ArrowUpRight aria-hidden="true" /></a></div>
             <article className="event-panel">
               <div className="event-panel-top"><span className="event-symbol"><Sparkles aria-hidden="true" /></span><span className="event-status">{t.eventStatus}</span></div>
-              <p className="event-placeholder">TBA<span>2026</span></p>
+              <p className="event-placeholder">{language === "mr" ? "जाहीर होणे बाकी" : "घोषणा बाकी"}<span>२०२६</span></p>
               <h3>{t.eventName}</h3><p className="event-description">{t.eventSub}</p>
               <div className="event-date"><span><i />{t.eventDate}</span><ArrowUpRight aria-hidden="true" /></div>
             </article>
@@ -560,12 +558,12 @@ function HomePage() {
               <span className="social-badge social-whatsapp"><MessageCircle aria-hidden="true" /></span><span><strong>{t.whatsapp}</strong><small>{t.whatsappHint}</small></span><ArrowUpRight aria-hidden="true" />
             </a>
             <a href="https://www.instagram.com/mpomrajenimbalkar/" target="_blank" rel="noopener noreferrer" className="social-link">
-              <span className="social-badge social-instagram">◎</span><span><strong>{t.instagram}</strong><small>Om Raje Nimbalkar</small></span><ArrowUpRight aria-hidden="true" />
+              <span className="social-badge social-instagram">◎</span><span><strong>{t.instagram}</strong><small>{language === "mr" ? "ओम राजे निंबाळकर" : "ओम राजे निंबालकर"}</small></span><ArrowUpRight aria-hidden="true" />
             </a>
             <p className="social-disclaimer">{t.socialNote}</p>
           </div>
           <div className="form-panel grievance-panel">
-            <FormHeading eyebrow="CITIZEN HELP DESK / नागरिक मदत" title={t.grievanceTitle} subtitle={t.grievanceSubtitle} />
+            <FormHeading eyebrow={language === "mr" ? "नागरिक मदत" : "नागरिक सहायता"} title={t.grievanceTitle} subtitle={t.grievanceSubtitle} />
             <form className="preview-form" onSubmit={(event) => submitForm(event, "message")} onChange={() => setMessageSent(false)}>
               <label>{t.concernName}<input name="concern-name" autoComplete="name" required placeholder={t.concernName} /></label>
               <div className="form-row">
@@ -576,7 +574,7 @@ function HomePage() {
               <label className="form-consent"><input type="checkbox" name="consent" required /> {t.consent}</label>
               <Button variant="ink" size="large" className="form-submit" type="submit">{t.sendMessage}<ArrowUpRight aria-hidden="true" /></Button>
               {messageSent && <p className="form-note" role="status"><strong>{t.grievanceSuccess}.</strong> {t.grievanceSuccessNote}</p>}
-              {messageError && <p className="form-note" role="alert">{language === "mr" ? "संदेश पाठवता आला नाही. कृपया पुन्हा प्रयत्न करा." : "Could not send your message. Please try again."}</p>}
+              {messageError && <p className="form-note" role="alert">{language === "mr" ? "संदेश पाठवता आला नाही. कृपया पुन्हा प्रयत्न करा." : "संदेश भेजा नहीं जा सका। कृपया फिर से प्रयास करें।"}</p>}
               <p className="form-note"><ShieldCheck aria-hidden="true" />{t.grievanceDisclaimer}</p>
             </form>
           </div>
@@ -585,9 +583,9 @@ function HomePage() {
 
       <footer className="site-footer">
         <a
-          className={`brand brand-wordmark footer-brand ${language === "mr" ? "brand-wordmark-mr" : ""}`}
+          className="brand brand-wordmark footer-brand brand-wordmark-mr"
           href="#home"
-          aria-label={language === "mr" ? "ओम राजे निंबाळकर, मुख्यपृष्ठ" : "Om Raje Nimbalkar, home"}
+          aria-label={language === "mr" ? "ओम राजे निंबाळकर, मुख्यपृष्ठ" : "ओम राजे निंबालकर, मुख्यपृष्ठ"}
         >
           <BrandWordmark language={language} />
         </a>
@@ -601,20 +599,18 @@ function HomePage() {
 }
 
 function BrandWordmark({ language }: { language: Language }) {
-  const marathi = language === "mr";
-
   return (
     <span className="brand-wordmark-content" aria-hidden="true">
       <span className="brand-signature" lang={language}>
-        {marathi ? "ओम राजे" : "Om Raje"}
+        ओम राजे
       </span>
       <span className="brand-nameplate" lang={language}>
         <i />
-        {marathi ? "निंबाळकर" : "NIMBALKAR"}
+        {language === "mr" ? "निंबाळकर" : "निंबालकर"}
         <i />
       </span>
       <span className="brand-district" lang={language}>
-        {marathi ? "धाराशिव · महाराष्ट्र" : "DHARASHIV · MAHARASHTRA"}
+        धाराशिव · महाराष्ट्र
       </span>
     </span>
   );

@@ -11,7 +11,7 @@ import p41 from "@/assets/om-raje/posts/fb-p4-1.jpg";
 import p42 from "@/assets/om-raje/posts/fb-p4-2.jpg";
 import p43 from "@/assets/om-raje/posts/fb-p4-3.jpg";
 
-export type Lang = "en" | "mr";
+export type Lang = "hi" | "mr";
 type Bi = Record<Lang, string>;
 
 export type FbPost = {
@@ -29,37 +29,37 @@ export const fbPosts: FbPost[] = [
   {
     id: "shetkari-samvad",
     photos: [p11, p12, p13, p14],
-    tag: { en: "FARMERS", mr: "शेतकरी" },
-    place: { en: "Jalkot, Dharashiv", mr: "जळकोट, धाराशिव" },
-    title: { en: "Shetkari Samvad: listening to drought-hit farmers", mr: "शेतकरी संवाद: दुष्काळग्रस्तांशी थेट संवाद" },
+    tag: { hi: "किसान", mr: "शेतकरी" },
+    place: { hi: "जलकोट, धाराशिव", mr: "जळकोट, धाराशिव" },
+    title: { hi: "किसान संवाद: सूखे से प्रभावित किसानों की बात", mr: "शेतकरी संवाद: दुष्काळग्रस्तांशी थेट संवाद" },
     body: {
-      en: "A direct dialogue with farmers of Jalkot and nearby villages on drought, farming challenges and their demands, with the promise to carry every concern to the administration and keep following up until it is resolved.",
+      hi: "जलकोट और आसपास के गाँवों के किसानों से सूखे, खेती की चुनौतियों और उनकी माँगों पर सीधा संवाद हुआ। उनकी हर समस्या प्रशासन तक पहुँचाने और समाधान होने तक लगातार उसका अनुसरण करने का संकल्प लिया।",
       mr: "जळकोट व परिसरातील दुष्काळग्रस्त शेतकऱ्यांच्या समस्या, अडीअडचणी आणि अपेक्षा जाणून घेण्यासाठी ‘शेतकरी संवाद कार्यक्रम’ पार पडला. शेतकऱ्यांच्या प्रश्नांना वाचा फोडून ते शासन-प्रशासनापर्यंत पोहोचवण्याचा आणि सातत्याने पाठपुरावा करण्याचा निर्धार.",
     },
-    tags: ["#शेतकरीसंवाद", "#जळकोट", "#मराठवाडा"],
+    tags: ["#शेतकरीसंवाद", "#जलकोट", "#मराठवाड़ा"],
     accent: "#f5a524",
   },
   {
     id: "janata-darbar",
     photos: [p21, p22, p23],
-    tag: { en: "JANATA DARBAR", mr: "जनता दरबार" },
-    place: { en: "Public Relations Office, Dharashiv", mr: "जनसंपर्क कार्यालय, धाराशिव" },
-    title: { en: "Your problem is my personal responsibility", mr: "जनतेचे प्रश्न म्हणजे माझी वैयक्तिक जबाबदारी!" },
+    tag: { hi: "जनता दरबार", mr: "जनता दरबार" },
+    place: { hi: "जनसंपर्क कार्यालय, धाराशिव", mr: "जनसंपर्क कार्यालय, धाराशिव" },
+    title: { hi: "आपकी समस्या मेरी व्यक्तिगत ज़िम्मेदारी है", mr: "जनतेचे प्रश्न म्हणजे माझी वैयक्तिक जबाबदारी!" },
     body: {
-      en: "Every complaint heard seriously and sensitively, departments contacted at once and many issues settled on the spot. The Janata Darbar exists to find a way out of trouble and stand up for citizens' rights.",
+      hi: "हर शिकायत को गंभीरता और संवेदनशीलता से सुना, संबंधित विभागों से तुरंत संपर्क किया और कई समस्याओं का मौके पर ही समाधान किया। जनता दरबार का उद्देश्य समस्याओं का रास्ता निकालना और नागरिकों के अधिकारों के लिए खड़ा होना है।",
       mr: "आलेल्या प्रत्येक तक्रारीकडे गांभीर्याने आणि संवेदनशीलतेने पाहिलं. संबंधित विभागांशी त्वरित संपर्क साधत अनेक समस्यांवर जागेवरच तोडगा काढला. आपल्या प्रेमाला, विश्वासाला आणि पाठिंब्याला खंबीरपणे न्याय देईन हेच माझं वचन!",
     },
-    tags: ["#जनता_दरबार", "#लोकसेवा", "#MissionDharashiv"],
+    tags: ["#जनता_दरबार", "#लोकसेवा", "#मिशनधाराशिव"],
     accent: "#ff6b35",
   },
   {
     id: "dasara-melava",
     photos: [p31, p32],
-    tag: { en: "SHIV SENA", mr: "शिवसेना" },
-    place: { en: "NESCO Centre, Goregaon, Mumbai", mr: "नेस्को सेंटर, गोरेगाव, मुंबई" },
-    title: { en: "Shiv Sena's Diamond Jubilee Dasara Melava", mr: "शिवसेनेचा हिरक महोत्सवी दसरा मेळावा" },
+    tag: { hi: "शिवसेना", mr: "शिवसेना" },
+    place: { hi: "नेस्को केंद्र, गोरेगाँव, मुंबई", mr: "नेस्को सेंटर, गोरेगाव, मुंबई" },
+    title: { hi: "शिवसेना का हीरक जयंती दशहरा सम्मेलन", mr: "शिवसेनेचा हिरक महोत्सवी दसरा मेळावा" },
     body: {
-      en: "On Vijayadashami, Deputy CM Eknath Shinde addressed the Melava, pledging that every Shiv Sainik will walk to the farmers' fields with the saffron flag on the shoulder, and stand by farmers to the last drop of blood.",
+      hi: "विजयादशमी के शुभ अवसर पर उपमुख्यमंत्री एकनाथ शिंदे ने सम्मेलन को संबोधित किया। उन्होंने कहा कि हर शिवसैनिक कंधे पर भगवा ध्वज लेकर किसानों के खेतों तक जाएगा और अंतिम साँस तक किसानों के साथ खड़ा रहेगा।",
       mr: "विजयादशमीच्या शुभदिनी उपमुख्यमंत्री एकनाथजी शिंदे यांनी संबोधित केले — भगवा खांद्यावर घेऊन प्रत्येक शिवसैनिक शेतकऱ्यांच्या बांधावर जाईल. ‘आम्ही भाषण देणारे नाही, तर शेतकऱ्यांची चूल पेटवणारे आहोत.’",
     },
     tags: ["#शिवसेना", "#दसरामेळावा", "#भगवा"],
@@ -68,14 +68,14 @@ export const fbPosts: FbPost[] = [
   {
     id: "hospital-inauguration",
     photos: [p41, p42, p43],
-    tag: { en: "HEALTHCARE", mr: "आरोग्य" },
-    place: { en: "Dharashiv", mr: "धाराशिव" },
-    title: { en: "Deshmukh Multispeciality Hospital & Trauma Care opens", mr: "देशमुख मल्टिस्पेशालिटी हॉस्पिटल व ट्रॉमा केअर सेंटरचे उद्घाटन" },
+    tag: { hi: "स्वास्थ्य सेवा", mr: "आरोग्य" },
+    place: { hi: "धाराशिव", mr: "धाराशिव" },
+    title: { hi: "देशमुख मल्टीस्पेशलिटी अस्पताल और ट्रॉमा केयर केंद्र का उद्घाटन", mr: "देशमुख मल्टिस्पेशालिटी हॉस्पिटल व ट्रॉमा केअर सेंटरचे उद्घाटन" },
     body: {
-      en: "At the grand inauguration, best wishes to the directors, doctors and team. Modern medical facilities, quality healthcare and emergency treatment under one roof, a commendable step for the people of Dharashiv.",
+      hi: "भव्य उद्घाटन के अवसर पर संचालकों, डॉक्टरों और पूरी टीम को शुभकामनाएँ। आधुनिक चिकित्सा सुविधाएँ, गुणवत्तापूर्ण स्वास्थ्य सेवा और आपातकालीन उपचार एक ही छत के नीचे उपलब्ध कराने की यह धाराशिव के लोगों के लिए सराहनीय पहल है।",
       mr: "धाराशिव शहरासह परिसरातील नागरिकांना आधुनिक वैद्यकीय सुविधा, दर्जेदार आरोग्यसेवा आणि आपत्कालीन उपचार एकाच छताखाली उपलब्ध व्हावेत, या उद्देशाने सुरू झालेला उपक्रम निश्चितच कौतुकास्पद आहे.",
     },
-    tags: ["#Dharashiv", "#Healthcare", "#TraumaCare"],
+    tags: ["#धाराशिव", "#आरोग्यसेवा", "#ट्रॉमाकेअर"],
     accent: "#2dd4bf",
   },
 ];

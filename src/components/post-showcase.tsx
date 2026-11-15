@@ -63,7 +63,7 @@ export function PostShowcase({ language }: { language: Lang }) {
                 <p className="pw-body"><span>{post.body[language]}</span></p>
                 <div className="pw-tags">{post.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                 <a className="pw-cta" href="https://www.facebook.com/omprakashrajenimbalkar" target="_blank" rel="noopener noreferrer">
-                  <span>{language === "en" ? "See the full post" : "संपूर्ण पोस्ट पहा"}</span><ArrowUpRight aria-hidden="true" />
+                  <span>{language === "mr" ? "संपूर्ण पोस्ट पहा" : "पूरी पोस्ट देखें"}</span><ArrowUpRight aria-hidden="true" />
                 </a>
               </div>
             </article>
@@ -72,7 +72,7 @@ export function PostShowcase({ language }: { language: Lang }) {
       </div>
 
       <div className="pw-nav">
-        <div className="pw-index" role="tablist" aria-label={language === "en" ? "Posts" : "पोस्ट"}>
+        <div className="pw-index" role="tablist" aria-label={language === "mr" ? "पोस्ट" : "पोस्ट"}>
           {fbPosts.map((post, index) => (
             <button key={post.id} type="button" role="tab" aria-selected={index === active} aria-label={post.title[language]} className={index === active ? "is-active" : ""} onClick={() => setActive(index)}>
               <b>0{index + 1}</b><i><em /></i>
@@ -80,8 +80,8 @@ export function PostShowcase({ language }: { language: Lang }) {
           ))}
         </div>
         <div className="pw-arrows">
-          <button type="button" aria-label={language === "en" ? "Previous post" : "मागील पोस्ट"} onClick={() => go(-1)}><ArrowLeft /></button>
-          <button type="button" aria-label={language === "en" ? "Next post" : "पुढील पोस्ट"} onClick={() => go(1)}><ArrowRight /></button>
+          <button type="button" aria-label={language === "mr" ? "मागील पोस्ट" : "पिछली पोस्ट"} onClick={() => go(-1)}><ArrowLeft /></button>
+          <button type="button" aria-label={language === "mr" ? "पुढील पोस्ट" : "अगली पोस्ट"} onClick={() => go(1)}><ArrowRight /></button>
         </div>
       </div>
     </div>

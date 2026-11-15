@@ -1,6 +1,6 @@
 /*
- * Classic is the default palette defined in :root (styles.css).
- * Ivory and Navy re-define the same tokens on <html data-theme="...">.
+ * Ivory is the default palette applied before first paint.
+ * Classic and Navy re-define the same tokens on <html data-theme="...">.
  * Photographic areas (hero, captions, tiles) keep their own --photo-* tokens so images stay legible.
  */
 
