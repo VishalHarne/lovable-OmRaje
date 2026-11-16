@@ -11,5 +11,31 @@
 
 ## Application structure
 
-- Keep the Om Raje public-service home page and dedicated video collection bilingual and static; forms do not transmit submissions, so no storage or service integrations are needed.
+- ### Form Submission and Backend Integration
+
+The website is a production React + Vite frontend hosted as a Render Static Site.
+
+Forms must support real submission through the separately hosted backend APIs.
+
+Production backend:
+https://omraje-email-backend.onrender.com
+
+Supported integrations:
+- Grievance submission: POST /submitgrievances
+- Resume submission: POST /submitResume
+- Health monitoring: GET /health
+
+Requirements:
+- Forms must transmit submissions using HTTPS.
+- Use VITE_API_BASE_URL for backend configuration.
+- Never use localhost URLs in production.
+- Integrate Cloudflare Turnstile where required by the backend.
+- Preserve existing UI, validation and responsive design.
+- Display success only after successful backend confirmation.
+- Handle API errors and network failures gracefully.
+- Never expose SMTP credentials or Turnstile secret keys in frontend code.
+
+Static hosting does not restrict the frontend from communicating with external backend APIs.
+
+The frontend must remain a Render Static Site. The backend is independently hosted as a Render Web Service.
 - Curate Instagram reels as verified public permalinks with stored original cover assets and accessible preview dialogs linking to Instagram playback; unauthenticated embeds were unavailable, so do not show empty players.

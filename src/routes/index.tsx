@@ -1,6 +1,20 @@
-import { useEffect, useState, type FormEvent } from "react";
+import { useCallback, useEffect, useRef, useState, type FormEvent } from "react";
 import { PostShowcase } from "@/components/post-showcase";
-import { grievanceTopics } from "@/lib/backend-api";
+import {
+  TurnstileWidget,
+  TurnstileWidgetError,
+  type TurnstileStatus,
+  type TurnstileWidgetHandle,
+} from "@/components/turnstile-widget";
+import {
+  grievanceTopics,
+  SubmissionApiError,
+  submitGrievance,
+  submitResume,
+  type CandidatePayload,
+  type CandidateRole,
+  type GrievancePayload,
+} from "@/lib/backend-api";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowDownRight,
@@ -8,6 +22,7 @@ import {
   ArrowUpRight,
   Check,
   HeartHandshake,
+  LoaderCircle,
   Menu,
   MessageCircle,
   ShieldCheck,
@@ -96,10 +111,21 @@ const content = {
     town: "तहसील / शहर",
     choose: "एक विकल्प चुनें",
     submitInterest: "रुचि दर्ज करें",
-    formDisclaimer: "इस पूर्वावलोकन से आपकी जानकारी भेजी या सहेजी नहीं जाती।",
-    formSuccess: "इस पृष्ठ पर रुचि दर्ज हुई",
-    formSuccessNote: "आपकी जानकारी न भेजी गई है, न सहेजी गई है।",
-    consent: "मैं समझता/समझती हूँ कि इस पूर्वावलोकन से मेरी जानकारी नहीं भेजी जाती।",
+    formDisclaimer: "आपकी जानकारी सुरक्षित रूप से भेजी जाएगी।",
+    formSuccess: "रुचि सफलतापूर्वक सबमिट हुई",
+    formSuccessNote: "हमारे सिस्टम ने आपकी जानकारी स्वीकार कर ली है।",
+    consent: "मैं अपनी जानकारी भेजे जाने और संपर्क के लिए उपयोग किए जाने की सहमति देता/देती हूँ।",
+    resumeFile: "रिज़्यूमे फ़ाइल (वैकल्पिक)",
+    resumeFileHint: "PDF, DOC या DOCX — अधिकतम 10 MB",
+    invalidResumeFile: "कृपया 10 MB तक की PDF, DOC या DOCX फ़ाइल चुनें।",
+    submitting: "भेजा जा रहा है…",
+    securityLoading: "सुरक्षा जाँच लोड हो रही है…",
+    securityUnavailable: "सुरक्षा जाँच उपलब्ध नहीं है। कृपया कुछ देर बाद फिर प्रयास करें।",
+    turnstileFailed: "सुरक्षा जाँच पूरी नहीं हुई। कृपया फिर से कोशिश करें।",
+    verificationFailed: "सुरक्षा जाँच विफल हुई। कृपया फिर से कोशिश करें।",
+    verificationUnavailable: "सुरक्षा जाँच अस्थायी रूप से उपलब्ध नहीं है। कृपया बाद में फिर प्रयास करें।",
+    submissionInvalid: "जानकारी जाँची नहीं जा सकी। कृपया फ़ॉर्म देखकर फिर भेजें।",
+    submissionFailed: "जानकारी भेजी नहीं जा सकी। कृपया फिर से कोशिश करें।",
     eventOverline: "०४ / तारीख़ याद रखें",
     eventTitle: "मिलकर करें तो हर काम बेहतर होता है।",
     eventBody: "आगामी जनसभाओं और रोज़गार मेले की तारीख़ें पुष्टि के बाद यहाँ दी जाएँगी।",
@@ -111,7 +137,7 @@ const content = {
     contactOverline: "०५ / आपकी आवाज़ अहम है",
     contactTitle: "आइए, मिलकर बदलाव लाएँ।",
     contactBody:
-      "स्थानीय समस्या बताएँ या सवाल पूछें। यह पूर्वावलोकन संदेश नहीं भेजता; लॉन्च से पहले कार्यालय का आधिकारिक संपर्क माध्यम आवश्यक है।",
+      "स्थानीय समस्या बताएँ या सवाल पूछें। अपना संदेश हमें भेजने के लिए फ़ॉर्म भरें।",
     grievanceTitle: "अपनी समस्या बताएँ",
     grievanceSubtitle: "बताएँ कि आपको किस मदद की ज़रूरत है।",
     concernName: "आपका नाम",
@@ -120,11 +146,10 @@ const content = {
     topicPlaceholder: "विषय चुनें",
     topics: ["सड़कें और बुनियादी सुविधाएँ", "पानी और कृषि", "जनसेवाएँ", "रोज़गार", "अन्य"],
     message: "आपका संदेश",
-    sendMessage: "संदेश तैयार करें",
-    grievanceDisclaimer:
-      "यह पूर्वावलोकन संदेश नहीं भेजता या सहेजता। आधिकारिक संपर्क माध्यम उपलब्ध होने पर उसका उपयोग करें।",
-    grievanceSuccess: "संदेश तैयार हुआ",
-    grievanceSuccessNote: "आपका संदेश फ़ॉर्म में ही है; उसे भेजा या सहेजा नहीं गया है।",
+    sendMessage: "संदेश भेजें",
+    grievanceDisclaimer: "आपका संदेश सुरक्षित रूप से भेजा जाएगा।",
+    grievanceSuccess: "संदेश सफलतापूर्वक सबमिट हुआ",
+    grievanceSuccessNote: "हमारे सिस्टम ने आपका संदेश स्वीकार कर लिया है।",
     facebook: "फ़ेसबुक पर खोजें",
     facebookHint: "ओम राजे निंबालकर खोजें",
     whatsapp: "व्हाट्सऐप",
@@ -186,10 +211,21 @@ const content = {
     town: "तालुका / गाव",
     choose: "एक पर्याय निवडा",
     submitInterest: "आवड नोंदवा",
-    formDisclaimer: "या झलकमधून तुमची माहिती पाठवली किंवा जतन केली जात नाही.",
-    formSuccess: "या पृष्ठावर आवड नोंदवली",
-    formSuccessNote: "तुमची माहिती पाठवली किंवा जतन केली गेलेली नाही.",
-    consent: "या झलकमधून माझी माहिती पाठवली जात नाही, याची मला जाणीव आहे.",
+    formDisclaimer: "तुमची माहिती सुरक्षितपणे पाठवली जाईल.",
+    formSuccess: "आवड यशस्वीपणे सबमिट झाली",
+    formSuccessNote: "आमच्या प्रणालीने तुमची माहिती स्वीकारली आहे.",
+    consent: "माझी माहिती पाठवून संपर्कासाठी वापरण्यास मी संमती देतो/देते.",
+    resumeFile: "रेझ्युमे फाइल (ऐच्छिक)",
+    resumeFileHint: "PDF, DOC किंवा DOCX — कमाल 10 MB",
+    invalidResumeFile: "कृपया 10 MB पर्यंतची PDF, DOC किंवा DOCX फाइल निवडा.",
+    submitting: "पाठवत आहे…",
+    securityLoading: "सुरक्षा तपासणी लोड होत आहे…",
+    securityUnavailable: "सुरक्षा तपासणी उपलब्ध नाही. कृपया थोड्या वेळाने पुन्हा प्रयत्न करा.",
+    turnstileFailed: "सुरक्षा तपासणी पूर्ण झाली नाही. कृपया पुन्हा प्रयत्न करा.",
+    verificationFailed: "सुरक्षा तपासणी अयशस्वी झाली. कृपया पुन्हा प्रयत्न करा.",
+    verificationUnavailable: "सुरक्षा तपासणी तात्पुरती उपलब्ध नाही. कृपया नंतर पुन्हा प्रयत्न करा.",
+    submissionInvalid: "माहिती तपासता आली नाही. कृपया फॉर्म पाहून पुन्हा पाठवा.",
+    submissionFailed: "माहिती पाठवता आली नाही. कृपया पुन्हा प्रयत्न करा.",
     eventOverline: "०४ / दिनदर्शिकेत नोंद करा",
     eventTitle: "एकत्र आलो, तर प्रत्येक गोष्ट शक्य.",
     eventBody: "आगामी जनसंवाद व रोजगार मेळाव्याच्या अधिकृत तारखा निश्चित झाल्यावर येथे दिल्या जातील.",
@@ -201,7 +237,7 @@ const content = {
     contactOverline: "०५ / तुमचा आवाज महत्त्वाचा",
     contactTitle: "चला, बदल घडवूया.",
     contactBody:
-      "स्थानिक प्रश्न मांडा किंवा माहिती विचारा. या झलकमधून संदेश पाठवले जात नाहीत—प्रकाशनापूर्वी कार्यालयाचे अधिकृत संपर्क माध्यम आवश्यक आहे.",
+      "स्थानिक प्रश्न मांडा किंवा माहिती विचारा. तुमचा संदेश आम्हाला पाठवण्यासाठी फॉर्म भरा.",
     grievanceTitle: "तुमची अडचण सांगा",
     grievanceSubtitle: "कशाबाबत मदत हवी आहे ते लिहा.",
     concernName: "तुमचे नाव",
@@ -210,11 +246,10 @@ const content = {
     topicPlaceholder: "विषय निवडा",
     topics: ["रस्ते व पायाभूत सुविधा", "पाणी व शेती", "सार्वजनिक सेवा", "रोजगार", "इतर"],
     message: "तुमचा संदेश",
-    sendMessage: "संदेश तयार करा",
-    grievanceDisclaimer:
-      "या झलकमधून संदेश पाठवले किंवा जतन केले जात नाहीत. अधिकृत संपर्क माध्यम उपलब्ध झाल्यावर त्याचा वापर करा.",
-    grievanceSuccess: "संदेश तयार झाला",
-    grievanceSuccessNote: "तुमचा संदेश फॉर्ममध्येच आहे; तो पाठवला किंवा जतन केला गेलेला नाही.",
+    sendMessage: "संदेश पाठवा",
+    grievanceDisclaimer: "तुमचा संदेश सुरक्षितपणे पाठवला जाईल.",
+    grievanceSuccess: "संदेश यशस्वीपणे सबमिट झाला",
+    grievanceSuccessNote: "आमच्या प्रणालीने तुमचा संदेश स्वीकारला आहे.",
     facebook: "फेसबुकवर शोधा",
     facebookHint: "ओम राजे निंबाळकर यांचा शोध घ्या",
     whatsapp: "व्हॉट्सॲप",
@@ -270,11 +305,26 @@ function HomePage() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [interestSent, setInterestSent] = useState(false);
   const [messageSent, setMessageSent] = useState(false);
-  const [messageError, setMessageError] = useState(false);
-  const [interestError, setInterestError] = useState(false);
+  const [messageError, setMessageError] = useState<string | null>(null);
+  const [interestError, setInterestError] = useState<string | null>(null);
+  const [submitting, setSubmitting] = useState<"interest" | "message" | null>(null);
+  const [interestTurnstileStatus, setInterestTurnstileStatus] = useState<TurnstileStatus>("loading");
+  const [messageTurnstileStatus, setMessageTurnstileStatus] = useState<TurnstileStatus>("loading");
+  const interestTurnstileRef = useRef<TurnstileWidgetHandle>(null);
+  const messageTurnstileRef = useRef<TurnstileWidgetHandle>(null);
+  const submissionInFlight = useRef(false);
   const t = content[language];
   const alternate = language === "mr" ? "hi" : "mr";
   const slides = coverSlides;
+
+  const onInterestTurnstileStatusChange = useCallback(
+    (status: TurnstileStatus) => setInterestTurnstileStatus(status),
+    [],
+  );
+  const onMessageTurnstileStatusChange = useCallback(
+    (status: TurnstileStatus) => setMessageTurnstileStatus(status),
+    [],
+  );
 
   useEffect(() => {
     const timer = window.setInterval(() => setSlide((index) => (index + 1) % slides.length), 5500);
@@ -287,50 +337,120 @@ function HomePage() {
     setMenuOpen(false);
   }
 
-  function submitForm(event: FormEvent<HTMLFormElement>, kind: "interest" | "message") {
+  type FormSubmission =
+    | { kind: "interest"; payload: CandidatePayload; file?: File }
+    | { kind: "message"; payload: GrievancePayload };
+
+  function isCandidateRole(value: string): value is CandidateRole {
+    return value === "job_seeker" || value === "employer";
+  }
+
+  function isGrievanceTopic(value: string): value is (typeof grievanceTopics)[number] {
+    return grievanceTopics.some((topic) => topic === value);
+  }
+
+  async function submitForm(event: FormEvent<HTMLFormElement>, kind: "interest" | "message") {
     event.preventDefault();
+    if (submissionInFlight.current) return;
+
     const form = event.currentTarget;
     const data = new FormData(form);
-    if (kind === "interest") {
-      const resume = {
-        name: String(data.get("name") ?? ""),
-        phone: String(data.get("phone") ?? ""),
-        email: String(data.get("email") ?? ""),
-        role: String(data.get("role") ?? ""),
-        town: String(data.get("town") ?? ""),
-        consent: data.get("consent") === "on",
-      };
-      const body = new FormData();
-      body.append("data", new Blob([JSON.stringify(resume)], { type: "application/json" }));
-      setInterestError(false);
-      fetch("http://localhost:8081/submitResume", { method: "POST", body })
-        .then((response) => {
-          if (!response.ok) throw new Error(`Request failed: ${response.status}`);
-          setInterestSent(true);
-          form.reset();
-        })
-        .catch(() => setInterestError(true));
+    const turnstile =
+      kind === "interest" ? interestTurnstileRef.current : messageTurnstileRef.current;
+    const turnstileStatus =
+      kind === "interest" ? interestTurnstileStatus : messageTurnstileStatus;
+    const setError = kind === "interest" ? setInterestError : setMessageError;
+    const setSent = kind === "interest" ? setInterestSent : setMessageSent;
+    const turnstileUnavailableMessage = t.securityUnavailable;
+
+    if (turnstileStatus !== "ready" || !turnstile) {
+      setError(turnstileUnavailableMessage);
       return;
     }
-    const payload = {
-      name: String(data.get("concern-name") ?? ""),
-      contact: String(data.get("concern-contact") ?? ""),
-      topic: String(data.get("topic") ?? ""),
-      message: String(data.get("message") ?? ""),
-      consent: data.get("consent") === "on",
-    };
-    setMessageError(false);
-    fetch("http://localhost:8081/submitgrievances", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(payload),
-    })
-      .then((response) => {
-        if (!response.ok) throw new Error(`Request failed: ${response.status}`);
+
+    let submission: FormSubmission;
+    if (kind === "interest") {
+      const selectedFile = data.get("file");
+      if (selectedFile instanceof File && selectedFile.name) {
+        const validExtension = /\.(pdf|doc|docx)$/i.test(selectedFile.name);
+        if (
+          selectedFile.size === 0 ||
+          selectedFile.size > 10 * 1024 * 1024 ||
+          !validExtension
+        ) {
+          setInterestError(t.invalidResumeFile);
+          return;
+        }
+      }
+      const role = String(data.get("role") ?? "");
+      if (!isCandidateRole(role)) {
+        setInterestError(t.submissionInvalid);
+        return;
+      }
+      const file =
+        selectedFile instanceof File && selectedFile.name ? selectedFile : undefined;
+      submission = {
+        kind,
+        payload: {
+          name: String(data.get("name") ?? ""),
+          phone: String(data.get("phone") ?? ""),
+          email: String(data.get("email") ?? ""),
+          role,
+          town: String(data.get("town") ?? ""),
+          consent: data.get("consent") === "on",
+        },
+        ...(file ? { file } : {}),
+      };
+    } else {
+      const topic = String(data.get("topic") ?? "");
+      if (!isGrievanceTopic(topic)) {
+        setMessageError(t.submissionInvalid);
+        return;
+      }
+      submission = {
+        kind,
+        payload: {
+          name: String(data.get("concern-name") ?? ""),
+          contact: String(data.get("concern-contact") ?? ""),
+          topic,
+          message: String(data.get("message") ?? ""),
+          consent: data.get("consent") === "on",
+        },
+      };
+    }
+
+    submissionInFlight.current = true;
+    setSubmitting(kind);
+    setError(null);
+    setSent(false);
+
+    try {
+      const token = await turnstile.execute();
+      if (submission.kind === "interest") {
+        await submitResume(submission.payload, token, submission.file);
+        setInterestSent(true);
+      } else {
+        await submitGrievance(submission.payload, token);
         setMessageSent(true);
-        form.reset();
-      })
-      .catch(() => setMessageError(true));
+      }
+      form.reset();
+    } catch (error) {
+      let errorMessage: string = t.submissionFailed;
+      if (error instanceof TurnstileWidgetError) {
+        errorMessage = error.code
+          ? `${t.turnstileFailed} (Cloudflare code: ${error.code})`
+          : t.turnstileFailed;
+      } else if (error instanceof SubmissionApiError) {
+        if (error.status === 400) errorMessage = t.submissionInvalid;
+        else if (error.status === 403) errorMessage = t.verificationFailed;
+        else if (error.status === 503) errorMessage = t.verificationUnavailable;
+      }
+      setError(errorMessage);
+    } finally {
+      turnstile.reset();
+      submissionInFlight.current = false;
+      setSubmitting(null);
+    }
   }
 
   return (
@@ -513,7 +633,15 @@ function HomePage() {
           </div>
           <div className="form-panel" id="register">
             <FormHeading eyebrow={language === "mr" ? "रोजगार मेळावा" : "रोज़गार मेला"} title={t.formTitle} subtitle={t.formSubtitle} />
-            <form className="preview-form" onSubmit={(event) => submitForm(event, "interest")} onChange={() => setInterestSent(false)}>
+            <form
+              className="preview-form"
+              aria-busy={submitting === "interest"}
+              onSubmit={(event) => submitForm(event, "interest")}
+              onChange={() => {
+                setInterestSent(false);
+                setInterestError(null);
+              }}
+            >
               <label>{t.name}<input autoComplete="name" name="name" required placeholder={t.name} /></label>
               <div className="form-row">
                 <label>{t.phone}<input autoComplete="tel" name="phone" required type="tel" pattern="[0-9+() -]{10,16}" placeholder="+91" /></label>
@@ -521,10 +649,30 @@ function HomePage() {
               </div>
               <label>{t.role}<select name="role" required defaultValue=""><option value="" disabled>{t.choose}</option><option value="job_seeker">{t.candidate}</option><option value="employer">{t.employer}</option></select></label>
               <label>{t.town}<input autoComplete="address-level2" name="town" required placeholder={t.town} /></label>
+              <label>
+                {t.resumeFile}
+                <input
+                  name="file"
+                  type="file"
+                  accept=".pdf,.doc,.docx,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+                />
+              </label>
+              <p className="form-note">{t.resumeFileHint}</p>
               <label className="form-consent"><input type="checkbox" name="consent" required /> {t.consent}</label>
-              <Button variant="saffron" size="large" className="form-submit" type="submit">{t.submitInterest}<ArrowUpRight aria-hidden="true" /></Button>
+              <TurnstileWidget ref={interestTurnstileRef} onStatusChange={onInterestTurnstileStatusChange} />
+              {interestTurnstileStatus === "loading" && <p className="form-note" role="status">{t.securityLoading}</p>}
+              {interestTurnstileStatus === "error" && <p className="form-note" role="alert">{t.securityUnavailable}</p>}
+              <Button
+                variant="saffron"
+                size="large"
+                className="form-submit"
+                type="submit"
+                disabled={submitting !== null}
+              >
+                {submitting === "interest" ? <><LoaderCircle className="animate-spin" aria-hidden="true" />{t.submitting}</> : <>{t.submitInterest}<ArrowUpRight aria-hidden="true" /></>}
+              </Button>
               {interestSent && <p className="form-note" role="status"><strong>{t.formSuccess}.</strong> {t.formSuccessNote}</p>}
-              {interestError && <p className="form-note" role="alert">{language === "mr" ? "माहिती पाठवता आली नाही. कृपया पुन्हा प्रयत्न करा." : "जानकारी भेजी नहीं जा सकी। कृपया फिर से प्रयास करें।"}</p>}
+              {interestError && <p className="form-note" role="alert">{interestError}</p>}
               <p className="form-note"><ShieldCheck aria-hidden="true" />{t.formDisclaimer}</p>
             </form>
           </div>
@@ -564,7 +712,15 @@ function HomePage() {
           </div>
           <div className="form-panel grievance-panel">
             <FormHeading eyebrow={language === "mr" ? "नागरिक मदत" : "नागरिक सहायता"} title={t.grievanceTitle} subtitle={t.grievanceSubtitle} />
-            <form className="preview-form" onSubmit={(event) => submitForm(event, "message")} onChange={() => setMessageSent(false)}>
+            <form
+              className="preview-form"
+              aria-busy={submitting === "message"}
+              onSubmit={(event) => submitForm(event, "message")}
+              onChange={() => {
+                setMessageSent(false);
+                setMessageError(null);
+              }}
+            >
               <label>{t.concernName}<input name="concern-name" autoComplete="name" required placeholder={t.concernName} /></label>
               <div className="form-row">
                 <label>{t.concernContact}<input name="concern-contact" required placeholder={t.concernContact} /></label>
@@ -572,9 +728,20 @@ function HomePage() {
               </div>
               <label>{t.message}<textarea name="message" required minLength={5} maxLength={2000} placeholder={t.message} /></label>
               <label className="form-consent"><input type="checkbox" name="consent" required /> {t.consent}</label>
-              <Button variant="ink" size="large" className="form-submit" type="submit">{t.sendMessage}<ArrowUpRight aria-hidden="true" /></Button>
+              <TurnstileWidget ref={messageTurnstileRef} onStatusChange={onMessageTurnstileStatusChange} />
+              {messageTurnstileStatus === "loading" && <p className="form-note" role="status">{t.securityLoading}</p>}
+              {messageTurnstileStatus === "error" && <p className="form-note" role="alert">{t.securityUnavailable}</p>}
+              <Button
+                variant="ink"
+                size="large"
+                className="form-submit"
+                type="submit"
+                disabled={submitting !== null}
+              >
+                {submitting === "message" ? <><LoaderCircle className="animate-spin" aria-hidden="true" />{t.submitting}</> : <>{t.sendMessage}<ArrowUpRight aria-hidden="true" /></>}
+              </Button>
               {messageSent && <p className="form-note" role="status"><strong>{t.grievanceSuccess}.</strong> {t.grievanceSuccessNote}</p>}
-              {messageError && <p className="form-note" role="alert">{language === "mr" ? "संदेश पाठवता आला नाही. कृपया पुन्हा प्रयत्न करा." : "संदेश भेजा नहीं जा सका। कृपया फिर से प्रयास करें।"}</p>}
+              {messageError && <p className="form-note" role="alert">{messageError}</p>}
               <p className="form-note"><ShieldCheck aria-hidden="true" />{t.grievanceDisclaimer}</p>
             </form>
           </div>

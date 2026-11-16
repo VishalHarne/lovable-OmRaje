@@ -6,8 +6,29 @@ const htmlFiles = [
   resolve(".output/public/videos/index.html"),
 ];
 
+const apiBaseUrl =
+  process.env.VITE_API_BASE_URL?.trim() || "https://omraje-email-backend.onrender.com";
+const apiUrl = new URL(apiBaseUrl);
+if (apiUrl.protocol !== "https:") {
+  throw new Error("VITE_API_BASE_URL must use HTTPS.");
+}
+
+const contentSecurityPolicy = [
+  "default-src 'self'",
+  "base-uri 'self'",
+  "object-src 'none'",
+  "frame-src https://challenges.cloudflare.com",
+  "form-action 'self'",
+  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
+  "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
+  "font-src 'self' https://fonts.gstatic.com data:",
+  "img-src 'self' https: data: blob:",
+  "worker-src 'self' blob:",
+  `connect-src 'self' ${apiUrl.origin} https://challenges.cloudflare.com`,
+].join("; ");
+
 const securityMetadata = [
-  "<meta http-equiv=\"Content-Security-Policy\" content=\"default-src 'self'; base-uri 'self'; object-src 'none'; frame-src 'none'; form-action 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' https: data: blob:; connect-src 'self' http://localhost:8082 http://127.0.0.1:8082\">",
+  `<meta http-equiv="Content-Security-Policy" content="${contentSecurityPolicy}">`,
   '<meta name="referrer" content="strict-origin-when-cross-origin">',
 ].join("");
 
