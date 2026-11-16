@@ -303,7 +303,7 @@ function HomePage() {
       const body = new FormData();
       body.append("data", new Blob([JSON.stringify(resume)], { type: "application/json" }));
       setInterestError(false);
-      fetch("http://localhost:8082/submitResume", { method: "POST", body })
+      fetch("http://localhost:8081/submitResume", { method: "POST", body })
         .then((response) => {
           if (!response.ok) throw new Error(`Request failed: ${response.status}`);
           setInterestSent(true);
@@ -320,7 +320,7 @@ function HomePage() {
       consent: data.get("consent") === "on",
     };
     setMessageError(false);
-    fetch("http://localhost:8082/submitgrievances", {
+    fetch("http://localhost:8081/submitgrievances", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(payload),
