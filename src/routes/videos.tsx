@@ -7,6 +7,8 @@ import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/compone
 import { reels, reelCategories, reelUrl, type Reel, type ReelCategory } from "@/lib/reels";
 import { heroClips } from "@/lib/hero-videos";
 import { HeroVideoBackground } from "@/components/hero-video-background";
+import { LanguageSwitch } from "@/components/language-switch";
+import type { Lang } from "@/lib/fb-posts";
 import partySymbol from "@/assets/om-raje/party-symbol.webp";
 
 export const Route = createFileRoute("/videos")({
@@ -32,39 +34,31 @@ export const Route = createFileRoute("/videos")({
 });
 
 function VideosPage() {
-  const [language, setLanguage] = useState<"hi" | "mr">("mr");
+  const [language, setLanguage] = useState<Lang>("mr");
   const [category, setCategory] = useState<ReelCategory>("all");
   const [selected, setSelected] = useState<Reel | null>(null);
-  const mr = language === "mr";
+  const tr = (en: string, mr: string, hi: string) =>
+    language === "en" ? en : language === "mr" ? mr : hi;
   const featured = reels[0];
   const visible = reels.filter((reel) => category === "all" || reel.category === category);
   return (
     <main className="site site-marathi video-page" lang={language}>
       <header className="site-header video-header">
-        <Link to="/" className="brand" aria-label={mr ? "ओम राजे निंबाळकर, मुख्यपृष्ठ" : "ओम राजे निंबालकर, मुख्यपृष्ठ"}>
+        <Link to="/" className="brand" aria-label={tr("Om Raje Nimbalkar, home", "ओम राजे निंबाळकर, मुख्यपृष्ठ", "ओम राजे निंबालकर, मुख्यपृष्ठ")}>
           <img src={partySymbol} alt="" />
           <span className="brand-label">
-            <strong>ओम राजे</strong>
-            <small>{mr ? "निंबाळकर" : "निंबालकर"} · धाराशिव</small>
+            <strong>{tr("Om Raje", "ओम राजे", "ओम राजे")}</strong>
+            <small>{tr("Nimbalkar · Dharashiv", "निंबाळकर · धाराशिव", "निंबालकर · धाराशिव")}</small>
           </span>
         </Link>
         <div className="header-tools">
           <Button asChild variant="ghost" className="video-home">
             <Link to="/">
               <ArrowLeft />
-              {mr ? "मुख्य पृष्ठ" : "मुखपृष्ठ"}
+              {tr("Home", "मुख्य पृष्ठ", "मुखपृष्ठ")}
             </Link>
           </Button>
-          <Button
-            variant="ghost"
-            className="language-switch"
-            aria-label={mr ? "हिंदी में बदलें" : "मराठी में बदलें"}
-            onClick={() => setLanguage(mr ? "hi" : "mr")}
-          >
-            <span className={!mr ? "language-current" : ""}>हिंदी</span>
-            <span>/</span>
-            <span className={mr ? "language-current" : ""}>मराठी</span>
-          </Button>
+          <LanguageSwitch language={language} onChange={setLanguage} />
         </div>
       </header>
       <section className="video-hero">
@@ -72,20 +66,22 @@ function VideosPage() {
         <div className="video-hero-copy">
           <p className="eyebrow">
             <Film size={15} />
-            {mr ? "जनतेतील क्षण" : "जनजीवन के पल"}
+            {tr("Moments with the people", "जनतेतील क्षण", "जनजीवन के पल")}
           </p>
           <h1>
-            {mr ? "ओम राजे निंबाळकर" : "ओम राजे निंबालकर"}
-            <span>{mr ? "जनतेत. प्रत्येक क्षणी." : "हर पल, जनता के बीच।"}</span>
+            {tr("Om Raje Nimbalkar", "ओम राजे निंबाळकर", "ओम राजे निंबालकर")}
+            <span>{tr("Among the people. Every moment.", "जनतेत. प्रत्येक क्षणी.", "हर पल, जनता के बीच।")}</span>
           </h1>
           <p>
-            {mr
-              ? "शेतातला संवाद. लोककार्याची झलक. आपल्या परंपरांचा उत्सव."
-              : "खेतों में संवाद। जनकार्य की झलक। हमें जोड़ने वाली परंपराएँ।"}
+            {tr(
+              "Conversations in the fields. A glimpse of public work. Traditions that bind us.",
+              "शेतातला संवाद. लोककार्याची झलक. आपल्या परंपरांचा उत्सव.",
+              "खेतों में संवाद। जनकार्य की झलक। हमें जोड़ने वाली परंपराएँ।",
+            )}
           </p>
           <Button variant="saffron" size="large" onClick={() => setSelected(featured)}>
             <Play />
-            {mr ? "प्रमुख व्हिडिओ पाहा" : "प्रमुख रील देखें"}
+            {tr("Watch the featured reel", "प्रमुख व्हिडिओ पाहा", "प्रमुख रील देखें")}
           </Button>
         </div>
         <div className="video-hero-bottom">
@@ -94,7 +90,7 @@ function VideosPage() {
             @mpomrajenimbalkar
           </span>
           <a href="#collection">
-            {mr ? "संग्रह पाहा" : "संग्रह देखें"}
+            {tr("View the collection", "संग्रह पाहा", "संग्रह देखें")}
             <ArrowDown size={16} />
           </a>
         </div>
@@ -103,18 +99,18 @@ function VideosPage() {
         <div className="video-collection-heading">
           <div>
             <p className="eyebrow">
-              {mr ? "निवडक इन्स्टाग्राम रील्स" : "चुनिंदा इंस्टाग्राम रील्स"}
+              {tr("Selected Instagram reels", "निवडक इन्स्टाग्राम रील्स", "चुनिंदा इंस्टाग्राम रील्स")}
             </p>
-            <h2>{mr ? "जनतेशी जोडलेले क्षण." : "लोग। जगहें। जनसेवा।"}</h2>
+            <h2>{tr("People. Places. Public service.", "जनतेशी जोडलेले क्षण.", "लोग। जगहें। जनसेवा।")}</h2>
           </div>
           <span className="video-count">
-            {String(visible.length).padStart(2, "0")} / {mr ? "व्हिडिओ" : "रील्स"}
+            {String(visible.length).padStart(2, "0")} / {tr("Reels", "व्हिडिओ", "रील्स")}
           </span>
         </div>
         <div
           className="video-filters"
           role="group"
-          aria-label={mr ? "व्हिडिओ विषय" : "वीडियो श्रेणियाँ"}
+          aria-label={tr("Video categories", "व्हिडिओ विषय", "वीडियो श्रेणियाँ")}
         >
           {(Object.keys(reelCategories) as ReelCategory[]).map((key) => (
             <Button
@@ -134,7 +130,7 @@ function VideosPage() {
               <Button
                 variant="ghost"
                 className="reel-cover"
-                aria-label={`${mr ? "पाहा" : "देखें"}: ${reel[language]}`}
+                aria-label={`${tr("Watch", "पाहा", "देखें")}: ${reel[language]}`}
                 onClick={() => setSelected(reel)}
               >
                 <img src={reel.cover} alt={reel[language]} loading="lazy" />
@@ -144,7 +140,7 @@ function VideosPage() {
                 </span>
                 <span className="reel-cover-footer">
                   <Instagram size={17} />
-                  <span>{mr ? "रील पाहा" : "रील देखें"}</span>
+                  <span>{tr("Watch reel", "रील पाहा", "रील देखें")}</span>
                   <ArrowUpRight size={19} />
                 </span>
               </Button>
@@ -156,7 +152,7 @@ function VideosPage() {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                {mr ? "मूळ पोस्ट" : "मूल पोस्ट"}
+                {tr("Original post", "मूळ पोस्ट", "मूल पोस्ट")}
                 <ArrowUpRight size={14} />
               </a>
             </article>
@@ -168,7 +164,7 @@ function VideosPage() {
           <Instagram size={25} />
           <span>
             <strong>@mpomrajenimbalkar</strong>
-            <small>{mr ? "इन्स्टाग्रामवरील आणखी क्षण" : "इंस्टाग्राम पर और पल"}</small>
+            <small>{tr("More moments on Instagram", "इन्स्टाग्रामवरील आणखी क्षण", "इंस्टाग्राम पर और पल")}</small>
           </span>
         </div>
         <Button asChild variant="saffron">
@@ -177,7 +173,7 @@ function VideosPage() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            {mr ? "इन्स्टाग्रामवर भेट द्या" : "इंस्टाग्राम देखें"}
+            {tr("Visit on Instagram", "इन्स्टाग्रामवर भेट द्या", "इंस्टाग्राम देखें")}
             <ArrowUpRight />
           </a>
         </Button>
@@ -194,16 +190,18 @@ function VideosPage() {
             <>
               <DialogTitle>{selected[language]}</DialogTitle>
               <DialogDescription>
-                {mr
-                  ? "व्हिडिओ मूळ इन्स्टाग्राम पोस्टवर उघडतो. इन्स्टाग्रामवर लॉगिन आवश्यक असू शकते."
-                  : "वीडियो मूल इंस्टाग्राम पोस्ट पर खुलेगा। इंस्टाग्राम पर साइन-इन करना पड़ सकता है।"}
+                {tr(
+                  "The video opens on the original Instagram post. You may need to sign in to Instagram.",
+                  "व्हिडिओ मूळ इन्स्टाग्राम पोस्टवर उघडतो. इन्स्टाग्रामवर लॉगिन आवश्यक असू शकते.",
+                  "वीडियो मूल इंस्टाग्राम पोस्ट पर खुलेगा। इंस्टाग्राम पर साइन-इन करना पड़ सकता है।",
+                )}
               </DialogDescription>
               <Button asChild variant="ghost" className="reel-preview">
                 <a
                   href={reelUrl(selected.id)}
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={mr ? "इन्स्टाग्रामवर व्हिडिओ उघडा" : "इंस्टाग्राम पर वीडियो खोलें"}
+                  aria-label={tr("Open the video on Instagram", "इन्स्टाग्रामवर व्हिडिओ उघडा", "इंस्टाग्राम पर वीडियो खोलें")}
                 >
                   <img src={selected.cover} alt={selected[language]} />
                   <span className="reel-play">
@@ -213,7 +211,7 @@ function VideosPage() {
               </Button>
               <Button asChild variant="saffron">
                 <a href={reelUrl(selected.id)} target="_blank" rel="noopener noreferrer">
-                  {mr ? "इन्स्टाग्रामवर पाहा" : "इंस्टाग्राम पर देखें"}
+                  {tr("Watch on Instagram", "इन्स्टाग्रामवर पाहा", "इंस्टाग्राम पर देखें")}
                   <ArrowUpRight />
                 </a>
               </Button>

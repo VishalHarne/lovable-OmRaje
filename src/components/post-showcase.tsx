@@ -4,6 +4,12 @@ import { fbPosts, type Lang } from "@/lib/fb-posts";
 
 const POST_MS = 7500;
 
+const ui = {
+  en: { full: "View full post", posts: "Posts", prev: "Previous post", next: "Next post" },
+  hi: { full: "पूरी पोस्ट देखें", posts: "पोस्ट", prev: "पिछली पोस्ट", next: "अगली पोस्ट" },
+  mr: { full: "संपूर्ण पोस्ट पहा", posts: "पोस्ट", prev: "मागील पोस्ट", next: "पुढील पोस्ट" },
+} as const;
+
 export function PostShowcase({ language }: { language: Lang }) {
   const [active, setActive] = useState(0);
   const total = fbPosts.length;
@@ -44,6 +50,7 @@ export function PostShowcase({ language }: { language: Lang }) {
             <article
               key={post.id}
               className={`pw-card pw-n${shots.length} ${isActive ? "is-active" : ""}`}
+              data-post-id={post.id}
               style={{ ["--accent" as string]: post.accent }}
               aria-hidden={!isActive}
             >
@@ -63,7 +70,7 @@ export function PostShowcase({ language }: { language: Lang }) {
                 <p className="pw-body"><span>{post.body[language]}</span></p>
                 <div className="pw-tags">{post.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
                 <a className="pw-cta" href="https://www.facebook.com/omprakashrajenimbalkar" target="_blank" rel="noopener noreferrer">
-                  <span>{language === "mr" ? "संपूर्ण पोस्ट पहा" : "पूरी पोस्ट देखें"}</span><ArrowUpRight aria-hidden="true" />
+                  <span>{ui[language].full}</span><ArrowUpRight aria-hidden="true" />
                 </a>
               </div>
             </article>
@@ -72,7 +79,7 @@ export function PostShowcase({ language }: { language: Lang }) {
       </div>
 
       <div className="pw-nav">
-        <div className="pw-index" role="tablist" aria-label={language === "mr" ? "पोस्ट" : "पोस्ट"}>
+        <div className="pw-index" role="tablist" aria-label={ui[language].posts}>
           {fbPosts.map((post, index) => (
             <button key={post.id} type="button" role="tab" aria-selected={index === active} aria-label={post.title[language]} className={index === active ? "is-active" : ""} onClick={() => setActive(index)}>
               <b>0{index + 1}</b><i><em /></i>
@@ -80,8 +87,8 @@ export function PostShowcase({ language }: { language: Lang }) {
           ))}
         </div>
         <div className="pw-arrows">
-          <button type="button" aria-label={language === "mr" ? "मागील पोस्ट" : "पिछली पोस्ट"} onClick={() => go(-1)}><ArrowLeft /></button>
-          <button type="button" aria-label={language === "mr" ? "पुढील पोस्ट" : "अगली पोस्ट"} onClick={() => go(1)}><ArrowRight /></button>
+          <button type="button" aria-label={ui[language].prev} onClick={() => go(-1)}><ArrowLeft /></button>
+          <button type="button" aria-label={ui[language].next} onClick={() => go(1)}><ArrowRight /></button>
         </div>
       </div>
     </div>

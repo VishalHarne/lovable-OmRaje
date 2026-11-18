@@ -7,11 +7,10 @@ import p22 from "@/assets/om-raje/posts/fb-p2-2.jpg";
 import p23 from "@/assets/om-raje/posts/fb-p2-3.jpg";
 import p31 from "@/assets/om-raje/posts/fb-p3-1.jpg";
 import p32 from "@/assets/om-raje/posts/fb-p3-2.jpg";
-import p41 from "@/assets/om-raje/posts/fb-p4-1.jpg";
 import p42 from "@/assets/om-raje/posts/fb-p4-2.jpg";
 import p43 from "@/assets/om-raje/posts/fb-p4-3.jpg";
 
-export type Lang = "hi" | "mr";
+export type Lang = "en" | "hi" | "mr";
 type Bi = Record<Lang, string>;
 
 export type FbPost = {
@@ -29,10 +28,11 @@ export const fbPosts: FbPost[] = [
   {
     id: "shetkari-samvad",
     photos: [p11, p12, p13, p14],
-    tag: { hi: "किसान", mr: "शेतकरी" },
-    place: { hi: "जलकोट, धाराशिव", mr: "जळकोट, धाराशिव" },
-    title: { hi: "किसान संवाद: सूखे से प्रभावित किसानों की बात", mr: "शेतकरी संवाद: दुष्काळग्रस्तांशी थेट संवाद" },
+    tag: { en: "Farmers", hi: "किसान", mr: "शेतकरी" },
+    place: { en: "Jalkot, Dharashiv", hi: "जलकोट, धाराशिव", mr: "जळकोट, धाराशिव" },
+    title: { en: "Farmers' dialogue: a direct conversation with drought-hit farmers", hi: "किसान संवाद: सूखे से प्रभावित किसानों की बात", mr: "शेतकरी संवाद: दुष्काळग्रस्तांशी थेट संवाद" },
     body: {
+      en: "A direct dialogue with farmers from Jalkot and nearby villages on drought, the challenges of farming and their demands. A pledge to carry every problem to the administration and follow it up until it is resolved.",
       hi: "जलकोट और आसपास के गाँवों के किसानों से सूखे, खेती की चुनौतियों और उनकी माँगों पर सीधा संवाद हुआ। उनकी हर समस्या प्रशासन तक पहुँचाने और समाधान होने तक लगातार उसका अनुसरण करने का संकल्प लिया।",
       mr: "जळकोट व परिसरातील दुष्काळग्रस्त शेतकऱ्यांच्या समस्या, अडीअडचणी आणि अपेक्षा जाणून घेण्यासाठी ‘शेतकरी संवाद कार्यक्रम’ पार पडला. शेतकऱ्यांच्या प्रश्नांना वाचा फोडून ते शासन-प्रशासनापर्यंत पोहोचवण्याचा आणि सातत्याने पाठपुरावा करण्याचा निर्धार.",
     },
@@ -42,10 +42,11 @@ export const fbPosts: FbPost[] = [
   {
     id: "janata-darbar",
     photos: [p21, p22, p23],
-    tag: { hi: "जनता दरबार", mr: "जनता दरबार" },
-    place: { hi: "जनसंपर्क कार्यालय, धाराशिव", mr: "जनसंपर्क कार्यालय, धाराशिव" },
-    title: { hi: "आपकी समस्या मेरी व्यक्तिगत ज़िम्मेदारी है", mr: "जनतेचे प्रश्न म्हणजे माझी वैयक्तिक जबाबदारी!" },
+    tag: { en: "Janata Darbar", hi: "जनता दरबार", mr: "जनता दरबार" },
+    place: { en: "Public Relations Office, Dharashiv", hi: "जनसंपर्क कार्यालय, धाराशिव", mr: "जनसंपर्क कार्यालय, धाराशिव" },
+    title: { en: "Your problem is my personal responsibility", hi: "आपकी समस्या मेरी व्यक्तिगत ज़िम्मेदारी है", mr: "जनतेचे प्रश्न म्हणजे माझी वैयक्तिक जबाबदारी!" },
     body: {
+      en: "Every complaint was heard with seriousness and sensitivity, the concerned departments were contacted immediately and many issues were resolved on the spot. The aim of the Janata Darbar is to find a way out of problems and stand up for citizens' rights.",
       hi: "हर शिकायत को गंभीरता और संवेदनशीलता से सुना, संबंधित विभागों से तुरंत संपर्क किया और कई समस्याओं का मौके पर ही समाधान किया। जनता दरबार का उद्देश्य समस्याओं का रास्ता निकालना और नागरिकों के अधिकारों के लिए खड़ा होना है।",
       mr: "आलेल्या प्रत्येक तक्रारीकडे गांभीर्याने आणि संवेदनशीलतेने पाहिलं. संबंधित विभागांशी त्वरित संपर्क साधत अनेक समस्यांवर जागेवरच तोडगा काढला. आपल्या प्रेमाला, विश्वासाला आणि पाठिंब्याला खंबीरपणे न्याय देईन हेच माझं वचन!",
     },
@@ -55,10 +56,11 @@ export const fbPosts: FbPost[] = [
   {
     id: "dasara-melava",
     photos: [p31, p32],
-    tag: { hi: "शिवसेना", mr: "शिवसेना" },
-    place: { hi: "नेस्को केंद्र, गोरेगाँव, मुंबई", mr: "नेस्को सेंटर, गोरेगाव, मुंबई" },
-    title: { hi: "शिवसेना का हीरक जयंती दशहरा सम्मेलन", mr: "शिवसेनेचा हिरक महोत्सवी दसरा मेळावा" },
+    tag: { en: "Shiv Sena", hi: "शिवसेना", mr: "शिवसेना" },
+    place: { en: "NESCO Centre, Goregaon, Mumbai", hi: "नेस्को केंद्र, गोरेगाँव, मुंबई", mr: "नेस्को सेंटर, गोरेगाव, मुंबई" },
+    title: { en: "Shiv Sena's diamond jubilee Dussehra rally", hi: "शिवसेना का हीरक जयंती दशहरा सम्मेलन", mr: "शिवसेनेचा हिरक महोत्सवी दसरा मेळावा" },
     body: {
+      en: "On the auspicious occasion of Vijayadashami, Deputy Chief Minister Eknath Shinde addressed the rally. He said every Shiv Sainik would carry the saffron flag on his shoulder to the farmers' fields and stand with farmers till the last breath.",
       hi: "विजयादशमी के शुभ अवसर पर उपमुख्यमंत्री एकनाथ शिंदे ने सम्मेलन को संबोधित किया। उन्होंने कहा कि हर शिवसैनिक कंधे पर भगवा ध्वज लेकर किसानों के खेतों तक जाएगा और अंतिम साँस तक किसानों के साथ खड़ा रहेगा।",
       mr: "विजयादशमीच्या शुभदिनी उपमुख्यमंत्री एकनाथजी शिंदे यांनी संबोधित केले — भगवा खांद्यावर घेऊन प्रत्येक शिवसैनिक शेतकऱ्यांच्या बांधावर जाईल. ‘आम्ही भाषण देणारे नाही, तर शेतकऱ्यांची चूल पेटवणारे आहोत.’",
     },
@@ -67,11 +69,12 @@ export const fbPosts: FbPost[] = [
   },
   {
     id: "hospital-inauguration",
-    photos: [p41, p42, p43],
-    tag: { hi: "स्वास्थ्य सेवा", mr: "आरोग्य" },
-    place: { hi: "धाराशिव", mr: "धाराशिव" },
-    title: { hi: "देशमुख मल्टीस्पेशलिटी अस्पताल और ट्रॉमा केयर केंद्र का उद्घाटन", mr: "देशमुख मल्टिस्पेशालिटी हॉस्पिटल व ट्रॉमा केअर सेंटरचे उद्घाटन" },
+    photos: [p42, p43],
+    tag: { en: "Healthcare", hi: "स्वास्थ्य सेवा", mr: "आरोग्य" },
+    place: { en: "Dharashiv", hi: "धाराशिव", mr: "धाराशिव" },
+    title: { en: "Inauguration of Deshmukh Multispeciality Hospital and Trauma Care Centre", hi: "देशमुख मल्टीस्पेशलिटी अस्पताल और ट्रॉमा केयर केंद्र का उद्घाटन", mr: "देशमुख मल्टिस्पेशालिटी हॉस्पिटल व ट्रॉमा केअर सेंटरचे उद्घाटन" },
     body: {
+      en: "Best wishes to the directors, doctors and the entire team on the grand inauguration. Bringing modern medical facilities, quality healthcare and emergency treatment under one roof is a commendable initiative for the people of Dharashiv.",
       hi: "भव्य उद्घाटन के अवसर पर संचालकों, डॉक्टरों और पूरी टीम को शुभकामनाएँ। आधुनिक चिकित्सा सुविधाएँ, गुणवत्तापूर्ण स्वास्थ्य सेवा और आपातकालीन उपचार एक ही छत के नीचे उपलब्ध कराने की यह धाराशिव के लोगों के लिए सराहनीय पहल है।",
       mr: "धाराशिव शहरासह परिसरातील नागरिकांना आधुनिक वैद्यकीय सुविधा, दर्जेदार आरोग्यसेवा आणि आपत्कालीन उपचार एकाच छताखाली उपलब्ध व्हावेत, या उद्देशाने सुरू झालेला उपक्रम निश्चितच कौतुकास्पद आहे.",
     },
