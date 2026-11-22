@@ -12,7 +12,7 @@ const successResponse = () =>
   ({
     ok: true,
     status: 200,
-    json: async () => ({ id: "submission-id", status: "sent" }),
+    json: async () => ({ id: "submission-id", status: "submitted" }),
   }) as Response;
 
 describe("submission API", () => {
@@ -22,6 +22,8 @@ describe("submission API", () => {
 
   afterEach(() => {
     vi.unstubAllGlobals();
+    vi.unstubAllEnvs();
+    vi.resetModules();
   });
 
   it("posts grievance JSON with the fresh Turnstile token", async () => {
@@ -36,11 +38,17 @@ describe("submission API", () => {
     await submitGrievance(payload, "turnstile-token");
 
     const [url, options] = vi.mocked(fetch).mock.calls[0] ?? [];
-    expect(url).toBe("https://omraje-email-backend.onrender.com/submitgrievances");
+    expect(url).toBe("https://omraje-email-backend.onrender.com/api/grievances");
     expect(options?.method).toBe("POST");
     expect(new Headers(options?.headers).get("Content-Type")).toBe("application/json");
     expect(new Headers(options?.headers).get("X-Turnstile-Token")).toBe("turnstile-token");
-    expect(options?.body).toBe(JSON.stringify(payload));
+    const { contact, ...rest } = payload;
+    expect(JSON.parse(options?.body as string)).toEqual({
+      ...rest,
+      contactType: "email",
+      contactValue: contact,
+      consentTextVersion: "v1",
+    });
   });
 
   it("posts resume data and an optional file without setting multipart Content-Type", async () => {
@@ -57,7 +65,7 @@ describe("submission API", () => {
     await submitResume(payload, "turnstile-token", file);
 
     const [url, options] = vi.mocked(fetch).mock.calls[0] ?? [];
-    expect(url).toBe("https://omraje-email-backend.onrender.com/submitResume");
+    expect(url).toBe("https://omraje-email-backend.onrender.com/api/applications");
     expect(new Headers(options?.headers).get("X-Turnstile-Token")).toBe("turnstile-token");
     expect(new Headers(options?.headers).has("Content-Type")).toBe(false);
     expect(options?.body).toBeInstanceOf(FormData);
@@ -88,4 +96,44 @@ describe("submission API", () => {
       ),
     ).rejects.toBeInstanceOf(SubmissionApiError);
   });
+
+  it("uses the configured HTTPS backend for submissions", async () => {
+    vi.stubEnv("VITE_API_BASE_URL", "https://api.example.com");
+    const api = await import("./backend-api");
+
+    await api.submitGrievance(
+      {
+        name: "Example",
+        contact: "example@example.com",
+        topic: "other",
+        message: "Help",
+        consent: true,
+      },
+      "turnstile-token",
+    );
+
+    expect(vi.mocked(fetch).mock.calls[0]?.[0]).toBe("https://api.example.com/api/grievances");
+  });
+
+  it.each(["http://localhost:8081", "https://localhost", "https://127.0.0.1", "https://[::1]"])(
+    "rejects a local backend URL: %s",
+    async (url) => {
+      vi.stubEnv("VITE_API_BASE_URL", url);
+      const api = await import("./backend-api");
+
+      await expect(
+        api.submitGrievance(
+          {
+            name: "Example",
+            contact: "example@example.com",
+            topic: "other",
+            message: "Help",
+            consent: true,
+          },
+          "turnstile-token",
+        ),
+      ).rejects.toThrow("VITE_API_BASE_URL");
+      expect(fetch).not.toHaveBeenCalled();
+    },
+  );
 });

@@ -1,5 +1,6 @@
 import { readFile, writeFile } from "node:fs/promises";
 import { resolve } from "node:path";
+import { loadEnv } from "vite";
 
 const htmlFiles = [
   resolve(".output/public/index.html"),
@@ -7,7 +8,8 @@ const htmlFiles = [
 ];
 
 const apiBaseUrl =
-  process.env.VITE_API_BASE_URL?.trim() || "https://omraje-email-backend.onrender.com";
+  loadEnv("production", process.cwd(), "VITE_").VITE_API_BASE_URL?.trim() ||
+  "https://omraje-email-backend.onrender.com";
 const apiUrl = new URL(apiBaseUrl);
 if (apiUrl.protocol !== "https:") {
   throw new Error("VITE_API_BASE_URL must use HTTPS.");

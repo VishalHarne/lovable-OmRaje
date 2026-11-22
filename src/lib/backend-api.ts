@@ -31,7 +31,7 @@ export interface GrievancePayload {
 
 export interface SubmissionResponse {
   id: string;
-  status: "sent";
+  status: "received" | "submitted";
 }
 
 export class SubmissionApiError extends Error {
@@ -52,6 +52,14 @@ function getApiUrl(path: string) {
   if (baseUrl.protocol !== "https:") {
     throw new Error("VITE_API_BASE_URL must use HTTPS.");
   }
+  if (
+    baseUrl.hostname === "localhost" ||
+    baseUrl.hostname.endsWith(".localhost") ||
+    baseUrl.hostname.startsWith("127.") ||
+    baseUrl.hostname === "[::1]"
+  ) {
+    throw new Error("VITE_API_BASE_URL must not point to localhost.");
+  }
 
   return new URL(path, `${baseUrl.toString().replace(/\/+$/, "")}/`).toString();
 }
@@ -63,7 +71,7 @@ function isSubmissionResponse(value: unknown): value is SubmissionResponse {
     "id" in value &&
     typeof value.id === "string" &&
     "status" in value &&
-    value.status === "sent"
+    (value.status === "received" || value.status === "submitted")
   );
 }
 
@@ -91,13 +99,29 @@ async function submit(path: string, token: string, body: BodyInit, contentType?:
   return result;
 }
 
-export const submitGrievance = (payload: GrievancePayload, token: string) =>
-  submit("/submitgrievances", token, JSON.stringify(payload), "application/json");
+const CONSENT_TEXT_VERSION = import.meta.env["VITE_CONSENT_TEXT_VERSION"]?.trim() || "v1";
+
+export const submitGrievance = (payload: GrievancePayload, token: string) => {
+  const { contact, ...rest } = payload;
+  const contactValue = contact.trim();
+  const body = {
+    ...rest,
+    contactType: contactValue.includes("@") ? "email" : "phone",
+    contactValue,
+    consentTextVersion: CONSENT_TEXT_VERSION,
+  };
+  return submit("/api/grievances", token, JSON.stringify(body), "application/json");
+};
 
 export const submitResume = (payload: CandidatePayload, token: string, file?: File) => {
   const body = new FormData();
-  body.append("data", new Blob([JSON.stringify(payload)], { type: "application/json" }));
+  body.append(
+    "data",
+    new Blob([JSON.stringify({ ...payload, consentTextVersion: CONSENT_TEXT_VERSION })], {
+      type: "application/json",
+    }),
+  );
   if (file) body.append("file", file);
 
-  return submit("/submitResume", token, body);
+  return submit("/api/applications", token, body);
 };
