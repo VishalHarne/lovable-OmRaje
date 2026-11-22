@@ -142,7 +142,7 @@ const content = {
     grievanceTitle: "Tell us your concern",
     grievanceSubtitle: "Describe what you need help with.",
     concernName: "Your name",
-    concernContact: "Phone or email",
+    concernPhoneHint: "Enter a 10-digit Indian number or an international number with country code.",
     topic: "What is the concern about?",
     topicPlaceholder: "Select a topic",
     topics: ["Roads & infrastructure", "Water & agriculture", "Public services", "Employment", "Other"],
@@ -156,6 +156,10 @@ const content = {
     whatsapp: "WhatsApp",
     whatsappHint: "Join our WhatsApp channel",
     instagram: "Find on Instagram",
+    socialOverline: "06 / Stay connected",
+    socialTitle: "Connect with us.",
+    socialIntro: "Follow our updates and stay connected with the community.",
+    socialLink: "Find us on social media",
     socialNote:
       "These links open the respective social media pages or channel.",
     footerLine: "In service. Together. Towards progress.",
@@ -242,7 +246,7 @@ const content = {
     grievanceTitle: "अपनी समस्या बताएँ",
     grievanceSubtitle: "बताएँ कि आपको किस मदद की ज़रूरत है।",
     concernName: "आपका नाम",
-    concernContact: "फ़ोन या ईमेल",
+    concernPhoneHint: "10 अंकों का भारतीय नंबर या देश कोड के साथ अंतरराष्ट्रीय नंबर दर्ज करें।",
     topic: "समस्या किस बारे में है?",
     topicPlaceholder: "विषय चुनें",
     topics: ["सड़कें और बुनियादी सुविधाएँ", "पानी और कृषि", "जनसेवाएँ", "रोज़गार", "अन्य"],
@@ -256,6 +260,10 @@ const content = {
     whatsapp: "व्हाट्सऐप",
     whatsappHint: "हमारे व्हाट्सऐप चैनल से जुड़ें",
     instagram: "इंस्टाग्राम पर खोजें",
+    socialOverline: "०६ / जुड़े रहें",
+    socialTitle: "हमसे जुड़ें।",
+    socialIntro: "हमारी जानकारी पाएँ और समुदाय से जुड़े रहें।",
+    socialLink: "सोशल मीडिया पर हमसे जुड़ें",
     socialNote:
       "ये लिंक संबंधित सोशल मीडिया पेज या चैनल खोलते हैं।",
     footerLine: "सेवा में। साथ में। प्रगति की ओर।",
@@ -342,7 +350,7 @@ const content = {
     grievanceTitle: "तुमची अडचण सांगा",
     grievanceSubtitle: "कशाबाबत मदत हवी आहे ते लिहा.",
     concernName: "तुमचे नाव",
-    concernContact: "फोन किंवा ई-मेल",
+    concernPhoneHint: "१० अंकी भारतीय क्रमांक किंवा देश कोडसह आंतरराष्ट्रीय क्रमांक लिहा.",
     topic: "अडचणीचा विषय",
     topicPlaceholder: "विषय निवडा",
     topics: ["रस्ते व पायाभूत सुविधा", "पाणी व शेती", "सार्वजनिक सेवा", "रोजगार", "इतर"],
@@ -356,6 +364,10 @@ const content = {
     whatsapp: "व्हॉट्सॲप",
     whatsappHint: "आमच्या व्हॉट्सॲप चॅनेलला जॉइन करा",
     instagram: "इन्स्टाग्रामवर शोधा",
+    socialOverline: "०६ / जोडलेले राहा",
+    socialTitle: "आमच्याशी जोडलेले राहा.",
+    socialIntro: "आमच्या घडामोडी जाणून घ्या आणि समुदायाशी जोडलेले राहा.",
+    socialLink: "समाजमाध्यमांवर आमच्याशी जोडा",
     socialNote:
       "या लिंक्स संबंधित समाजमाध्यम पृष्ठे किंवा चॅनेल उघडतात.",
     footerLine: "सेवेत. सोबतीने. प्रगतीकडे.",
@@ -513,7 +525,8 @@ function HomePage() {
         kind,
         payload: {
           name: String(data.get("concern-name") ?? ""),
-          contact: String(data.get("concern-contact") ?? ""),
+          phone: String(data.get("concern-phone") ?? ""),
+          email: String(data.get("concern-email") ?? ""),
           topic,
           message: String(data.get("message") ?? ""),
           consent: data.get("consent") === "on",
@@ -796,19 +809,11 @@ function HomePage() {
 
       <section className="contact-section content-section" id="contact">
         <SectionMarker number={t.contactOverline} />
-        <div className="contact-intro"><h2>{t.contactTitle}</h2><p>{t.contactBody}</p></div>
         <div className="contact-grid">
-          <div className="social-list">
-            <a href="https://www.facebook.com/omprakashrajenimbalkar" target="_blank" rel="noopener noreferrer" className="social-link">
-              <span className="social-badge">f</span><span><strong>{t.facebook}</strong><small>{t.facebookHint}</small></span><ArrowUpRight aria-hidden="true" />
-            </a>
-            <a href="https://whatsapp.com/channel/0029Va5C0Iv5a2437j5qgV3X" target="_blank" rel="noreferrer" className="social-link">
-              <span className="social-badge social-whatsapp"><MessageCircle aria-hidden="true" /></span><span><strong>{t.whatsapp}</strong><small>{t.whatsappHint}</small></span><ArrowUpRight aria-hidden="true" />
-            </a>
-            <a href="https://www.instagram.com/mpomrajenimbalkar/" target="_blank" rel="noopener noreferrer" className="social-link">
-              <span className="social-badge social-instagram">◎</span><span><strong>{t.instagram}</strong><small>{tr("Om Raje Nimbalkar", "ओम राजे निंबाळकर", "ओम राजे निंबालकर")}</small></span><ArrowUpRight aria-hidden="true" />
-            </a>
-            <p className="social-disclaimer">{t.socialNote}</p>
+          <div className="contact-intro">
+            <h2>{t.contactTitle}</h2>
+            <p>{t.contactBody}</p>
+            <a className="section-link" href="#social">{t.socialLink}<ArrowRight aria-hidden="true" /></a>
           </div>
           <div className="form-panel grievance-panel">
             <FormHeading eyebrow={tr("Citizen help", "नागरिक मदत", "नागरिक सहायता")} title={t.grievanceTitle} subtitle={t.grievanceSubtitle} />
@@ -823,9 +828,11 @@ function HomePage() {
             >
               <label>{t.concernName}<input name="concern-name" autoComplete="name" required placeholder={t.concernName} /></label>
               <div className="form-row">
-                <label>{t.concernContact}<input name="concern-contact" required placeholder={t.concernContact} /></label>
-                <label>{t.topic}<select name="topic" required defaultValue=""><option value="" disabled>{t.topicPlaceholder}</option>{t.topics.map((topic, index) => <option key={grievanceTopics[index]} value={grievanceTopics[index]}>{topic}</option>)}</select></label>
+                <label>{t.phone}<input name="concern-phone" autoComplete="tel" type="tel" required pattern={"[0-9]{10}|\\+[0-9]{8,15}"} maxLength={16} aria-describedby="grievance-phone-hint" placeholder="+91" /></label>
+                <label>{t.email}<input name="concern-email" autoComplete="email" type="email" maxLength={254} placeholder="name@email.com" /></label>
               </div>
+              <p className="form-note" id="grievance-phone-hint">{t.concernPhoneHint}</p>
+              <label>{t.topic}<select name="topic" required defaultValue=""><option value="" disabled>{t.topicPlaceholder}</option>{t.topics.map((topic, index) => <option key={grievanceTopics[index]} value={grievanceTopics[index]}>{topic}</option>)}</select></label>
               <label>{t.message}<textarea name="message" required minLength={5} maxLength={2000} placeholder={t.message} /></label>
               <label className="form-consent"><input type="checkbox" name="consent" required /> {t.consent}</label>
               <TurnstileWidget ref={messageTurnstileRef} onStatusChange={onMessageTurnstileStatusChange} />
@@ -846,6 +853,23 @@ function HomePage() {
             </form>
           </div>
         </div>
+      </section>
+
+      <section className="social-section content-section" id="social">
+        <SectionMarker number={t.socialOverline} />
+        <div className="social-heading"><h2>{t.socialTitle}</h2><p>{t.socialIntro}</p></div>
+        <div className="social-list">
+          <a href="https://www.facebook.com/omprakashrajenimbalkar" target="_blank" rel="noopener noreferrer" className="social-link">
+            <span className="social-badge">f</span><span><strong>{t.facebook}</strong><small>{t.facebookHint}</small></span><ArrowUpRight aria-hidden="true" />
+          </a>
+          <a href="https://whatsapp.com/channel/0029Va5C0Iv5a2437j5qgV3X" target="_blank" rel="noreferrer" className="social-link">
+            <span className="social-badge social-whatsapp"><MessageCircle aria-hidden="true" /></span><span><strong>{t.whatsapp}</strong><small>{t.whatsappHint}</small></span><ArrowUpRight aria-hidden="true" />
+          </a>
+          <a href="https://www.instagram.com/mpomrajenimbalkar/" target="_blank" rel="noopener noreferrer" className="social-link">
+            <span className="social-badge social-instagram">◎</span><span><strong>{t.instagram}</strong><small>{tr("Om Raje Nimbalkar", "ओम राजे निंबाळकर", "ओम राजे निंबालकर")}</small></span><ArrowUpRight aria-hidden="true" />
+          </a>
+        </div>
+        <p className="social-disclaimer">{t.socialNote}</p>
       </section>
 
       <footer className="site-footer">

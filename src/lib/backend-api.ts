@@ -23,7 +23,8 @@ export interface CandidatePayload {
 
 export interface GrievancePayload {
   name: string;
-  contact: string;
+  phone: string;
+  email: string;
   topic: (typeof grievanceTopics)[number];
   message: string;
   consent: boolean;
@@ -102,12 +103,10 @@ async function submit(path: string, token: string, body: BodyInit, contentType?:
 const CONSENT_TEXT_VERSION = import.meta.env["VITE_CONSENT_TEXT_VERSION"]?.trim() || "v1";
 
 export const submitGrievance = (payload: GrievancePayload, token: string) => {
-  const { contact, ...rest } = payload;
-  const contactValue = contact.trim();
   const body = {
-    ...rest,
-    contactType: contactValue.includes("@") ? "email" : "phone",
-    contactValue,
+    ...payload,
+    phone: payload.phone.trim(),
+    email: payload.email.trim(),
     consentTextVersion: CONSENT_TEXT_VERSION,
   };
   return submit("/api/grievances", token, JSON.stringify(body), "application/json");

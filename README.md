@@ -42,6 +42,11 @@ submits a JSON `data` part and an optional PDF, DOC or DOCX attachment to
 a fresh Cloudflare Turnstile token in the `X-Turnstile-Token` header.
 These endpoints require the database-submission version of the backend to be
 deployed and configured.
+Grievances require a mobile number and accept an optional email. Apply the
+backend's grievance email migration and deploy the updated backend before
+deploying this frontend. The updated backend requires the new request format,
+so older frontend builds cannot submit grievances after the backend update;
+coordinate the deployments to minimize interruption.
 
 Configure these frontend environment variables in the Render Static Site's
 build settings:

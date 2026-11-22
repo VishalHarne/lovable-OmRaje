@@ -84,6 +84,7 @@ CREATE TABLE IF NOT EXISTS public.grievance_submissions (
   submitted_name text NOT NULL,
   contact_type public.grievance_contact_type NOT NULL,
   contact_value text NOT NULL,
+  submitted_email text,
   topic public.grievance_topic NOT NULL,
   message text NOT NULL,
   status public.grievance_status NOT NULL DEFAULT 'received',
@@ -94,6 +95,7 @@ CREATE TABLE IF NOT EXISTS public.grievance_submissions (
   updated_at timestamptz NOT NULL DEFAULT now(),
   CONSTRAINT grievance_name_not_blank CHECK (btrim(submitted_name) <> ''),
   CONSTRAINT grievance_contact_not_blank CHECK (btrim(contact_value) <> ''),
+  CONSTRAINT grievance_email_not_blank CHECK (submitted_email IS NULL OR btrim(submitted_email) <> ''),
   CONSTRAINT grievance_message_length CHECK (
     char_length(btrim(message)) BETWEEN 5 AND 2000
   ),

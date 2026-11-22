@@ -29,7 +29,8 @@ describe("submission API", () => {
   it("posts grievance JSON with the fresh Turnstile token", async () => {
     const payload: GrievancePayload = {
       name: "Example",
-      contact: "example@example.com",
+      phone: " 9876543210 ",
+      email: " example@example.com ",
       topic: "roads_infrastructure",
       message: "Please repair the road",
       consent: true,
@@ -42,13 +43,29 @@ describe("submission API", () => {
     expect(options?.method).toBe("POST");
     expect(new Headers(options?.headers).get("Content-Type")).toBe("application/json");
     expect(new Headers(options?.headers).get("X-Turnstile-Token")).toBe("turnstile-token");
-    const { contact, ...rest } = payload;
     expect(JSON.parse(options?.body as string)).toEqual({
-      ...rest,
-      contactType: "email",
-      contactValue: contact,
+      ...payload,
+      phone: "9876543210",
+      email: "example@example.com",
       consentTextVersion: "v1",
     });
+  });
+
+  it("submits a grievance without an email address", async () => {
+    await submitGrievance(
+      {
+        name: "Example",
+        phone: "9876543210",
+        email: "",
+        topic: "other",
+        message: "Help!",
+        consent: true,
+      },
+      "turnstile-token",
+    );
+
+    const body = vi.mocked(fetch).mock.calls[0]?.[1]?.body;
+    expect(JSON.parse(body as string)).toMatchObject({ phone: "9876543210", email: "" });
   });
 
   it("posts resume data and an optional file without setting multipart Content-Type", async () => {
@@ -87,7 +104,8 @@ describe("submission API", () => {
       submitGrievance(
         {
           name: "Example",
-          contact: "example@example.com",
+          phone: "9876543210",
+          email: "",
           topic: "roads_infrastructure",
           message: "Please repair the road",
           consent: true,
@@ -104,7 +122,8 @@ describe("submission API", () => {
     await api.submitGrievance(
       {
         name: "Example",
-        contact: "example@example.com",
+        phone: "9876543210",
+        email: "",
         topic: "other",
         message: "Help",
         consent: true,
@@ -125,7 +144,8 @@ describe("submission API", () => {
         api.submitGrievance(
           {
             name: "Example",
-            contact: "example@example.com",
+            phone: "9876543210",
+            email: "",
             topic: "other",
             message: "Help",
             consent: true,
