@@ -20,7 +20,6 @@ import {
   ArrowDownRight,
   ArrowRight,
   ArrowUpRight,
-  Check,
   HeartHandshake,
   LoaderCircle,
   Menu,
@@ -670,15 +669,19 @@ function HomePage() {
           </div>
         </div>
         <div className="timeline" id="timeline">
-          <div className="timeline-label"><h3>{t.timeline}</h3><p>{t.timelineNote}</p></div>
-          <div className="timeline-list">
-            {t.years.map(([year, detail], index) => (
-              <article className="timeline-item" key={year}>
-                <span className="timeline-marker">{index === 2 ? <Check aria-hidden="true" /> : null}</span>
-                <strong>{year}</strong><p>{detail}</p>
-              </article>
-            ))}
+          <div className="timeline-label">
+            <h3>{t.timeline}</h3>
+            <p>{t.timelineNote}</p>
           </div>
+          <ol className="timeline-list">
+            {t.years.map(([year, detail]) => (
+              <li className="timeline-item" key={year}>
+                <span className="timeline-marker" aria-hidden="true" />
+                <strong>{year}</strong>
+                <p>{detail}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
