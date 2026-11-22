@@ -107,7 +107,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "icon", href: `${import.meta.env.BASE_URL}favicon.svg`, type: "image/svg+xml" },
     ],
-    scripts: [{ children: themeBootstrapScript }],
+    scripts: [
+      { children: themeBootstrapScript },
+      { async: true, src: "https://www.googletagmanager.com/gtag/js?id=G-D0SJHKW8YV" },
+      {
+        children: `window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-D0SJHKW8YV');`,
+      },
+    ],
   }),
   shellComponent: RootShell,
   component: RootComponent,

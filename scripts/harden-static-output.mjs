@@ -21,12 +21,12 @@ const contentSecurityPolicy = [
   "object-src 'none'",
   "frame-src https://challenges.cloudflare.com",
   "form-action 'self'",
-  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com",
+  "script-src 'self' 'unsafe-inline' https://challenges.cloudflare.com https://www.googletagmanager.com",
   "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
   "font-src 'self' https://fonts.gstatic.com data:",
   "img-src 'self' https: data: blob:",
   "worker-src 'self' blob:",
-  `connect-src 'self' ${apiUrl.origin} https://challenges.cloudflare.com`,
+  `connect-src 'self' ${apiUrl.origin} https://challenges.cloudflare.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://*.google.com`,
 ].join("; ");
 
 const securityMetadata = [

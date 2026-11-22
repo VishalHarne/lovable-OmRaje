@@ -69,5 +69,12 @@ text version to match an allowed version in the backend.
 
 The API's `received` or `submitted` status confirms backend acceptance, not
 delivery of a confirmation email. The production HTML sets a Content Security
-Policy for the configured backend and Cloudflare Turnstile, plus a strict
-referrer policy.
+Policy for the configured backend, Cloudflare Turnstile, and Google Analytics,
+plus a strict referrer policy.
+
+## Google Analytics
+
+The site loads the Google tag for measurement ID `G-D0SJHKW8YV` on every page.
+After deploying, check the Google Analytics Realtime report for activity.
+To measure client-side navigation, enable page changes based on browser history
+events in the GA4 web stream's enhanced measurement settings.
