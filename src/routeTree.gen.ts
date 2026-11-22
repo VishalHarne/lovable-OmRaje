@@ -10,11 +10,17 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CareersRouteImport } from './routes/careers'
 import { Route as VideosRouteImport } from './routes/videos'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CareersRoute = CareersRouteImport.update({
+  id: '/careers',
+  path: '/careers',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VideosRoute = VideosRouteImport.update({
@@ -25,27 +31,31 @@ const VideosRoute = VideosRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
   '/videos': typeof VideosRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
   '/videos': typeof VideosRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/careers': typeof CareersRoute
   '/videos': typeof VideosRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/videos'
+  fullPaths: '/' | '/careers' | '/videos'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/videos'
-  id: '__root__' | '/' | '/videos'
+  to: '/' | '/careers' | '/videos'
+  id: '__root__' | '/' | '/careers' | '/videos'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  CareersRoute: typeof CareersRoute
   VideosRoute: typeof VideosRoute
 }
 
@@ -56,6 +66,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/careers': {
+      id: '/careers'
+      path: '/careers'
+      fullPath: '/careers'
+      preLoaderRoute: typeof CareersRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/videos': {
@@ -70,6 +87,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  CareersRoute: CareersRoute,
   VideosRoute: VideosRoute,
 }
 export const routeTree = rootRouteImport

@@ -18,4 +18,10 @@ describe("App routing", () => {
 
     expect(matches.at(-1)?.routeId).not.toBe(rootRouteId);
   });
+
+  it("matches the careers page", () => {
+    const router = createRouter({ routeTree, context: { queryClient: new QueryClient() } });
+
+    expect(router.matchRoutes("/careers").at(-1)?.routeId).toBe("/careers");
+  });
 });

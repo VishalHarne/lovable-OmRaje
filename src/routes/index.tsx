@@ -63,7 +63,7 @@ type Language = Lang;
 
 const content = {
   en: {
-    nav: ["About", "Public work", "Initiatives", "Events", "Contact"],
+    nav: ["About", "Public work", "Careers", "Events", "Grievances", "Connect"],
     heroEyebrow: "Your voice. Your constituency.",
     heroTitle: "Many challenges, one answer — Om Raje.",
     heroBody: "Not just words, but action and trust.\nSteps of development moving forward, firmly rooted in the people's trust.",
@@ -167,7 +167,7 @@ const content = {
     top: "Back to top",
   },
   hi: {
-    nav: ["परिचय", "जनकार्य", "पहल", "कार्यक्रम", "संपर्क"],
+    nav: ["परिचय", "जनकार्य", "रोज़गार", "कार्यक्रम", "शिकायतें", "जुड़ें"],
     heroEyebrow: "आपकी आवाज़, आपका क्षेत्र !",
     heroTitle: "मुश्किलें अनेक, समाधान एक – ओम राजे!",
     heroBody: "शब्द नहीं, काम और विश्वास !\nजनता के भरोसे पर मजबूती से आगे बढ़ते विकास के कदम।",
@@ -271,7 +271,7 @@ const content = {
     top: "ऊपर जाएँ",
   },
   mr: {
-    nav: ["परिचय", "लोककार्य", "उपक्रम", "कार्यक्रम", "संपर्क"],
+    nav: ["परिचय", "लोककार्य", "रोजगार", "कार्यक्रम", "तक्रारी", "जोडलेले राहा"],
     heroEyebrow: "तुमचा आवाज. तुमचा मतदारसंघ.",
     heroTitle: "अडचणी अनेक, उपाय एक - ओम राजे.",
     heroBody: "शब्द नाही, कृती आणि विश्वास.\nजनतेच्या विश्वासावर खंबीरपणे उभी राहिलेली विकासाची पावले.",
@@ -376,7 +376,7 @@ const content = {
   },
 } as const;
 
-const navigationIds = ["about", "work", "initiatives", "events", "contact"];
+const navigationIds = ["about", "work", "careers", "events", "contact", "social"];
 const showCalendarSection = false;
 const coverSlides = [heroBannerTitle, heroBanner1, heroBanner2, heroBanner3, heroBanner4];
 const fieldWall = [
@@ -412,7 +412,7 @@ export const Route = createFileRoute("/")({
   component: HomePage,
 });
 
-function HomePage() {
+export function HomePage() {
   const [language, setLanguage] = useState<Language>("mr");
   const [slide, setSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -580,13 +580,22 @@ function HomePage() {
           <BrandWordmark language={language} />
         </a>
         <nav id="main-navigation" className={menuOpen ? "site-nav is-open" : "site-nav"} aria-label={tr("Main navigation", "मुख्य नेव्हिगेशन", "मुख्य नेविगेशन")}>
-          {t.nav.map((item, index) =>
-            navigationIds[index] === "events" && !showCalendarSection ? null : (
-              <a key={navigationIds[index]} href={`#${navigationIds[index]}`} onClick={closeMenu}>
+          {t.nav.map((item, index) => {
+            const sectionId = navigationIds[index];
+            if (sectionId === "events" && !showCalendarSection) return null;
+            if (sectionId === "careers") {
+              return (
+                <a key={sectionId} href="#careers" onClick={closeMenu}>
+                  {item}
+                </a>
+              );
+            }
+            return (
+              <a key={sectionId} href={`#${sectionId}`} onClick={closeMenu}>
                 {item}
               </a>
-            ),
-          )}
+            );
+          })}
           <Link className="home-video-link" to="/videos" onClick={closeMenu}>          {tr("Videos", "व्हिडिओ", "वीडियो")}</Link>
         </nav>
         <div className="header-tools">
@@ -734,7 +743,7 @@ function HomePage() {
         </div>
       </section>
 
-      <section className="initiative-section content-section" id="initiatives">
+      <section className="initiative-section content-section" id="careers">
         <SectionMarker number={t.initiativeOverline} />
         <div className="initiative-grid">
           <div className="initiative-copy">
