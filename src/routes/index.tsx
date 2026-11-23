@@ -64,7 +64,7 @@ type Language = Lang;
 const content = {
   en: {
     nav: ["About", "Public work", "Careers", "Events", "Grievances", "Connect"],
-    heroTitle: "Many Problems, One Solution — Your Om Raje!",
+    heroTitle: "Many Problems, One Solution — Your OmRaje!",
     heroBody: "The People's Trust, Our Commitment to Development.",
     explore: "Explore the work",
     contact: "Get in touch",
@@ -73,8 +73,7 @@ const content = {
     aboutLead: "Our life, Dharashiv.",
     aboutBody:
       "For me this is not just a slogan; it captures the meaning of my entire politics. Wherever I am today and whatever I am is because of the love and trust of the people of Dharashiv, and I never forget that. That is why I strive to do everything possible for Dharashiv and its people. My bond with Dharashiv is not merely political; it is an affection rooted in its soil and its people.",
-    timeline: "A journey in public service",
-    timelineNote: "Elected service in Maharashtra",
+    timeline: "A Journey of Public Service.",
     years: [
       ["2009", "Elected as a Member of the Maharashtra Legislative Assembly (MLA)"],
       ["2019", "Elected to the 17th Lok Sabha from Dharashiv."],
@@ -165,7 +164,7 @@ const content = {
   },
   hi: {
     nav: ["परिचय", "जनकार्य", "रोज़गार", "कार्यक्रम", "शिकायतें", "कनेक्ट"],
-    heroTitle: "समस्याएँ अनेक, समाधान एक… आपका अपना ओम राजे!",
+    heroTitle: "समस्याएँ अनेक, समाधान एक… आपका अपना ओमराजे!",
     heroBody: "विश्वास जनता का, संकल्प विकास का।",
     explore: "कार्य देखें",
     contact: "संपर्क करें",
@@ -174,8 +173,7 @@ const content = {
     aboutLead: "अपना जीवन, धाराशिव।",
     aboutBody:
       "यह मेरे लिए केवल एक नारा नहीं, बल्कि मेरी राजनीति का सार है। आज मैं जहाँ हूँ और जो कुछ भी हूँ, वह धाराशिव के लोगों के प्रेम और विश्वास के कारण है—इस बात का मुझे हमेशा एहसास रहता है। इसलिए मैं धाराशिव और यहाँ के लोगों के लिए हर संभव प्रयास करता हूँ। धाराशिव से मेरा रिश्ता केवल राजनीति का नहीं, बल्कि यहाँ की मिट्टी और लोगों से आत्मीयता का है।",
-    timeline: "जनसेवा का सफ़र",
-    timelineNote: "महाराष्ट्र में निर्वाचित जनसेवा",
+    timeline: "जनसेवा का सफर",
     years: [
       ["२००९", "महाराष्ट्र विधानसभा विधायक के रूप में निर्वाचित"],
       ["२०१९", "धाराशिव से १७वीं लोकसभा के लिए निर्वाचित।"],
@@ -266,7 +264,7 @@ const content = {
   },
   mr: {
     nav: ["परिचय", "जनसेवा", "रोजगार", "कार्यक्रम", "तक्रारी", "कनेक्ट"],
-    heroTitle: "अडचणी अनेक, उपाय एक… तुमचा ओम राजे!",
+    heroTitle: "अडचणी अनेक, उपाय एक… तुमचा ओमराजे!",
     heroBody: "विश्वास जनतेचा, संकल्प विकासाचा",
     explore: "कार्य जाणून घ्या",
     contact: "संपर्क साधा",
@@ -275,8 +273,7 @@ const content = {
     aboutLead: "आपला जीव, धाराशिव.",
     aboutBody:
       "हे माझ्यासाठी केवळ घोषवाक्य नव्हे तर एकूणच माझ्या राजकारणाचा अर्थ या घोषणेत येतो. जीवनात आज जिथे आहे, जे आहे ते केवळ धाराशिवकरांच्या प्रेमामुळे, विश्र्वासामुळे ही जाणीव कायमच मनात आहे त्यामुळे धाराशिव आणि धाराशिवच्या जनतेसाठी यथाशक्ती शक्य ते करण्याचा माझा प्रयत्न असतो. धाराशिवशी नातं केवळ राजकारणाचं नाही, तर मातीशी आणि माणसांशी जोडलेल्या जिव्हाळ्याचं आहे.",
-    timeline: "लोकसेवेचा प्रवास",
-    timelineNote: "महाराष्ट्रातील निवडून दिलेली सेवा",
+    timeline: "प्रवास जनसेवेचा",
     years: [
       ["२००९", "महाराष्ट्र विधानसभेचे आमदार म्हणून निवड"],
       ["२०१९", "धाराशिव मतदारसंघातून १७व्या लोकसभेवर निवड."],
@@ -578,7 +575,7 @@ export function HomePage() {
         <a
           className="brand brand-wordmark brand-wordmark-mr"
           href="#home"
-          aria-label={tr("Om Raje Nimbalkar, home", "ओम राजे निंबाळकर, मुख्यपृष्ठ", "ओम राजे निंबालकर, मुख्यपृष्ठ")}
+          aria-label={tr("OmRaje Nimbalkar, home", "ओमराजे निंबाळकर, मुख्यपृष्ठ", "ओमराजे निंबालकर, मुख्यपृष्ठ")}
           onClick={closeMenu}
         >
           <BrandWordmark language={language} />
@@ -694,7 +691,6 @@ export function HomePage() {
         <div className="timeline" id="timeline">
           <div className="timeline-label">
             <h3>{t.timeline}</h3>
-            <p>{t.timelineNote}</p>
           </div>
           <ol className="timeline-list">
             {t.years.map(([year, detail]) => (
@@ -907,7 +903,7 @@ export function HomePage() {
         <a
           className="brand brand-wordmark footer-brand brand-wordmark-mr"
           href="#home"
-          aria-label={tr("Om Raje Nimbalkar, home", "ओम राजे निंबाळकर, मुख्यपृष्ठ", "ओम राजे निंबालकर, मुख्यपृष्ठ")}
+          aria-label={tr("OmRaje Nimbalkar, home", "ओमराजे निंबाळकर, मुख्यपृष्ठ", "ओमराजे निंबालकर, मुख्यपृष्ठ")}
         >
           <BrandWordmark language={language} />
         </a>
@@ -924,7 +920,7 @@ function BrandWordmark({ language }: { language: Language }) {
   return (
     <span className="brand-wordmark-content" aria-hidden="true">
       <span className="brand-signature" lang={language}>
-        {language === "en" ? "Om Raje" : "ओम राजे"}
+        {language === "en" ? "OmRaje" : "ओमराजे"}
       </span>
       <span className="brand-nameplate" lang={language}>
         <i />
