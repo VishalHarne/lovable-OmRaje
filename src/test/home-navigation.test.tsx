@@ -15,6 +15,23 @@ vi.mock("@tanstack/react-router", async (importOriginal) => {
 import { HomePage } from "@/routes/index";
 
 describe("Home navigation", () => {
+  it("shows concise social platform labels in each language", () => {
+    render(<HomePage />);
+    const versions = [
+      { language: null, facebook: "फेसबुक", instagram: "इन्स्टाग्राम" },
+      { language: "हिंदी", facebook: "फ़ेसबुक", instagram: "इंस्टाग्राम" },
+      { language: "English", facebook: "Facebook", instagram: "Instagram" },
+    ];
+
+    for (const version of versions) {
+      if (version.language) fireEvent.click(screen.getByRole("button", { name: version.language }));
+      expect(screen.getByText(version.facebook, { selector: "strong" }).closest("a"))
+        .toHaveAttribute("href", "https://www.facebook.com/omprakashrajenimbalkar");
+      expect(screen.getByText(version.instagram, { selector: "strong" }).closest("a"))
+        .toHaveAttribute("href", "https://www.instagram.com/mpomrajenimbalkar/");
+    }
+  });
+
   it("shows the field-wall text as one paragraph in each language", () => {
     const { container } = render(<HomePage />);
     const versions = [
@@ -56,6 +73,7 @@ describe("Home navigation", () => {
       expect(copy).toHaveLength(1);
       expect(copy[0]).toHaveTextContent(version.paragraphs.join(" "));
       expect(container.querySelectorAll(".field-wall-grid figure")).toHaveLength(7);
+      expect(copy[0].closest(".field-wall-card")).toContainElement(container.querySelector(".field-wall-grid"));
     }
   });
 

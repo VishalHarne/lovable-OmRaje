@@ -149,11 +149,11 @@ const content = {
     grievanceDisclaimer: "Your message will be sent securely.",
     grievanceSuccess: "Message submitted successfully",
     grievanceSuccessNote: "Our system has received your message.",
-    facebook: "Find on Facebook",
+    facebook: "Facebook",
     facebookHint: "Search for Om Raje Nimbalkar",
     whatsapp: "WhatsApp",
     whatsappHint: "Join our WhatsApp channel",
-    instagram: "Find on Instagram",
+    instagram: "Instagram",
     socialTitle: "Connect with us.",
     socialIntro: "Follow our updates and stay connected with the community.",
     socialLink: "Find us on social media",
@@ -250,11 +250,11 @@ const content = {
     grievanceDisclaimer: "आपका संदेश सुरक्षित रूप से भेजा जाएगा।",
     grievanceSuccess: "संदेश सफलतापूर्वक सबमिट हुआ",
     grievanceSuccessNote: "हमारे सिस्टम ने आपका संदेश स्वीकार कर लिया है।",
-    facebook: "फ़ेसबुक पर खोजें",
+    facebook: "फ़ेसबुक",
     facebookHint: "ओम राजे निंबालकर खोजें",
     whatsapp: "व्हाट्सऐप",
     whatsappHint: "हमारे व्हाट्सऐप चैनल से जुड़ें",
-    instagram: "इंस्टाग्राम पर खोजें",
+    instagram: "इंस्टाग्राम",
     socialTitle: "हमसे जुड़ें।",
     socialIntro: "हमारी जानकारी पाएँ और समुदाय से जुड़े रहें।",
     socialLink: "सोशल मीडिया पर हमसे जुड़ें",
@@ -351,11 +351,11 @@ const content = {
     grievanceDisclaimer: "तुमचा संदेश सुरक्षितपणे पाठवला जाईल.",
     grievanceSuccess: "संदेश यशस्वीपणे सबमिट झाला",
     grievanceSuccessNote: "आमच्या प्रणालीने तुमचा संदेश स्वीकारला आहे.",
-    facebook: "फेसबुकवर शोधा",
+    facebook: "फेसबुक",
     facebookHint: "ओम राजे निंबाळकर यांचा शोध घ्या",
     whatsapp: "व्हॉट्सॲप",
     whatsappHint: "आमच्या व्हॉट्सॲप चॅनेलला जॉइन करा",
-    instagram: "इन्स्टाग्रामवर शोधा",
+    instagram: "इन्स्टाग्राम",
     socialTitle: "आमच्याशी जोडलेले राहा.",
     socialIntro: "आमच्या घडामोडी जाणून घ्या आणि समुदायाशी जोडलेले राहा.",
     socialLink: "समाजमाध्यमांवर आमच्याशी जोडा",
@@ -718,17 +718,19 @@ export function HomePage() {
       </section>
 
       <section className="field-wall" aria-labelledby="field-wall-title">
-        <div className="field-wall-head">
-          <h2 id="field-wall-title">{t.fieldTitle}</h2>
-          <p className="field-wall-copy">{t.fieldParagraphs.join(" ")}</p>
-        </div>
-        <div className="field-wall-grid">
-          {fieldWall.map((item, index) => (
-            <figure className={`field-tile field-tile-${index + 1}`} key={item.hi}>
-              <img src={item.src} alt={item[language]} loading="lazy" />
-              <figcaption>{item[language]}</figcaption>
-            </figure>
-          ))}
+        <div className="field-wall-card">
+          <div className="field-wall-head">
+            <h2 id="field-wall-title">{t.fieldTitle}</h2>
+            <p className="field-wall-copy">{t.fieldParagraphs.join(" ")}</p>
+          </div>
+          <div className="field-wall-grid">
+            {fieldWall.map((item, index) => (
+              <figure className={`field-tile field-tile-${index + 1}`} key={item.hi}>
+                <img src={item.src} alt={item[language]} loading="lazy" />
+                <figcaption>{item[language]}</figcaption>
+              </figure>
+            ))}
+          </div>
         </div>
       </section>
 
