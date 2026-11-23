@@ -144,6 +144,8 @@
 
 .site { min-height: 100vh; overflow: clip; background: var(--paper); }
 .site-marathi { font-family: "Noto Sans Devanagari", "DM Sans", sans-serif; }
+.landing-cover { position: relative; width: 100%; height: 100vh; height: 100svh; overflow: hidden; background: #171717; }
+.landing-cover-image { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: fill; }
 .site-header { position: relative; z-index: 10; display: flex; height: 76px; align-items: center; justify-content: space-between; padding-inline: var(--page-pad); border-bottom: 1px solid var(--dark-line); color: var(--text-on-dark); background: var(--header-bg); }
 .brand { display: inline-flex; min-width: 184px; flex: 0 0 auto; align-items: center; gap: 10px; }
 .brand-wordmark { width: 190px; min-width: 0; height: 68px; justify-content: center; }
@@ -173,6 +175,7 @@
 .menu-switch { display: none; width: 40px; height: 40px; align-items: center; justify-content: center; border: 1px solid var(--dark-line); color: var(--text-on-dark); background: transparent; cursor: pointer; }
 
 .hero { position: relative; display: flex; min-height: 610px; height: min(67vw, 780px); max-height: 780px; align-items: center; isolation: isolate; overflow: hidden; color: var(--text-on-dark); background: var(--dark); }
+.landing-cover + .site-header + .hero { margin-top: clamp(12px, 1.5vh, 20px); border-top: 1px solid var(--line); }
 .hero::after { position: absolute; z-index: -1; inset: 0; background: linear-gradient(90deg, color-mix(in oklab, var(--scrim) 94%, transparent) 0%, color-mix(in oklab, var(--scrim) 78%, transparent) 34%, color-mix(in oklab, var(--scrim) 30%, transparent) 68%, color-mix(in oklab, var(--scrim) 15%, transparent) 100%), linear-gradient(0deg, color-mix(in oklab, var(--scrim) 40%, transparent), transparent 34%); content: ""; }
 .hero-image { position: absolute; z-index: -2; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 42%; }
 .hero-copy { width: min(710px, 64%); padding: 8px 0 46px var(--page-pad); transform: translateY(-24px); }
@@ -584,8 +587,8 @@
 .field-wall-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 220px; gap: 14px; }
 .field-tile { position: relative; margin: 0; overflow: hidden; border-radius: 18px; }
 .field-tile-1 { grid-row: span 2; } .field-tile-2 { grid-column: span 2; grid-row: span 2; } .field-tile-7 { grid-column: span 2; }
-.field-tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 800ms cubic-bezier(.2,.7,.2,1); }
-.field-tile:hover img { transform: scale(1.07); }
+.field-tile img { width: 100%; height: 100%; object-fit: cover; filter: saturate(1.05) contrast(1.03); transition: transform 800ms cubic-bezier(.2,.7,.2,1), filter 800ms ease; }
+.field-tile:hover img { transform: scale(1.07); filter: saturate(1.12) contrast(1.04); }
 .field-tile::after { content: ""; position: absolute; inset: 0; background: linear-gradient(0deg, color-mix(in oklab, var(--scrim) 85%, transparent), transparent 55%); }
 .field-tile figcaption { position: absolute; z-index: 1; left: 16px; bottom: 14px; right: 16px; font-weight: 700; font-size: 14px; }
 .field-tile figcaption::before { content: ""; display: block; width: 24px; height: 3px; margin-bottom: 8px; border-radius: 3px; background: var(--saffron); }
@@ -995,14 +998,30 @@
 /* Floating home-page header. */
 .site-marathi > section[id] { scroll-margin-top: 24px; }
 .site-header.floating-header {
+  position: fixed;
   top: 12px;
+  right: 0;
+  left: 0;
   width: calc(100% - 2 * clamp(16px, 3vw, 48px));
-  margin: 12px auto;
+  margin: 0 auto;
   padding-inline: clamp(18px, 3vw, 48px);
   border: 1px solid color-mix(in oklab, var(--dark-line) 75%, transparent);
   border-radius: 20px;
   background: color-mix(in oklab, var(--header-bg) 88%, transparent);
   box-shadow: 0 18px 40px rgb(0 0 0 / 0.24), inset 0 1px rgb(255 255 255 / 0.12);
+  transition: opacity 180ms ease, transform 180ms ease, visibility 0s linear 180ms;
+}
+.site-header.floating-header:not(.is-visible) {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-120%);
+}
+.site-header.floating-header.is-visible {
+  visibility: visible;
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 0s;
 }
 .site-header.floating-header::after { right: 20px; left: 20px; height: 1px; background: linear-gradient(90deg, transparent, var(--saffron), var(--lime), transparent); }
 @media (max-width: 760px) {
@@ -1118,4 +1137,5 @@
   .site-header.floating-header .site-nav a::after {
     transition: none;
   }
+  .site-header.floating-header { transition: none; }
 }

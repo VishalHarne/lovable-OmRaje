@@ -37,16 +37,9 @@ import { Button } from "@/components/ui/button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { LanguageSwitch } from "@/components/language-switch";
 import type { Lang } from "@/lib/fb-posts";
-import fieldVisit from "@/assets/om-raje/field-visit-enhanced.jpg";
 import portrait from "@/assets/om-raje/portrait.webp";
-import communityVisit from "@/assets/om-raje/community-visit.webp";
-import citizenMeeting from "@/assets/om-raje/citizen-meeting.webp";
-import publicMeeting from "@/assets/om-raje/public-meeting-enhanced.jpg";
 import nightRally from "@/assets/om-raje/night-rally-enhanced.jpg";
 import nightSpeech from "@/assets/om-raje/night-speech-enhanced.jpg";
-import fSmile from "@/assets/om-raje/field-smile.webp";
-import fVillage from "@/assets/om-raje/field-village-visit.webp";
-import fStage from "@/assets/om-raje/field-stage-address.webp";
 import fCitizen from "@/assets/om-raje/field-citizen-meet.webp";
 import fTribute from "@/assets/om-raje/field-shivaji-tribute.webp";
 import focusFarmers from "@/assets/om-raje/focus-farmers.svg";
@@ -54,10 +47,20 @@ import focusYouth from "@/assets/om-raje/focus-youth.svg";
 import focusFamilies from "@/assets/om-raje/focus-families.svg";
 import focusVillages from "@/assets/om-raje/focus-villages.svg";
 import heroBannerTitle from "@/assets/om-raje/hero-banner-title.jpg";
+import landingCover from "@/assets/om-raje/landing-cover.jpg";
 import heroBanner1 from "@/assets/om-raje/hero-banner-1.jpg";
 import heroBanner2 from "@/assets/om-raje/hero-banner-2.jpg";
 import heroBanner3 from "@/assets/om-raje/hero-banner-3.jpg";
 import heroBanner4 from "@/assets/om-raje/hero-banner-4.jpg";
+import omdada01 from "@/assets/om-raje/omdada-01.jfif";
+import omdada02 from "@/assets/om-raje/omdada-02.jfif";
+import omdada03 from "@/assets/om-raje/omdada-03.jfif";
+import omdada04 from "@/assets/om-raje/omdada-04.jfif";
+import omdada05 from "@/assets/om-raje/omdada-05.jfif";
+import omdada06 from "@/assets/om-raje/omdada-06.jfif";
+import omdada07 from "@/assets/om-raje/omdada-07.jfif";
+import omdada08 from "@/assets/om-raje/omdada-08.jfif";
+import omdada09 from "@/assets/om-raje/omdada-09.jfif";
 
 type Language = Lang;
 
@@ -65,7 +68,6 @@ const content = {
   en: {
     nav: ["About", "Public work", "Careers", "Events", "Grievances", "Connect"],
     heroTitle: "Many Problems, One Solution — Your OmRaje!",
-    heroBody: "The People's Trust, Our Commitment to Development.",
     explore: "Explore the work",
     contact: "Get in touch",
     principles: ["Listening first", "Working together", "Moving forward"],
@@ -88,7 +90,7 @@ const content = {
     ],
     galleryTitle: "In the Hearts of the People, By Their Side",
     galleryNote: "Moments from the field",
-    imageCaptions: ["Where there are questions, there is dialogue.", "Every voice matters.", "With the community, for the community."],
+    imageCaptions: ["Listening where it matters.", "Hands-on service.", "A conversation with the community."],
     fieldTitle: "Our Land, Our People",
     fieldParagraphs: [
       "There is a unique warmth and sense of belonging in the soil of Dharashiv. The land and its people have always showered me with immense love, trust, and blessings.",
@@ -165,7 +167,6 @@ const content = {
   hi: {
     nav: ["परिचय", "जनकार्य", "रोज़गार", "कार्यक्रम", "शिकायतें", "कनेक्ट"],
     heroTitle: "समस्याएँ अनेक, समाधान एक… आपका अपना ओमराजे!",
-    heroBody: "विश्वास जनता का, संकल्प विकास का।",
     explore: "कार्य देखें",
     contact: "संपर्क करें",
     principles: ["पहले सुनना", "मिलकर काम करना", "आगे बढ़ना"],
@@ -188,7 +189,7 @@ const content = {
     ],
     galleryTitle: "जनता के दिल में, जनता के साथ",
     galleryNote: "जनता के बीच के कुछ पल",
-    imageCaptions: ["जहाँ ज़रूरत, वहीं संवाद।", "हर आवाज़ सुनी जानी चाहिए।", "समुदाय के साथ, समुदाय के लिए।"],
+    imageCaptions: ["जहाँ ज़रूरत, वहीं संवाद।", "सेवा के लिए हमेशा तत्पर।", "समुदाय के साथ संवाद।"],
     fieldTitle: "अपनी मिट्टी, अपने लोग",
     fieldParagraphs: [
       "धाराशिव की मिट्टी में अपनापन और आत्मीयता की एक अनोखी खुशबू है। इस मिट्टी और यहाँ के लोगों ने मुझे हमेशा भरपूर प्यार, विश्वास और आशीर्वाद दिया है।",
@@ -265,7 +266,6 @@ const content = {
   mr: {
     nav: ["परिचय", "जनसेवा", "रोजगार", "कार्यक्रम", "तक्रारी", "कनेक्ट"],
     heroTitle: "अडचणी अनेक, उपाय एक… तुमचा ओमराजे!",
-    heroBody: "विश्वास जनतेचा, संकल्प विकासाचा",
     explore: "कार्य जाणून घ्या",
     contact: "संपर्क साधा",
     principles: ["आधी ऐकून घेऊ", "एकत्र काम करू", "पुढे वाटचाल करू"],
@@ -288,7 +288,7 @@ const content = {
     ],
     galleryTitle: "जनतेच्या मनात, जनतेच्या सोबत.",
     galleryNote: "कार्य क्षेत्रातील काही क्षण",
-    imageCaptions: ["जिथे प्रश्न, तिथे संवाद.", "प्रत्येक आवाज महत्त्वाचा.", "समुदायासोबत, समुदायासाठी."],
+    imageCaptions: ["जिथे गरज, तिथे संवाद.", "सेवेसाठी सदैव तत्पर.", "समुदायाशी संवाद."],
     fieldTitle: "आपली माती, आपली माणसं.",
     fieldParagraphs: [
       "धाराशिवच्या मातीमध्ये एक वेगळाच आपुलकीचा ओलावा आहे. या मातीने आणि इथल्या माणसांनी मला कायम भरभरून प्रेम, विश्वास आणि आशीर्वाद दिले आहेत.",
@@ -370,15 +370,18 @@ const showPrinciples = false;
 const showFocusAreas = false;
 const coverSlides = [heroBannerTitle, heroBanner1, heroBanner2, heroBanner3, heroBanner4];
 const fieldWall = [
-  { src: fSmile, en: "Among supporters", hi: "समर्थकों के बीच", mr: "कार्यकर्त्यांसोबत" },
   { src: nightRally, en: "Evening public gathering", hi: "शाम की जनसभा", mr: "सायंकाळची जाहीर सभा" },
   { src: fCitizen, en: "Listening to residents", hi: "नागरिकों की बात सुनते हुए", mr: "नागरिकांशी संवाद" },
   { src: fTribute, en: "Tribute to Chhatrapati Shivaji Maharaj", hi: "छत्रपति शिवाजी महाराज को अभिवादन", mr: "छत्रपती शिवाजी महाराजांना अभिवादन" },
-  { src: fVillage, en: "Village visit", hi: "गाँव का दौरा", mr: "गाव भेट" },
-  { src: fStage, en: "Addressing the people", hi: "जनता को संबोधित करते हुए", mr: "जनतेला संबोधन" },
   { src: nightSpeech, en: "Voice of Dharashiv", hi: "धाराशिव की आवाज़", mr: "धाराशिवचा आवाज" },
+  { src: omdada01, en: "A conversation with the press", hi: "पत्रकारों से बातचीत", mr: "माध्यमांशी संवाद" },
+  { src: omdada02, en: "Among residents", hi: "लोगों के बीच", mr: "नागरिकांमध्ये" },
+  { src: omdada04, en: "Listening, even in the rain", hi: "बारिश में लोगों की बात सुनते हुए", mr: "पावसातही नागरिकांचे म्हणणे ऐकताना" },
+  { src: omdada05, en: "A conversation in the fields", hi: "खेतों के बीच संवाद", mr: "शेतात संवाद" },
+  { src: omdada06, en: "Sharing a meal", hi: "साथ बैठकर भोजन", mr: "एकत्र भोजन" },
+  { src: omdada08, en: "Addressing a gathering", hi: "सभा को संबोधित करते हुए", mr: "सभेला संबोधित करताना" },
 ];
-const pictures = [communityVisit, citizenMeeting, publicMeeting];
+const pictures = [omdada03, omdada07, omdada09];
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -406,6 +409,7 @@ export function HomePage() {
   const [language, setLanguage] = useState<Language>("mr");
   const [slide, setSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(false);
   const [interestSent, setInterestSent] = useState(false);
   const [interestResult, setInterestResult] = useState<{
     id: string;
@@ -439,6 +443,13 @@ export function HomePage() {
     const timer = window.setInterval(() => setSlide((index) => (index + 1) % slides.length), 5500);
     return () => window.clearInterval(timer);
   }, [slides.length]);
+
+  useEffect(() => {
+    const updateHeaderVisibility = () => setHeaderVisible(window.scrollY > 24);
+    updateHeaderVisibility();
+    window.addEventListener("scroll", updateHeaderVisibility, { passive: true });
+    return () => window.removeEventListener("scroll", updateHeaderVisibility);
+  }, []);
 
 
 
@@ -571,7 +582,16 @@ export function HomePage() {
 
   return (
     <main className="site site-marathi" lang={language}>
-      <header className="site-header floating-header">
+      <section className="landing-cover">
+        <img
+          className="landing-cover-image"
+          src={landingCover}
+          alt="ओमराजे यांच्या सार्वजनिक कामाची झलक — अडचणी अनेक, उपाय एक!"
+          fetchPriority="high"
+        />
+      </section>
+
+      <header className={`site-header floating-header${headerVisible ? " is-visible" : ""}`}>
         <a
           className="brand brand-wordmark brand-wordmark-mr"
           href="#home"
@@ -626,7 +646,6 @@ export function HomePage() {
         ))}
         <div className="hero-copy">
           <h1>{t.heroTitle}</h1>
-          <p className="hero-description">{t.heroBody}</p>
         </div>
         <div className="hero-footnote"><span className="hero-live-dot" />        {tr("Always among the people", "सदैव जनतेत", "हमेशा जनता के बीच")}</div>
                 <div className="hero-controls" aria-label={tr("Selected photos", "निवडक छायाचित्रे", "चुनिंदा तस्वीरें")}>

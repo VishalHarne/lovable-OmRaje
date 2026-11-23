@@ -15,6 +15,40 @@ vi.mock("@tanstack/react-router", async (importOriginal) => {
 import { HomePage } from "@/routes/index";
 
 describe("Home navigation", () => {
+  it("shows the exact Marathi landing artwork before the existing site in every language", () => {
+    const { container } = render(<HomePage />);
+    const cover = container.querySelector(".landing-cover");
+    const header = container.querySelector(".site-header");
+    if (!(cover instanceof HTMLElement) || !(header instanceof HTMLElement)) {
+      throw new Error("Landing cover or sticky header not found");
+    }
+    expect(cover.compareDocumentPosition(header) & Node.DOCUMENT_POSITION_FOLLOWING).toBeTruthy();
+    expect(within(cover).getByRole("img", { name: /अडचणी अनेक, उपाय एक!/ })).toBeInTheDocument();
+    expect(cover.querySelector(".landing-cover-copy")).toBeNull();
+
+    for (const language of ["हिंदी", "English"]) {
+      fireEvent.click(screen.getByRole("button", { name: language }));
+      expect(within(cover).getByRole("img", { name: /अडचणी अनेक, उपाय एक!/ })).toBeInTheDocument();
+    }
+  });
+
+  it("reveals the fixed header after the visitor starts scrolling", () => {
+    const originalScrollY = Object.getOwnPropertyDescriptor(window, "scrollY");
+    try {
+      Object.defineProperty(window, "scrollY", { configurable: true, value: 0 });
+      const { container } = render(<HomePage />);
+      const header = container.querySelector(".site-header");
+      if (!(header instanceof HTMLElement)) throw new Error("Site header not found");
+      expect(header).not.toHaveClass("is-visible");
+
+      Object.defineProperty(window, "scrollY", { configurable: true, value: 40 });
+      fireEvent.scroll(window);
+      expect(header).toHaveClass("is-visible");
+    } finally {
+      if (originalScrollY) Object.defineProperty(window, "scrollY", originalScrollY);
+    }
+  });
+
   it("shows concise social platform labels in each language", () => {
     render(<HomePage />);
     const versions = [
