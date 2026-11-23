@@ -15,12 +15,34 @@ vi.mock("@tanstack/react-router", async (importOriginal) => {
 import { HomePage } from "@/routes/index";
 
 describe("Home navigation", () => {
+  it("shows unnumbered section labels in each language", () => {
+    const { container } = render(<HomePage />);
+    const labels = () => Array.from(container.querySelectorAll(".section-marker > span"), (label) => label.textContent);
+
+    expect(labels()).toEqual(["जनतेचा प्रतिनिधी", "लोकहिताचे कार्य", "पुढचे पाऊल", "तुमचा आवाज महत्त्वाचा", "जोडलेले राहा"]);
+    fireEvent.click(screen.getByRole("button", { name: "हिंदी" }));
+    expect(labels()).toEqual(["जनता के प्रतिनिधि", "जनहित का काम", "अगला कदम", "आपकी आवाज़ अहम है", "जुड़े रहें"]);
+    fireEvent.click(screen.getByRole("button", { name: "English" }));
+    expect(labels()).toEqual(["A people's representative", "Work for the people", "The next step", "Your voice matters", "Stay connected"]);
+  });
+
+  it("shows the page 02 title in the selected language", () => {
+    render(<HomePage />);
+    expect(screen.getByRole("heading", { name: "एकजुटीतून घडवूया आपले भविष्य" })).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "हिंदी" }));
+    expect(screen.getByRole("heading", { name: "एकजुट होकर संवारें अपना भविष्य" })).toBeInTheDocument();
+
+    fireEvent.click(screen.getByRole("button", { name: "English" }));
+    expect(screen.getByRole("heading", { name: "Together, we shape our future" })).toBeInTheDocument();
+  });
+
   it("links Grievances between Careers and Connect to the page 05 form", () => {
     const { container } = render(<HomePage />);
     const navigation = screen.getByRole("navigation", { name: "मुख्य नेव्हिगेशन" });
     const contact = container.querySelector("#contact");
     if (!(contact instanceof HTMLElement)) throw new Error("Grievance section not found");
-    expect(within(contact).getByText("०५ / तुमचा आवाज महत्त्वाचा")).toBeInTheDocument();
+    expect(within(contact).getByText("तुमचा आवाज महत्त्वाचा")).toBeInTheDocument();
     expect(within(contact).getByRole("heading", { name: "तुमची अडचण सांगा" })).toBeInTheDocument();
     expect(within(navigation).getByRole("link", { name: "तक्रारी" })).toHaveAttribute("href", "#contact");
 
