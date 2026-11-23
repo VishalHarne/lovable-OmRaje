@@ -398,19 +398,11 @@
   .site-footer { grid-template-columns: 1fr 1fr; row-gap: 14px; }
 }
 
-@media (max-width: 760px) and (orientation: portrait) {
-  .landing-cover::before {
-    position: absolute;
-    inset: -32px;
-    background: linear-gradient(rgb(0 0 0 / 65%), rgb(0 0 0 / 75%)), url("./assets/om-raje/landing-cover.jpg") center / cover;
-    filter: blur(24px);
-    content: "";
-  }
-}
-
 @media (max-width: 760px) {
   :root { --page-pad: 26px; }
   html { scroll-padding-top: 66px; }
+  .landing-cover { height: auto; }
+  .landing-cover-image { position: static; height: auto; }
   .site-header { height: 66px; }
   .brand { min-width: 0; }
   .brand-wordmark { width: clamp(148px, 44vw, 174px); height: 60px; }
