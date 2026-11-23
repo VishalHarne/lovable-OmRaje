@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, MapPin } from "lucide-react";
 import { fbPosts, type Lang } from "@/lib/fb-posts";
 
 const POST_MS = 7500;
+const visiblePosts = fbPosts.slice(0, 3);
 
 const ui = {
   en: { full: "View full post", posts: "Posts", prev: "Previous post", next: "Next post" },
@@ -12,7 +13,7 @@ const ui = {
 
 export function PostShowcase({ language }: { language: Lang }) {
   const [active, setActive] = useState(0);
-  const total = fbPosts.length;
+  const total = visiblePosts.length;
   const touchX = useRef<number | null>(null);
 
   useEffect(() => {
@@ -22,7 +23,7 @@ export function PostShowcase({ language }: { language: Lang }) {
   }, [active, total]);
 
   const go = (step: number) => setActive((i) => (i + step + total) % total);
-  const current = fbPosts[active];
+  const current = visiblePosts[active];
 
   return (
     <div
@@ -36,14 +37,14 @@ export function PostShowcase({ language }: { language: Lang }) {
       }}
       style={{ ["--accent" as string]: current?.accent }}>
       <div className="pw-ambient" aria-hidden="true">
-        {fbPosts.map((post, index) => (
+        {visiblePosts.map((post, index) => (
           <img key={post.id} src={post.photos[0]} alt="" className={index === active ? "is-on" : ""} />
         ))}
       </div>
       <div className="pw-grain" aria-hidden="true" />
 
       <div className="pw-stage">
-        {fbPosts.map((post, index) => {
+        {visiblePosts.map((post, index) => {
           const isActive = index === active;
           const shots = post.photos.slice(0, 3);
           return (
@@ -80,7 +81,7 @@ export function PostShowcase({ language }: { language: Lang }) {
 
       <div className="pw-nav">
         <div className="pw-index" role="tablist" aria-label={ui[language].posts}>
-          {fbPosts.map((post, index) => (
+          {visiblePosts.map((post, index) => (
             <button key={post.id} type="button" role="tab" aria-selected={index === active} aria-label={post.title[language]} className={index === active ? "is-active" : ""} onClick={() => setActive(index)}>
               <b>0{index + 1}</b><i><em /></i>
             </button>

@@ -64,40 +64,40 @@ type Language = Lang;
 const content = {
   en: {
     nav: ["About", "Public work", "Careers", "Events", "Grievances", "Connect"],
-    heroEyebrow: "Your voice. Your constituency.",
-    heroTitle: "Many challenges, one answer — Om Raje.",
-    heroBody: "Not just words, but action and trust.\nSteps of development moving forward, firmly rooted in the people's trust.",
+    heroTitle: "Many Problems, One Solution — Your Om Raje!",
+    heroBody: "The People's Trust, Our Commitment to Development.",
     explore: "Explore the work",
     contact: "Get in touch",
     principles: ["Listening first", "Working together", "Moving forward"],
-    aboutOverline: "A people's representative",
     aboutTitle: "Dharashiv is my home. Its people are my purpose.",
+    aboutLead: "Our life, Dharashiv.",
     aboutBody:
-      "Our life, Dharashiv. For me this is not just a slogan; it captures the meaning of my entire politics. Wherever I am today and whatever I am is because of the love and trust of the people of Dharashiv, and I never forget that. That is why I strive to do everything possible for Dharashiv and its people. My bond with Dharashiv is not merely political; it is an affection rooted in its soil and its people.",
-    aboutNote:
-      "A space to bring public work, opportunities and ways to take part to citizens. Programmes and dates will be updated once officially announced.",
+      "For me this is not just a slogan; it captures the meaning of my entire politics. Wherever I am today and whatever I am is because of the love and trust of the people of Dharashiv, and I never forget that. That is why I strive to do everything possible for Dharashiv and its people. My bond with Dharashiv is not merely political; it is an affection rooted in its soil and its people.",
     timeline: "A journey in public service",
     timelineNote: "Elected service in Maharashtra",
     years: [
-      ["2009", "Elected to the Maharashtra Legislative Assembly."],
-      ["2019", "Elected to the 17th Lok Sabha from Osmanabad."],
+      ["2009", "Elected as a Member of the Maharashtra Legislative Assembly (MLA)"],
+      ["2019", "Elected to the 17th Lok Sabha from Dharashiv."],
       ["2024", "Re-elected to the 18th Lok Sabha from Dharashiv."],
     ],
-    workOverline: "Work for the people",
-    workTitle: "Together, we shape our future",
-    workBody: "Public service means listening to people's concerns, following them up and keeping people informed about the work.",
+    workTitle: "Let's Walk Together, Let's Build a Brighter Future!",
+    workBody: "I firmly believe that every endeavour succeeds not through individual efforts alone, but through teamwork and collective commitment. This belief has always been the driving force behind my work. Let us come together, move forward as one, and build a brighter future for our people.",
     workCards: [
       ["On the ground", "Talking with people across the constituency and understanding local issues.", "Community"],
       ["People's issues", "A place to raise your concern and learn the right next step.", "Citizen help"],
       ["Opportunity for all", "Bringing employment and career opportunities to young people.", "Employment"],
     ],
-    galleryOverline: "In the constituency",
-    galleryTitle: "Closer to the people.",
+    galleryTitle: "In the Hearts of the People, By Their Side",
     galleryNote: "Moments from the field",
     imageCaptions: ["Where there are questions, there is dialogue.", "Every voice matters.", "With the community, for the community."],
-    initiativeOverline: "The next step",
-    initiativeLabel: "Rojgar Melava · Job opportunities",
-    initiativeTitle: "Opportunity should reach everyone.",
+    fieldTitle: "Our Land, Our People",
+    fieldParagraphs: [
+      "There is a unique warmth and sense of belonging in the soil of Dharashiv. The land and its people have always showered me with immense love, trust, and blessings.",
+      "This love and trust have been my constant inspiration to serve. I have always strived to do everything possible for our land and our people, and I will continue to do so with unwavering dedication.",
+      "I have always felt indebted to this land and every person who calls it home, and I will remain so throughout my life.",
+      "Our Land, Our People — our strength, our inspiration, and our identity.",
+    ],
+    initiativeTitle: "Dreams Empowered, Futures Guided.",
     initiativeBody:
       "Registration for a proposed employment fair for job seekers and employers in Dharashiv. Dates and participation details will be shared once officially confirmed.",
     register: "Register your interest",
@@ -127,7 +127,6 @@ const content = {
     verificationUnavailable: "The security check is temporarily unavailable. Please try again later.",
     submissionInvalid: "Your details could not be validated. Please review the form and send again.",
     submissionFailed: "Your details could not be sent. Please try again.",
-    eventOverline: "Mark your calendar",
     eventTitle: "Everything is possible when we come together.",
     eventBody: "Official dates for upcoming public meetings and the employment fair will appear here once confirmed.",
     eventStatus: "Updates coming soon",
@@ -135,8 +134,7 @@ const content = {
     eventSub: "Official date, venue and registration details will be shared here.",
     eventDate: "Date to be announced",
     eventsContact: "Get in touch",
-    contactOverline: "Your voice matters",
-    contactTitle: "Let's make a difference together.",
+    contactTitle: "Your Call, Our Commitment.",
     contactBody:
       "Raise a local issue or ask a question. Fill in the form to send us your message.",
     grievanceTitle: "Tell us your concern",
@@ -156,7 +154,6 @@ const content = {
     whatsapp: "WhatsApp",
     whatsappHint: "Join our WhatsApp channel",
     instagram: "Find on Instagram",
-    socialOverline: "Stay connected",
     socialTitle: "Connect with us.",
     socialIntro: "Follow our updates and stay connected with the community.",
     socialLink: "Find us on social media",
@@ -167,41 +164,41 @@ const content = {
     top: "Back to top",
   },
   hi: {
-    nav: ["परिचय", "जनकार्य", "रोज़गार", "कार्यक्रम", "शिकायतें", "जुड़ें"],
-    heroEyebrow: "आपकी आवाज़, आपका क्षेत्र !",
-    heroTitle: "मुश्किलें अनेक, समाधान एक – ओम राजे!",
-    heroBody: "शब्द नहीं, काम और विश्वास !\nजनता के भरोसे पर मजबूती से आगे बढ़ते विकास के कदम।",
+    nav: ["परिचय", "जनकार्य", "रोज़गार", "कार्यक्रम", "शिकायतें", "कनेक्ट"],
+    heroTitle: "समस्याएँ अनेक, समाधान एक… आपका अपना ओम राजे!",
+    heroBody: "विश्वास जनता का, संकल्प विकास का।",
     explore: "कार्य देखें",
     contact: "संपर्क करें",
     principles: ["पहले सुनना", "मिलकर काम करना", "आगे बढ़ना"],
-    aboutOverline: "जनता के प्रतिनिधि",
     aboutTitle: "धाराशिव... मेरी साँस, मेरा जुनून!",
+    aboutLead: "अपना जीवन, धाराशिव।",
     aboutBody:
-      "अपना जीवन, धाराशिव। यह मेरे लिए केवल एक नारा नहीं, बल्कि मेरी राजनीति का सार है। आज मैं जहाँ हूँ और जो कुछ भी हूँ, वह धाराशिव के लोगों के प्रेम और विश्वास के कारण है—इस बात का मुझे हमेशा एहसास रहता है। इसलिए मैं धाराशिव और यहाँ के लोगों के लिए हर संभव प्रयास करता हूँ। धाराशिव से मेरा रिश्ता केवल राजनीति का नहीं, बल्कि यहाँ की मिट्टी और लोगों से आत्मीयता का है।",
-    aboutNote:
-      "जनकार्य की जानकारी, अवसरों और सहभागिता के तरीकों को नागरिकों तक पहुँचाने का यह मंच है। आधिकारिक घोषणा के बाद कार्यक्रमों और तारीखों की जानकारी अपडेट की जाएगी।",
+      "यह मेरे लिए केवल एक नारा नहीं, बल्कि मेरी राजनीति का सार है। आज मैं जहाँ हूँ और जो कुछ भी हूँ, वह धाराशिव के लोगों के प्रेम और विश्वास के कारण है—इस बात का मुझे हमेशा एहसास रहता है। इसलिए मैं धाराशिव और यहाँ के लोगों के लिए हर संभव प्रयास करता हूँ। धाराशिव से मेरा रिश्ता केवल राजनीति का नहीं, बल्कि यहाँ की मिट्टी और लोगों से आत्मीयता का है।",
     timeline: "जनसेवा का सफ़र",
     timelineNote: "महाराष्ट्र में निर्वाचित जनसेवा",
     years: [
-      ["२००९", "महाराष्ट्र विधानसभा के लिए निर्वाचित।"],
-      ["२०१९", "उस्मानाबाद से १७वीं लोकसभा के लिए निर्वाचित।"],
+      ["२००९", "महाराष्ट्र विधानसभा विधायक के रूप में निर्वाचित"],
+      ["२०१९", "धाराशिव से १७वीं लोकसभा के लिए निर्वाचित।"],
       ["२०२४", "धाराशिव से १८वीं लोकसभा के लिए पुनः निर्वाचित।"],
     ],
-    workOverline: "जनहित का काम",
-    workTitle: "एकजुट होकर संवारें अपना भविष्य",
-    workBody: "जनसेवा का आधार है लोगों की बात सुनना, समस्याओं का लगातार अनुसरण करना और उन्हें काम की जानकारी से जोड़े रखना।",
+    workTitle: "साथ चलें, उज्ज्वल भविष्य बनाएँ!",
+    workBody: "मेरा दृढ़ विश्वास है कि सामूहिक प्रयास और टीमवर्क से ही हर कार्य सफल होता है। इसी सोच के साथ मैं निरंतर कार्यरत हूँ। आइए, हम सब मिलकर आगे बढ़ें और अपने लोगों का उज्ज्वल भविष्य बनाएँ।",
     workCards: [
       ["लोगों के बीच", "निर्वाचन क्षेत्र के लोगों से संवाद और स्थानीय मुद्दों को समझना।", "जनभागीदारी"],
       ["जनता के मुद्दे", "समस्याएँ सामने रखने और अगला सही कदम जानने का मंच।", "नागरिक सहायता"],
       ["सबके लिए अवसर", "युवाओं तक रोज़गार और करियर के अवसरों की जानकारी पहुँचाना।", "रोज़गार"],
     ],
-    galleryOverline: "निर्वाचन क्षेत्र में",
-    galleryTitle: "जनता के और करीब।",
+    galleryTitle: "जनता के दिल में, जनता के साथ",
     galleryNote: "जनता के बीच के कुछ पल",
     imageCaptions: ["जहाँ ज़रूरत, वहीं संवाद।", "हर आवाज़ सुनी जानी चाहिए।", "समुदाय के साथ, समुदाय के लिए।"],
-    initiativeOverline: "अगला कदम",
-    initiativeLabel: "रोज़गार मेला · नौकरी के अवसर",
-    initiativeTitle: "अवसर हर व्यक्ति तक पहुँचने चाहिए।",
+    fieldTitle: "अपनी मिट्टी, अपने लोग",
+    fieldParagraphs: [
+      "धाराशिव की मिट्टी में अपनापन और आत्मीयता की एक अनोखी खुशबू है। इस मिट्टी और यहाँ के लोगों ने मुझे हमेशा भरपूर प्यार, विश्वास और आशीर्वाद दिया है।",
+      "इसी प्यार और विश्वास ने मुझे जनसेवा के लिए निरंतर प्रेरित किया है। इसलिए अपनी मिट्टी और अपने लोगों के लिए जो भी संभव है, उसे करने के लिए मैं हमेशा प्रयासरत रहा हूँ और आगे भी रहूँगा।",
+      "इस मिट्टी और यहाँ के हर व्यक्ति के प्रति मैं हमेशा ऋणी रहा हूँ और जीवनभर रहूँगा।",
+      "अपनी मिट्टी, अपने लोग — यही मेरी ताकत, यही मेरी प्रेरणा और यही मेरी पहचान है।",
+    ],
+    initiativeTitle: "सपनों को अवसर, भविष्य की दिशा।",
     initiativeBody:
       "धाराशिव में नौकरी चाहने वालों और नियोक्ताओं के लिए प्रस्तावित रोज़गार मेले का पंजीकरण। तारीख़ और भागीदारी की जानकारी आधिकारिक पुष्टि के बाद साझा की जाएगी।",
     register: "अपनी रुचि दर्ज करें",
@@ -231,7 +228,6 @@ const content = {
     verificationUnavailable: "सुरक्षा जाँच अस्थायी रूप से उपलब्ध नहीं है। कृपया बाद में फिर प्रयास करें।",
     submissionInvalid: "जानकारी जाँची नहीं जा सकी। कृपया फ़ॉर्म देखकर फिर भेजें।",
     submissionFailed: "जानकारी भेजी नहीं जा सकी। कृपया फिर से कोशिश करें।",
-    eventOverline: "तारीख़ याद रखें",
     eventTitle: "मिलकर करें तो हर काम बेहतर होता है।",
     eventBody: "आगामी जनसभाओं और रोज़गार मेले की तारीख़ें पुष्टि के बाद यहाँ दी जाएँगी।",
     eventStatus: "जानकारी जल्द आएगी",
@@ -239,8 +235,7 @@ const content = {
     eventSub: "पुष्ट तारीख़, स्थान और पंजीकरण की जानकारी यहाँ साझा की जाएगी।",
     eventDate: "तारीख़ घोषित होना बाकी",
     eventsContact: "संपर्क करें",
-    contactOverline: "आपकी आवाज़ अहम है",
-    contactTitle: "आइए, मिलकर बदलाव लाएँ।",
+    contactTitle: "आपकी पुकार, हमारा साथ।",
     contactBody:
       "स्थानीय समस्या बताएँ या सवाल पूछें। अपना संदेश हमें भेजने के लिए फ़ॉर्म भरें।",
     grievanceTitle: "अपनी समस्या बताएँ",
@@ -260,7 +255,6 @@ const content = {
     whatsapp: "व्हाट्सऐप",
     whatsappHint: "हमारे व्हाट्सऐप चैनल से जुड़ें",
     instagram: "इंस्टाग्राम पर खोजें",
-    socialOverline: "जुड़े रहें",
     socialTitle: "हमसे जुड़ें।",
     socialIntro: "हमारी जानकारी पाएँ और समुदाय से जुड़े रहें।",
     socialLink: "सोशल मीडिया पर हमसे जुड़ें",
@@ -271,41 +265,41 @@ const content = {
     top: "ऊपर जाएँ",
   },
   mr: {
-    nav: ["परिचय", "लोककार्य", "रोजगार", "कार्यक्रम", "तक्रारी", "जोडलेले राहा"],
-    heroEyebrow: "तुमचा आवाज. तुमचा मतदारसंघ.",
-    heroTitle: "अडचणी अनेक, उपाय एक - ओम राजे.",
-    heroBody: "शब्द नाही, कृती आणि विश्वास.\nजनतेच्या विश्वासावर खंबीरपणे उभी राहिलेली विकासाची पावले.",
+    nav: ["परिचय", "जनसेवा", "रोजगार", "कार्यक्रम", "तक्रारी", "कनेक्ट"],
+    heroTitle: "अडचणी अनेक, उपाय एक… तुमचा ओम राजे!",
+    heroBody: "विश्वास जनतेचा, संकल्प विकासाचा",
     explore: "कार्य जाणून घ्या",
     contact: "संपर्क साधा",
     principles: ["आधी ऐकून घेऊ", "एकत्र काम करू", "पुढे वाटचाल करू"],
-    aboutOverline: "जनतेचा प्रतिनिधी",
     aboutTitle: "धाराशिव... माझा श्वास, माझा ध्यास!",
+    aboutLead: "आपला जीव, धाराशिव.",
     aboutBody:
-      "आपला जीव, धाराशिव. हे माझ्यासाठी केवळ घोषवाक्य नव्हे तर एकूणच माझ्या राजकारणाचा अर्थ या घोषणेत येतो. जीवनात आज जिथे आहे, जे आहे ते केवळ धाराशिवकरांच्या प्रेमामुळे, विश्र्वासामुळे ही जाणीव कायमच मनात आहे त्यामुळे धाराशिव आणि धाराशिवच्या जनतेसाठी यथाशक्ती शक्य ते करण्याचा माझा प्रयत्न असतो. धाराशिवशी नातं केवळ राजकारणाचं नाही, तर मातीशी आणि माणसांशी जोडलेल्या जिव्हाळ्याचं आहे.",
-    aboutNote:
-      "लोककार्य, संधी आणि सहभागाची माहिती नागरिकांपर्यंत पोहोचवण्यासाठी हे व्यासपीठ आहे. कार्यक्रम व तारखा अधिकृत घोषणा झाल्यानंतर अद्ययावत केल्या जातील.",
+      "हे माझ्यासाठी केवळ घोषवाक्य नव्हे तर एकूणच माझ्या राजकारणाचा अर्थ या घोषणेत येतो. जीवनात आज जिथे आहे, जे आहे ते केवळ धाराशिवकरांच्या प्रेमामुळे, विश्र्वासामुळे ही जाणीव कायमच मनात आहे त्यामुळे धाराशिव आणि धाराशिवच्या जनतेसाठी यथाशक्ती शक्य ते करण्याचा माझा प्रयत्न असतो. धाराशिवशी नातं केवळ राजकारणाचं नाही, तर मातीशी आणि माणसांशी जोडलेल्या जिव्हाळ्याचं आहे.",
     timeline: "लोकसेवेचा प्रवास",
     timelineNote: "महाराष्ट्रातील निवडून दिलेली सेवा",
     years: [
-      ["२००९", "महाराष्ट्र विधानसभेवर निवड."],
-      ["२०१९", "उस्मानाबाद मतदारसंघातून १७व्या लोकसभेवर निवड."],
+      ["२००९", "महाराष्ट्र विधानसभेचे आमदार म्हणून निवड"],
+      ["२०१९", "धाराशिव मतदारसंघातून १७व्या लोकसभेवर निवड."],
       ["२०२४", "धाराशिव मतदारसंघातून १८व्या लोकसभेवर पुन्हा निवड."],
     ],
-    workOverline: "लोकहिताचे कार्य",
-    workTitle: "एकजुटीतून घडवूया आपले भविष्य",
-    workBody: "लोकसेवा म्हणजे लोकांचे प्रश्न ऐकणे, त्यांचा पाठपुरावा करणे आणि आवश्यक माहिती पोहोचवणे.",
+    workTitle: "एकत्र चालूया, उज्ज्वल भविष्य घडवूया!",
+    workBody: "माझा ठाम विश्वास आहे की कोणतेही कार्य हे एकट्याने नव्हे, तर टीमवर्क आणि सामूहिक प्रयत्नांतून यशस्वी होत असते. याच विचाराने मी सदैव कार्यरत आहे. चला, आपण सर्वजण एकत्र येऊन, एकजुटीने वाटचाल करूया आणि आपल्या जनतेचे उज्ज्वल भविष्य घडवूया.",
     workCards: [
       ["जनतेत राहून", "मतदारसंघातील नागरिकांशी संवाद साधणे आणि स्थानिक प्रश्न समजून घेणे.", "लोकसहभाग"],
       ["जनतेचे प्रश्न", "आपली अडचण मांडण्यासाठी आणि पुढचे योग्य पाऊल जाणून घेण्यासाठी व्यासपीठ.", "नागरिक मदत"],
       ["सर्वांसाठी संधी", "रोजगार आणि करिअरच्या संधींची माहिती युवकांपर्यंत पोहोचवणे.", "रोजगार"],
     ],
-    galleryOverline: "मतदारसंघात",
-    galleryTitle: "जनतेच्या अधिक जवळ.",
+    galleryTitle: "जनतेच्या मनात, जनतेच्या सोबत.",
     galleryNote: "कार्य क्षेत्रातील काही क्षण",
     imageCaptions: ["जिथे प्रश्न, तिथे संवाद.", "प्रत्येक आवाज महत्त्वाचा.", "समुदायासोबत, समुदायासाठी."],
-    initiativeOverline: "पुढचे पाऊल",
-    initiativeLabel: "रोजगार मेळावा · नोकरीची संधी",
-    initiativeTitle: "संधी प्रत्येकापर्यंत पोहोचली पाहिजे.",
+    fieldTitle: "आपली माती, आपली माणसं.",
+    fieldParagraphs: [
+      "धाराशिवच्या मातीमध्ये एक वेगळाच आपुलकीचा ओलावा आहे. या मातीने आणि इथल्या माणसांनी मला कायम भरभरून प्रेम, विश्वास आणि आशीर्वाद दिले आहेत.",
+      "या प्रेमाने आणि विश्वासानेच मला जनसेवेची प्रेरणा दिली आहे. त्यामुळे आपल्या मातीसाठी, आपल्या माणसांसाठी जे जे शक्य आहे, ते करण्यासाठी मी सदैव प्रयत्नशील राहिलो आहे आणि यापुढेही राहीन.",
+      "या मातीचे आणि इथल्या प्रत्येक माणसाचे ऋण मी कायम मानत आलो आहे आणि आयुष्यभर मानत राहीन.",
+      "आपली माती, आपली माणसं — हेच माझं बळ, हीच माझी प्रेरणा आणि हीच माझी ओळख.",
+    ],
+    initiativeTitle: "स्वप्नांना संधी, भविष्याची दिशा.",
     initiativeBody:
       "धाराशिवमधील नोकरी शोधणारे उमेदवार आणि नियोक्त्यांसाठी प्रस्तावित रोजगार मेळावा नोंदणी. अधिकृत खात्री झाल्यानंतर तारीख व सहभागाची माहिती जाहीर केली जाईल.",
     register: "आपली आवड नोंदवा",
@@ -335,7 +329,6 @@ const content = {
     verificationUnavailable: "सुरक्षा तपासणी तात्पुरती उपलब्ध नाही. कृपया नंतर पुन्हा प्रयत्न करा.",
     submissionInvalid: "माहिती तपासता आली नाही. कृपया फॉर्म पाहून पुन्हा पाठवा.",
     submissionFailed: "माहिती पाठवता आली नाही. कृपया पुन्हा प्रयत्न करा.",
-    eventOverline: "दिनदर्शिकेत नोंद करा",
     eventTitle: "एकत्र आलो, तर प्रत्येक गोष्ट शक्य.",
     eventBody: "आगामी जनसंवाद व रोजगार मेळाव्याच्या अधिकृत तारखा निश्चित झाल्यावर येथे दिल्या जातील.",
     eventStatus: "अद्ययावत माहिती लवकरच",
@@ -343,8 +336,7 @@ const content = {
     eventSub: "अधिकृत तारीख, ठिकाण आणि नोंदणीची माहिती येथे दिली जाईल.",
     eventDate: "तारीख जाहीर होणे बाकी",
     eventsContact: "संपर्क साधा",
-    contactOverline: "तुमचा आवाज महत्त्वाचा",
-    contactTitle: "चला, बदल घडवूया.",
+    contactTitle: "हाक तुमची, साथ आमची.",
     contactBody:
       "स्थानिक प्रश्न मांडा किंवा माहिती विचारा. तुमचा संदेश आम्हाला पाठवण्यासाठी फॉर्म भरा.",
     grievanceTitle: "तुमची अडचण सांगा",
@@ -364,7 +356,6 @@ const content = {
     whatsapp: "व्हॉट्सॲप",
     whatsappHint: "आमच्या व्हॉट्सॲप चॅनेलला जॉइन करा",
     instagram: "इन्स्टाग्रामवर शोधा",
-    socialOverline: "जोडलेले राहा",
     socialTitle: "आमच्याशी जोडलेले राहा.",
     socialIntro: "आमच्या घडामोडी जाणून घ्या आणि समुदायाशी जोडलेले राहा.",
     socialLink: "समाजमाध्यमांवर आमच्याशी जोडा",
@@ -378,6 +369,8 @@ const content = {
 
 const navigationIds = ["about", "work", "careers", "events", "contact", "social"];
 const showCalendarSection = false;
+const showPrinciples = false;
+const showFocusAreas = false;
 const coverSlides = [heroBannerTitle, heroBanner1, heroBanner2, heroBanner3, heroBanner4];
 const fieldWall = [
   { src: fSmile, en: "Among supporters", hi: "समर्थकों के बीच", mr: "कार्यकर्त्यांसोबत" },
@@ -596,7 +589,7 @@ export function HomePage() {
               </a>
             );
           })}
-          <Link className="home-video-link" to="/videos" onClick={closeMenu}>          {tr("Videos", "व्हिडिओ", "वीडियो")}</Link>
+          <Link className="home-video-link" to="/videos" onClick={closeMenu}>{tr("Media", "मीडिया", "मीडिया")}</Link>
         </nav>
         <div className="header-tools">
                     <LanguageSwitch language={language} onChange={setLanguage} />
@@ -613,7 +606,7 @@ export function HomePage() {
         </div>
       </header>
 
-      <section className="hero" id="home" aria-label={t.heroEyebrow}>
+      <section className="hero" id="home" aria-label={t.heroTitle}>
         {slides.map((src, index) => (
           <img
             key={src}
@@ -624,7 +617,6 @@ export function HomePage() {
           />
         ))}
         <div className="hero-copy">
-          <p className="eyebrow hero-eyebrow"><span />{t.heroEyebrow}</p>
           <h1>{t.heroTitle}</h1>
           <p className="hero-description">{t.heroBody}</p>
         </div>
@@ -646,13 +638,13 @@ export function HomePage() {
         </div>
       </section>
 
-      <div className="principle-strip" aria-label={tr("Our values", "आपली मूल्ये", "हमारे मूल्य")}>
+      {showPrinciples && <div className="principle-strip" aria-label={tr("Our values", "आपली मूल्ये", "हमारे मूल्य")}>
         {t.principles.map((principle, index) => (
           <div className="principle" key={principle}><span>0{index + 1}</span><strong>{principle}</strong></div>
         ))}
-      </div>
+      </div>}
 
-      <div className="impact-band"       aria-label={tr("Focus areas", "प्राधान्य क्षेत्रे", "प्रमुख क्षेत्र")}>
+      {showFocusAreas && <div className="impact-band"       aria-label={tr("Focus areas", "प्राधान्य क्षेत्रे", "प्रमुख क्षेत्र")}>
               {(language === "en"
                 ? [["Farmers", "Water, crops and rural support"], ["Youth", "Employment and skills fairs"], ["Families", "Health and welfare schemes"], ["Villages", "Roads and local works"]]
                 : language === "hi"
@@ -674,10 +666,9 @@ export function HomePage() {
             </div>
           );
         })}
-      </div>
+      </div>}
 
       <section className="content-section about-section" id="about">
-        <SectionMarker label={t.aboutOverline} />
         <div className="about-grid">
           <figure className="portrait-frame">
             <img src={portrait} alt={tr("Portrait of Om Raje Nimbalkar", "ओम राजे निंबाळकर यांचे छायाचित्र", "ओम राजे निंबालकर का चित्र")} />
@@ -685,8 +676,7 @@ export function HomePage() {
           </figure>
           <div className="about-copy">
             <h2>{t.aboutTitle}</h2>
-            <p className="about-description">{t.aboutBody}</p>
-            <div className="context-note"><Sparkles aria-hidden="true" /><p>{t.aboutNote}</p></div>
+            <p className="about-description"><strong>{t.aboutLead}</strong>{" "}{t.aboutBody}</p>
             <a className="section-link" href="#timeline">{t.timeline}<ArrowRight aria-hidden="true" /></a>
           </div>
         </div>
@@ -708,14 +698,13 @@ export function HomePage() {
       </section>
 
       <section className="work-section content-section" id="work">
-        <SectionMarker label={t.workOverline} inverse />
         <div className="work-heading"><h2>{t.workTitle}</h2><p>{t.workBody}</p></div>
         <PostShowcase language={language} />
       </section>
 
-      <section className="gallery-section" aria-label={t.galleryOverline}>
+      <section className="gallery-section" aria-labelledby="gallery-title">
         <div className="gallery-heading">
-          <div><p className="eyebrow">{t.galleryOverline}</p><h2>{t.galleryTitle}</h2></div>
+          <h2 id="gallery-title">{t.galleryTitle}</h2>
           <p>{t.galleryNote}<ArrowDownRight aria-hidden="true" /></p>
         </div>
         <div className="photo-gallery">
@@ -728,10 +717,10 @@ export function HomePage() {
         </div>
       </section>
 
-      <section className="field-wall"       aria-label={tr("Among the people", "जनतेत", "जनता के बीच")}>
+      <section className="field-wall" aria-labelledby="field-wall-title">
         <div className="field-wall-head">
-                <p className="eyebrow">{tr("In the field", "प्रत्यक्ष जनतेत", "जनता के बीच")}</p>
-                <h2>{tr("Every village. Every voice.", "प्रत्येक गाव. प्रत्येक आवाज.", "हर गाँव। हर आवाज़।")}</h2>
+          <h2 id="field-wall-title">{t.fieldTitle}</h2>
+          <p className="field-wall-copy">{t.fieldParagraphs.join(" ")}</p>
         </div>
         <div className="field-wall-grid">
           {fieldWall.map((item, index) => (
@@ -744,10 +733,8 @@ export function HomePage() {
       </section>
 
       <section className="initiative-section content-section" id="careers">
-        <SectionMarker label={t.initiativeOverline} />
         <div className="initiative-grid">
           <div className="initiative-copy">
-            <span className="initiative-label"><span />{t.initiativeLabel}</span>
             <h2>{t.initiativeTitle}</h2>
             <p>{t.initiativeBody}</p>
             <Button asChild variant="ink" size="large"><a href="#register">{t.register}<ArrowRight aria-hidden="true" /></a></Button>
@@ -803,7 +790,6 @@ export function HomePage() {
 
       {showCalendarSection && (
         <section className="events-section content-section" id="events">
-          <SectionMarker label={t.eventOverline} inverse />
           <div className="events-grid">
             <div className="events-copy"><h2>{t.eventTitle}</h2><p>{t.eventBody}</p><a className="section-link light-link" href="#contact">{t.eventsContact}<ArrowUpRight aria-hidden="true" /></a></div>
             <article className="event-panel">
@@ -817,7 +803,6 @@ export function HomePage() {
       )}
 
       <section className="contact-section content-section" id="contact">
-        <SectionMarker label={t.contactOverline} />
         <div className="contact-grid">
           <div className="contact-intro">
             <h2>{t.contactTitle}</h2>
@@ -865,7 +850,6 @@ export function HomePage() {
       </section>
 
       <section className="social-section content-section" id="social">
-        <SectionMarker label={t.socialOverline} />
         <div className="social-heading"><h2>{t.socialTitle}</h2><p>{t.socialIntro}</p></div>
         <div className="social-list">
           <a href="https://www.facebook.com/omprakashrajenimbalkar" target="_blank" rel="noopener noreferrer" className="social-link">
@@ -914,10 +898,6 @@ function BrandWordmark({ language }: { language: Language }) {
       </span>
     </span>
   );
-}
-
-function SectionMarker({ label, inverse = false }: { label: string; inverse?: boolean }) {
-  return <div className={`section-marker ${inverse ? "section-marker-inverse" : ""}`}><span>{label}</span><i aria-hidden="true">✳</i></div>;
 }
 
 function FormHeading({ eyebrow, title, subtitle }: { eyebrow: string; title: string; subtitle: string }) {

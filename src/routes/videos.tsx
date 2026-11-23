@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowLeft, ArrowUpRight, Instagram, Play, Film, ArrowDown } from "lucide-react";
+import { ArrowLeft, ArrowUpRight, Instagram, Play, ArrowDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { ThemeSwitcher } from "@/components/theme-switcher";
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from "@/components/ui/dialog";
@@ -64,10 +64,6 @@ function VideosPage() {
       <section className="video-hero">
         <HeroVideoBackground clips={heroClips} language={language} />
         <div className="video-hero-copy">
-          <p className="eyebrow">
-            <Film size={15} />
-            {tr("Moments with the people", "जनतेतील क्षण", "जनजीवन के पल")}
-          </p>
           <h1>
             {tr("Om Raje Nimbalkar", "ओम राजे निंबाळकर", "ओम राजे निंबालकर")}
             <span>{tr("Among the people. Every moment.", "जनतेत. प्रत्येक क्षणी.", "हर पल, जनता के बीच।")}</span>
@@ -98,9 +94,6 @@ function VideosPage() {
       <section className="video-collection" id="collection">
         <div className="video-collection-heading">
           <div>
-            <p className="eyebrow">
-              {tr("Selected Instagram reels", "निवडक इन्स्टाग्राम रील्स", "चुनिंदा इंस्टाग्राम रील्स")}
-            </p>
             <h2>{tr("People. Places. Public service.", "जनतेशी जोडलेले क्षण.", "लोग। जगहें। जनसेवा।")}</h2>
           </div>
           <span className="video-count">
