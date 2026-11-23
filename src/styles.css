@@ -996,31 +996,31 @@
 }
 @media (max-width: 480px) {
   .site-header.floating-header { padding-inline: 7px; }
-  .site-header.floating-header .brand-wordmark { width: clamp(94px, 30vw, 145px); }
+  .site-header.floating-header .brand-wordmark, .site-footer .brand-wordmark { width: clamp(94px, 30vw, 145px); }
   .site-header.floating-header .header-tools { gap: 5px; }
   .site-header.floating-header .language-switch button { padding-inline: 5px; }
   .site-header.floating-header { width: calc(100% - 16px); }
 }
 
-.site-header.floating-header .brand-signature {
+.brand-wordmark .brand-signature {
   color: var(--text-on-dark);
   font-size: 27px;
   line-height: 1.05;
   text-shadow: none;
 }
-.site-header.floating-header .brand-signature:lang(en) {
+.brand-wordmark .brand-signature:lang(en) {
   font-family: "Manrope", sans-serif;
   font-size: 24px;
   font-weight: 700;
   letter-spacing: -0.035em;
 }
-.site-header.floating-header .brand-signature::after { border-color: var(--saffron); }
-.site-header.floating-header .brand-nameplate {
+.brand-wordmark .brand-signature::after { border-color: var(--saffron); }
+.brand-wordmark .brand-nameplate {
   margin-top: 4px;
   font-size: 11px;
   line-height: 1.15;
 }
-.site-header.floating-header .brand-district {
+.brand-wordmark .brand-district {
   margin-top: 3px;
   color: var(--text-on-dark);
   font-size: 9px;
@@ -1028,10 +1028,10 @@
   line-height: 1.2;
 }
 @media (max-width: 480px) {
-  .site-header.floating-header .brand-wordmark-mr .brand-signature { font-size: 23px; }
-  .site-header.floating-header .brand-wordmark-mr .brand-signature:lang(en) { font-size: 20px; }
-  .site-header.floating-header .brand-nameplate { font-size: 10px; }
-  .site-header.floating-header .brand-district { font-size: 8px; }
+  .brand-wordmark.brand-wordmark-mr .brand-signature { font-size: 23px; }
+  .brand-wordmark.brand-wordmark-mr .brand-signature:lang(en) { font-size: 20px; }
+  .brand-wordmark .brand-nameplate { font-size: 10px; }
+  .brand-wordmark .brand-district { font-size: 8px; }
 }
 
 .site-header.floating-header {
