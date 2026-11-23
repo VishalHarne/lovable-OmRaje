@@ -93,6 +93,35 @@ describe("submission API", () => {
     expect((options.body.get("file") as File).name).toBe("resume.pdf");
   });
 
+  it("preserves separate email outcomes and treats missing statuses as unconfirmed", async () => {
+    const payload: CandidatePayload = {
+      name: "Candidate",
+      phone: "9876543210",
+      email: "candidate@example.com",
+      role: "job_seeker",
+      town: "Dharashiv",
+      consent: true,
+    };
+    vi.mocked(fetch).mockResolvedValueOnce({
+      ok: true,
+      json: async () => ({
+        id: "application-id",
+        status: "submitted",
+        emailStatus: "sent",
+        resumeEmailStatus: "failed",
+      }),
+    } as Response);
+    await expect(submitResume(payload, "token")).resolves.toMatchObject({
+      id: "application-id",
+      emailStatus: "sent",
+      resumeEmailStatus: "failed",
+    });
+    await expect(submitResume(payload, "token")).resolves.toMatchObject({
+      emailStatus: undefined,
+      resumeEmailStatus: undefined,
+    });
+  });
+
   it("surfaces non-success HTTP statuses without assuming an error body", async () => {
     vi.mocked(fetch).mockResolvedValueOnce({
       ok: false,

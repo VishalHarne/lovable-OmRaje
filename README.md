@@ -41,7 +41,11 @@ submits a JSON `data` part and an optional PDF, DOC or DOCX attachment to
 `POST /api/applications` (maximum attachment size: 10 MB). Both submissions require
 a fresh Cloudflare Turnstile token in the `X-Turnstile-Token` header.
 These endpoints require the database-submission version of the backend to be
-deployed and configured.
+deployed and configured. Deploy the updated backend before this frontend: it
+emails attached CVs to the configured admin mailbox and reports the CV email
+and applicant confirmation separately. SMTP acceptance does not guarantee
+delivery. If either email cannot be confirmed, the form displays the saved
+application ID and asks the applicant not to resubmit.
 Grievances require a mobile number and accept an optional email. Apply the
 backend's grievance email migration and deploy the updated backend before
 deploying this frontend. The updated backend requires the new request format,

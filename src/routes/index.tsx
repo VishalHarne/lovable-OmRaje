@@ -410,6 +410,11 @@ export function HomePage() {
   const [slide, setSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
   const [interestSent, setInterestSent] = useState(false);
+  const [interestResult, setInterestResult] = useState<{
+    id: string;
+    confirmationUnconfirmed: boolean;
+    resumeUnconfirmed: boolean;
+  } | null>(null);
   const [messageSent, setMessageSent] = useState(false);
   const [messageError, setMessageError] = useState<string | null>(null);
   const [interestError, setInterestError] = useState<string | null>(null);
@@ -531,11 +536,17 @@ export function HomePage() {
     setSubmitting(kind);
     setError(null);
     setSent(false);
+    if (kind === "interest") setInterestResult(null);
 
     try {
       const token = await turnstile.execute();
       if (submission.kind === "interest") {
-        await submitResume(submission.payload, token, submission.file);
+        const result = await submitResume(submission.payload, token, submission.file);
+        setInterestResult({
+          id: result.id,
+          confirmationUnconfirmed: result.emailStatus !== "sent",
+          resumeUnconfirmed: !!submission.file && result.resumeEmailStatus !== "sent",
+        });
         setInterestSent(true);
       } else {
         await submitGrievance(submission.payload, token);
@@ -750,13 +761,14 @@ export function HomePage() {
               onSubmit={(event) => submitForm(event, "interest")}
               onChange={() => {
                 setInterestSent(false);
+                setInterestResult(null);
                 setInterestError(null);
               }}
             >
               <label>{t.name}<input autoComplete="name" name="name" required placeholder={t.name} /></label>
               <div className="form-row">
                 <label>{t.phone}<input autoComplete="tel" name="phone" required type="tel" pattern="[0-9+() -]{10,16}" placeholder="+91" /></label>
-                <label>{t.email}<input autoComplete="email" name="email" type="email" placeholder="name@email.com" /></label>
+                <label>{t.email}<input autoComplete="email" name="email" type="email" required placeholder="name@email.com" /></label>
               </div>
               <label>{t.role}<select name="role" required defaultValue=""><option value="" disabled>{t.choose}</option><option value="job_seeker">{t.candidate}</option><option value="employer">{t.employer}</option></select></label>
               <label>{t.town}<input autoComplete="address-level2" name="town" required placeholder={t.town} /></label>
@@ -783,6 +795,30 @@ export function HomePage() {
                 {submitting === "interest" ? <><LoaderCircle className="animate-spin" aria-hidden="true" />{t.submitting}</> : <>{t.submitInterest}<ArrowUpRight aria-hidden="true" /></>}
               </Button>
               {interestSent && <p className="form-note" role="status"><strong>{t.formSuccess}.</strong> {t.formSuccessNote}</p>}
+              {interestResult && (
+                <p className="form-note">
+                  {tr("Application ID", "अर्ज क्रमांक", "आवेदन क्रमांक")}: {interestResult.id}
+                </p>
+              )}
+              {interestResult && (interestResult.resumeUnconfirmed || interestResult.confirmationUnconfirmed) && (
+                <p className="form-note" role="alert">
+                  {interestResult.resumeUnconfirmed && tr(
+                    "Your application was saved, but delivery of your résumé to our team could not be confirmed. ",
+                    "तुमचा अर्ज नोंदवला आहे, पण तुमचा रेझ्युमे आमच्या टीमला पोहोचल्याची खात्री करता आली नाही. ",
+                    "आपका आवेदन दर्ज हो गया है, लेकिन आपका रिज़्यूमे हमारी टीम तक पहुँचने की पुष्टि नहीं हो सकी। ",
+                  )}
+                  {interestResult.confirmationUnconfirmed && tr(
+                    "Your confirmation email could not be confirmed. ",
+                    "पुष्टीकरण ईमेल पाठवल्याची खात्री करता आली नाही. ",
+                    "पुष्टिकरण ईमेल भेजे जाने की पुष्टि नहीं हो सकी। ",
+                  )}
+                  {tr(
+                    "Please do not resubmit; contact us with your application ID.",
+                    "कृपया पुन्हा अर्ज करू नका; अर्ज क्रमांकासह आमच्याशी संपर्क साधा.",
+                    "कृपया दोबारा आवेदन न करें; आवेदन क्रमांक के साथ हमसे संपर्क करें।",
+                  )}
+                </p>
+              )}
               {interestError && <p className="form-note" role="alert">{interestError}</p>}
               <p className="form-note"><ShieldCheck aria-hidden="true" />{t.formDisclaimer}</p>
             </form>

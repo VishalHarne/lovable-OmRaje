@@ -33,7 +33,11 @@ export interface GrievancePayload {
 export interface SubmissionResponse {
   id: string;
   status: "received" | "submitted";
+  emailStatus?: EmailStatus;
+  resumeEmailStatus?: EmailStatus;
 }
+
+type EmailStatus = "sent" | "failed" | "not_requested";
 
 export class SubmissionApiError extends Error {
   constructor(readonly status: number) {
@@ -97,7 +101,11 @@ async function submit(path: string, token: string, body: BodyInit, contentType?:
   if (!isSubmissionResponse(result)) {
     throw new Error("The submission API returned an unexpected response.");
   }
-  return result;
+  const emailStatus = (name: "emailStatus" | "resumeEmailStatus"): EmailStatus | undefined => {
+    const value = name in result ? result[name] : undefined;
+    return value === "sent" || value === "failed" || value === "not_requested" ? value : undefined;
+  };
+  return { ...result, emailStatus: emailStatus("emailStatus"), resumeEmailStatus: emailStatus("resumeEmailStatus") };
 }
 
 const CONSENT_TEXT_VERSION = import.meta.env["VITE_CONSENT_TEXT_VERSION"]?.trim() || "v1";
