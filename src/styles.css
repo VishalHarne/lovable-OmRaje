@@ -146,6 +146,19 @@
 .site-marathi { font-family: "Noto Sans Devanagari", "DM Sans", sans-serif; }
 .landing-cover { position: relative; width: 100%; height: 100vh; height: 100svh; overflow: hidden; background: #171717; }
 .landing-cover-image { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; object-fit: contain; object-position: center 48%; }
+@media (min-width: 761px) {
+  .landing-cover::before, .landing-cover::after {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: max(0px, calc((100% - 177.734375svh) / 2));
+    background-image: url("./assets/om-raje/landing-cover.jpg");
+    background-size: auto 100%;
+    content: "";
+  }
+  .landing-cover::before { left: 0; background-position: left center; }
+  .landing-cover::after { right: 0; background-position: right center; }
+}
 .site-header { position: relative; z-index: 10; display: flex; height: 76px; align-items: center; justify-content: space-between; padding-inline: var(--page-pad); border-bottom: 1px solid var(--dark-line); color: var(--text-on-dark); background: var(--header-bg); }
 .brand { display: inline-flex; min-width: 184px; flex: 0 0 auto; align-items: center; gap: 10px; }
 .brand-wordmark { width: 190px; min-width: 0; height: 68px; justify-content: center; }
