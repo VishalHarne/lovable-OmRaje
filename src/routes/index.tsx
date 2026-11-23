@@ -737,7 +737,6 @@ export function HomePage() {
           {pictures.map((picture, index) => (
             <figure className={`gallery-photo gallery-photo-${index + 1}`} key={picture}>
               <img src={picture} alt={t.imageCaptions[index]} loading="lazy" />
-              <figcaption><span>0{index + 1} / {tr("Dharashiv", "धाराशिव", "धाराशिव")}</span><strong>{t.imageCaptions[index]}</strong></figcaption>
             </figure>
           ))}
         </div>

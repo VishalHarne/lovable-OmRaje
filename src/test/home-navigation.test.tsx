@@ -49,6 +49,19 @@ describe("Home navigation", () => {
     }
   });
 
+  it("shows gallery photos without text overlays in every language", () => {
+    const { container } = render(<HomePage />);
+    for (const language of [null, "हिंदी", "English"]) {
+      if (language) fireEvent.click(screen.getByRole("button", { name: language }));
+      const photos = container.querySelectorAll<HTMLElement>(".photo-gallery .gallery-photo");
+      expect(photos).toHaveLength(3);
+      for (const photo of photos) {
+        expect(photo.textContent).toBe("");
+        expect(within(photo).getByRole("img")).toHaveAccessibleName();
+      }
+    }
+  });
+
   it("shows concise social platform labels in each language", () => {
     render(<HomePage />);
     const versions = [
