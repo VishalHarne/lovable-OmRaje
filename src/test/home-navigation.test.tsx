@@ -65,9 +65,9 @@ describe("Home navigation", () => {
   it("shows concise social platform labels in each language", () => {
     render(<HomePage />);
     const versions = [
-      { language: null, facebook: "फेसबुक", instagram: "इन्स्टाग्राम" },
-      { language: "हिंदी", facebook: "फ़ेसबुक", instagram: "इंस्टाग्राम" },
-      { language: "English", facebook: "Facebook", instagram: "Instagram" },
+      { language: null, facebook: "फेसबुक", whatsapp: "व्हॉट्सॲप", instagram: "इन्स्टाग्राम", hint: "जुडा" },
+      { language: "हिंदी", facebook: "फ़ेसबुक", whatsapp: "व्हाट्सऐप", instagram: "इंस्टाग्राम", hint: "जुड़ें" },
+      { language: "English", facebook: "Facebook", whatsapp: "WhatsApp", instagram: "Instagram", hint: "Connect" },
     ];
 
     for (const version of versions) {
@@ -76,7 +76,20 @@ describe("Home navigation", () => {
         .toHaveAttribute("href", "https://www.facebook.com/omprakashrajenimbalkar");
       expect(screen.getByText(version.instagram, { selector: "strong" }).closest("a"))
         .toHaveAttribute("href", "https://www.instagram.com/mpomrajenimbalkar/");
+      for (const platform of [version.facebook, version.whatsapp, version.instagram]) {
+        expect(screen.getByText(platform, { selector: "strong" }).closest("a")).toHaveTextContent(version.hint);
+      }
     }
+  });
+
+  it("labels the career form in each language", () => {
+    const { container } = render(<HomePage />);
+    const label = container.querySelector("#careers .form-eyebrow");
+    expect(label).toHaveTextContent("करिअर");
+    fireEvent.click(screen.getByRole("button", { name: "हिंदी" }));
+    expect(label).toHaveTextContent("करियर");
+    fireEvent.click(screen.getByRole("button", { name: "English" }));
+    expect(label).toHaveTextContent("Career");
   });
 
   it("shows the field-wall text as one paragraph in each language", () => {

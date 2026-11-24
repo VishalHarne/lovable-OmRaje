@@ -151,9 +151,8 @@ const content = {
     grievanceSuccess: "Message submitted successfully",
     grievanceSuccessNote: "Our system has received your message.",
     facebook: "Facebook",
-    facebookHint: "Search for Om Raje Nimbalkar",
+    socialConnectHint: "Connect",
     whatsapp: "WhatsApp",
-    whatsappHint: "Join our WhatsApp channel",
     instagram: "Instagram",
     socialTitle: "Connect with us.",
     socialIntro: "Follow our updates and stay connected with the community.",
@@ -250,9 +249,8 @@ const content = {
     grievanceSuccess: "संदेश सफलतापूर्वक सबमिट हुआ",
     grievanceSuccessNote: "हमारे सिस्टम ने आपका संदेश स्वीकार कर लिया है।",
     facebook: "फ़ेसबुक",
-    facebookHint: "ओम राजे निंबालकर खोजें",
+    socialConnectHint: "जुड़ें",
     whatsapp: "व्हाट्सऐप",
-    whatsappHint: "हमारे व्हाट्सऐप चैनल से जुड़ें",
     instagram: "इंस्टाग्राम",
     socialTitle: "हमसे जुड़ें।",
     socialIntro: "हमारी जानकारी पाएँ और समुदाय से जुड़े रहें।",
@@ -349,9 +347,8 @@ const content = {
     grievanceSuccess: "संदेश यशस्वीपणे सबमिट झाला",
     grievanceSuccessNote: "आमच्या प्रणालीने तुमचा संदेश स्वीकारला आहे.",
     facebook: "फेसबुक",
-    facebookHint: "ओम राजे निंबाळकर यांचा शोध घ्या",
+    socialConnectHint: "जुडा",
     whatsapp: "व्हॉट्सॲप",
-    whatsappHint: "आमच्या व्हॉट्सॲप चॅनेलला जॉइन करा",
     instagram: "इन्स्टाग्राम",
     socialTitle: "आमच्याशी जोडलेले राहा.",
     socialIntro: "आमच्या घडामोडी जाणून घ्या आणि समुदायाशी जोडलेले राहा.",
@@ -768,7 +765,7 @@ export function HomePage() {
             <span className="initiative-script" aria-hidden="true">{tr("Jobs", "रोजगार", "रोज़गार")}</span>
           </div>
           <div className="form-panel" id="register">
-            <FormHeading eyebrow={tr("Employment fair", "रोजगार मेळावा", "रोज़गार मेला")} title={t.formTitle} subtitle={t.formSubtitle} />
+            <FormHeading eyebrow={tr("Career", "करिअर", "करियर")} title={t.formTitle} subtitle={t.formSubtitle} />
             <form
               className="preview-form"
               aria-busy={submitting === "interest"}
@@ -905,13 +902,13 @@ export function HomePage() {
         <div className="social-heading"><h2>{t.socialTitle}</h2><p>{t.socialIntro}</p></div>
         <div className="social-list">
           <a href="https://www.facebook.com/omprakashrajenimbalkar" target="_blank" rel="noopener noreferrer" className="social-link">
-            <span className="social-badge">f</span><span><strong>{t.facebook}</strong><small>{t.facebookHint}</small></span><ArrowUpRight aria-hidden="true" />
+            <span className="social-badge">f</span><span><strong>{t.facebook}</strong><small>{t.socialConnectHint}</small></span><ArrowUpRight aria-hidden="true" />
           </a>
           <a href="https://whatsapp.com/channel/0029Va5C0Iv5a2437j5qgV3X" target="_blank" rel="noreferrer" className="social-link">
-            <span className="social-badge social-whatsapp"><MessageCircle aria-hidden="true" /></span><span><strong>{t.whatsapp}</strong><small>{t.whatsappHint}</small></span><ArrowUpRight aria-hidden="true" />
+            <span className="social-badge social-whatsapp"><MessageCircle aria-hidden="true" /></span><span><strong>{t.whatsapp}</strong><small>{t.socialConnectHint}</small></span><ArrowUpRight aria-hidden="true" />
           </a>
           <a href="https://www.instagram.com/mpomrajenimbalkar/" target="_blank" rel="noopener noreferrer" className="social-link">
-            <span className="social-badge social-instagram">◎</span><span><strong>{t.instagram}</strong><small>{tr("Om Raje Nimbalkar", "ओम राजे निंबाळकर", "ओम राजे निंबालकर")}</small></span><ArrowUpRight aria-hidden="true" />
+            <span className="social-badge social-instagram">◎</span><span><strong>{t.instagram}</strong><small>{t.socialConnectHint}</small></span><ArrowUpRight aria-hidden="true" />
           </a>
         </div>
         <p className="social-disclaimer">{t.socialNote}</p>
