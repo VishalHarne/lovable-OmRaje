@@ -762,6 +762,17 @@ export function HomePage() {
             <h2>{t.initiativeTitle}</h2>
             <p>{t.initiativeBody}</p>
             <Button asChild variant="ink" size="large"><a href="#register">{t.register}<ArrowRight aria-hidden="true" /></a></Button>
+            <div className="career-channel">
+              <h3>{tr("WhatsApp channel for job seekers", "नोकरी शोधणाऱ्यांसाठी व्हॉट्सॲप चॅनेल", "नौकरी खोजने वालों के लिए व्हाट्सऐप चैनल")}</h3>
+              <p>{tr(
+                "Students and job seekers can join this dedicated channel to stay up to date with the latest broadcast messages and job information.",
+                "विद्यार्थी आणि नोकरी शोधणारे उमेदवार या समर्पित चॅनेलमध्ये सहभागी होऊन प्रसारित होणारे नवीन संदेश आणि नोकरीविषयक माहिती मिळवू शकतात.",
+                "विद्यार्थी और नौकरी खोजने वाले उम्मीदवार इस समर्पित चैनल से जुड़कर प्रसारित होने वाले नवीनतम संदेश और नौकरी की जानकारी पा सकते हैं।",
+              )}</p>
+              <a className="section-link" href="https://whatsapp.com/channel/0029Vb8pICk3LdQQSY3Uzi1x" target="_blank" rel="noopener noreferrer">
+                {tr("Join the WhatsApp channel", "व्हॉट्सॲप चॅनेलमध्ये सामील व्हा", "व्हाट्सऐप चैनल से जुड़ें")}<ArrowUpRight aria-hidden="true" />
+              </a>
+            </div>
             <span className="initiative-script" aria-hidden="true">{tr("Jobs", "रोजगार", "रोज़गार")}</span>
           </div>
           <div className="form-panel" id="register">

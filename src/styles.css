@@ -295,6 +295,9 @@
 .initiative-copy { position: relative; min-width: 0; padding-block: 14px; }
 .initiative-copy h2 { position: relative; z-index: 1; max-width: 545px; }
 .initiative-copy > p { position: relative; z-index: 1; max-width: 475px; margin: 17px 0 24px; color: var(--text-secondary); font-size: 12px; line-height: 1.9; }
+.career-channel { position: relative; z-index: 1; max-width: 540px; margin-top: 32px; padding: 22px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); }
+.career-channel h3 { margin: 0; font-size: 19px; font-weight: 700; line-height: 1.5; }
+.career-channel p { margin: 10px 0 16px; color: var(--text-secondary); font-size: 15px; line-height: 1.8; }
 .initiative-script { position: absolute; right: -15px; bottom: -49px; color: color-mix(in oklab, var(--foreground) 6%, transparent); font: 800 clamp(80px, 12vw, 165px)/1 "Noto Sans Devanagari", sans-serif; pointer-events: none; }
 .form-panel { position: relative; z-index: 1; min-width: 0; padding: 26px 27px 23px; background: var(--card); box-shadow: var(--shadow-card); scroll-margin-top: 26px; }
 .form-heading { display: flex; align-items: flex-start; justify-content: space-between; gap: 16px; margin-bottom: 21px; }

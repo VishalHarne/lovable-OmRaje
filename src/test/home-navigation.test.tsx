@@ -92,6 +92,25 @@ describe("Home navigation", () => {
     expect(label).toHaveTextContent("Career");
   });
 
+  it("offers the job seekers' WhatsApp channel in each language", () => {
+    const { container } = render(<HomePage />);
+    const careers = container.querySelector("#careers");
+    if (!(careers instanceof HTMLElement)) throw new Error("Careers section not found");
+    const versions = [
+      { language: null, title: "नोकरी शोधणाऱ्यांसाठी व्हॉट्सॲप चॅनेल", link: "व्हॉट्सॲप चॅनेलमध्ये सामील व्हा" },
+      { language: "हिंदी", title: "नौकरी खोजने वालों के लिए व्हाट्सऐप चैनल", link: "व्हाट्सऐप चैनल से जुड़ें" },
+      { language: "English", title: "WhatsApp channel for job seekers", link: "Join the WhatsApp channel" },
+    ];
+    for (const version of versions) {
+      if (version.language) fireEvent.click(screen.getByRole("button", { name: version.language }));
+      expect(within(careers).getByRole("heading", { name: version.title })).toBeInTheDocument();
+      const link = within(careers).getByRole("link", { name: version.link });
+      expect(link).toHaveAttribute("href", "https://whatsapp.com/channel/0029Vb8pICk3LdQQSY3Uzi1x");
+      expect(link).toHaveAttribute("target", "_blank");
+      expect(link).toHaveAttribute("rel", "noopener noreferrer");
+    }
+  });
+
   it("shows the field-wall text as one paragraph in each language", () => {
     const { container } = render(<HomePage />);
     const versions = [
